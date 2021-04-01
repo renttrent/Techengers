@@ -13,3 +13,5 @@ Change directory into backend folder:
 ``` cd backend ```
 Then do ``` npm install ``` or ``` npm i ``` to install dependencies.
 Read README.md inside backend for more info.
+
+# For now don't push anything to the branch
