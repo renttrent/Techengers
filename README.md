@@ -1,42 +1,10 @@
-# Attention
+# Project description
 
-## If you are frontend
+## Gym training and health tracker
 
-Change directory into frontend folder:
+This project will help users track their Gym activity and monitor their behavior.
+It will have a workout log similar to a workout digital journal.
 
-``` 
-$ cd frontend
-```
+Users can also create Routines and link youtube videos or outside links to each exercise.
 
-Then do 
-``` 
-$ npm install 
-``` 
-or 
-``` 
-$ npm i 
-``` 
-to install dependencies.
-
-Read README.md inside frontend for more info.
-
-## If you are backend
-
-Change directory into backend folder:
-
-```
-$ cd backend
-```
-Then do 
-```
-$ npm install
-``` 
-or 
-``` 
-$ npm i 
-``` 
-to install dependencies.
-
-Read README.md inside backend for more info.
-
-# For now don't push anything to the branch
+For each day users can also add their preferred diet. By adding more information like height, weight etc. the program will be able to suggest new diets or exercise for weight loss or weight gain.
