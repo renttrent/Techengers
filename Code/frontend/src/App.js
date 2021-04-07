@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Navbar from "./components/Navbar";
+import Button from "./components/Button";
+// Run with npm run start at */Code/frontend path
+// localhost:3000 will open automatically in browser
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* This is a component */}
+      <Navbar />
+      <p>Hello Soft Eng</p>
+      {/* Component with props */}
+      <Button name="Yes" />
+
+      <Button name="No" />
     </div>
   );
 }
