@@ -1,0 +1,17 @@
+{
+    "folders": [{
+        "path": "."
+    }],
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "dsznajder.es7-react-js-snippets",
+            "burkeholland.simple-react-snippets",
+            "jpoissonnier.vscode-styled-components",
+            "zignd.html-css-class-completion",
+            "dbaeumer.vscode-eslint",
+            "eg2.vscode-npm-script",
+            "christian-kohler.npm-intellisense"
+        ]
+    }
+}
