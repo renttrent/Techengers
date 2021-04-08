@@ -4,7 +4,13 @@ export default function Button({ name }) {
   // https://reactjs.org/docs/components-and-props.html
   return (
     <div>
-      <button>{name}</button>
+      <button
+        onClick={() => {
+          console.log(`hey ${name}`);
+        }}
+      >
+        {name}
+      </button>
     </div>
   );
 }
