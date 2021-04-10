@@ -8,7 +8,9 @@
         "recommendations": [
             "ms-python.python",
             "ms-python.vscode-pylance",
-            "batisteo.vscode-django"
+            "batisteo.vscode-django",
+            "donjayamanne.githistory",
+            "eamodio.gitlens"
         ]
     },
 }
