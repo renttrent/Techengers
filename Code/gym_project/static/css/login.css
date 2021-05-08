@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  font-family: "Roboto Slab", serif;
+}
+
+body {
+  background-color: #0a1522;
+}
+
+.login {
+  width: 30%;
+  top: 25%;
+  height: 75%;
+}
+
+.register {
+  width: 40%;
+  top: 25%;
+  height: 75%;
+}
+.form {
+  width: 70%;
+}
+
+.btn {
+  width: 70%;
+}
+
+.login-with {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 3em;
+}
+
+.icons {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+p,
+label {
+  font-weight: 300;
+  font-size: 1.2em;
+}
+
+.buttons {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.general-button {
+  width: 100%;
+  height: 2.5em;
+  margin-bottom: 1em;
+  outline: none;
+  border: none;
+  color: #ffff;
+  border-radius: 3px;
+  font-size: 1.1em;
+
+  transition: ease-in 0.2s;
+}
+
+.login-btn {
+  background-color: #ed6459;
+}
+
+.register-btn {
+  background-color: #6ed383;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  background-color: #4784bc;
+  height: 2.7em;
+}
+
+.form-control-mine {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="text"]::placeholder {
+  width: 100%;
+
+  border: none;
+  border-radius: 1px;
+  background-color: #d8e4f2;
+  color: #ffff;
+  padding: 10px;
+  font-size: 1em;
+
+  transition: ease-in 0.2s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  background-color: #d8e4f2;
+  outline: none !important;
+  box-shadow: 5px 5px 10px #4784bc;
+}
+
+.go-home {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  margin-top: 5%;
+}
+
+#home-btn {
+  text-decoration: none;
+  color: #ffff;
+  background-color: #4784bc;
+  padding: 1.3em;
+  border-radius: 2px;
+
+  transition: ease-in 0.2s;
+}
+
+#home-btn:hover {
+  background-color: #ffff;
+  color: #4784bc;
+}

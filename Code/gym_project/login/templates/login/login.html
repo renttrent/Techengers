@@ -1,0 +1,71 @@
+{% extends 'login/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="go-home">
+    <a id="home-btn" href="{% url 'welcome-page' %}">Go Home</a>
+</div>
+
+<div class="login card container"> 
+    {% comment %} <div class="login-with text-center">
+        <p class="h2">Login with</p>
+        <div class="icons">
+            <div class="icon">
+                <svg width="79" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip1)">
+                <path d="M18.1145 31.7362C18.6351 27.1357 21.5698 23.1329 25.4998 20.2988C29.4299 17.4648 34.1546 15.9443 39 15.9542C44.4925 15.9542 49.4585 17.9042 53.3585 21.0957L64.7075 9.75C57.7915 3.72125 48.9287 0 39 0C23.6275 0 10.3935 8.7685 4.02997 21.6125L17.1145 31.7362Z" fill="#EA4335"/>
+                <path d="M53.13 58.5422C48.5875 60.827 44.0895 62.0457 39 62.0457C34.174 62.0557 29.4671 60.5473 25.5458 57.7342C21.6244 54.921 18.6873 50.9457 17.1502 46.371L4.02023 56.3387C7.24178 62.8592 12.2274 68.3455 18.4107 72.1745C24.594 76.0035 31.7271 78.0218 39 78C48.5322 78 57.6387 74.6102 64.4605 68.25L52.1332 58.5422H52.13Z" fill="#34A853"/>
+                <path d="M65.4605 68.25C71.5942 61.594 76.2255 51.688 76.2255 39C76.2255 36.6925 75.8712 34.2128 75.3415 31.9085H39V46.9788H59.917C58.8868 52.0455 56.1145 55.9683 52.1333 58.5423L64.4605 68.25Z" fill="#4A90E2"/>
+                <path d="M18.1502 46.371C16.3551 43.995 15.9512 41.5055 15.9542 39C15.9542 36.4585 16.3605 34.0178 17.1145 31.7363L4.02998 21.6125C1.35321 27.0162 -0.0266565 32.9697 -1.82512e-05 39C-1.82512e-05 45.24 1.44623 51.1225 4.02023 56.3387L17.1502 46.371Z" fill="#FBBC05"/>
+                </g>
+                <defs>
+                <clipPath id="clip1">
+                <rect width="79" height="78" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+            </div>
+            <div class="icon">
+                <svg width="80" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip1)">
+                <path d="M75.6399 79.0003C77.0475 79.0003 79 77.0481 79 74.6402V4.36012C79 1.95186 77.0475 0 74.6399 0H4.36012C1.95155 0 0 1.95186 0 4.36012V74.6402C0 77.0481 1.95155 79.0003 4.36012 79.0003H74.6399Z" fill="#395185"/>
+                <path d="M55.5085 79.0003V48.4073H64.7775L66.3149 36.4847H54.5085V28.8723C54.5085 25.4204 55.4673 23.068 60.4174 23.068L66.7309 23.0652V12.4018C65.6385 12.2564 61.8909 11.9318 57.5311 11.9318C48.4282 11.9318 42.1965 17.488 42.1965 27.692V36.4847H31.9012V48.4073H42.1965V79.0003H54.5085Z" fill="white"/>
+                </g>
+                <defs>
+                <clipPath id="clip1">
+                <rect width="80" height="79" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+            </div>
+        </div>                 
+        <p>or</p>
+    </div> {% endcomment %}
+
+    <div class="form card-body container">
+        <form method="POST">
+            {% csrf_token %}
+            
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="alert alert-{{ msg.tags }}">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+
+            {{ form|crispy }}
+            {% comment %} <div class="mb-2 form-control-mine">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Enter Email">
+            </div>
+            <div class="mb-2 form-control-mine">
+                <label for="passwrod">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter Password">
+            </div>  {% endcomment %}
+            <div class="buttons">
+                <button class="general-button login-btn" type="submit">Log In</button>
+                <small class="text-muted">Don't have an account? <a class="ml-2" href="{% url 'register' %}"> Register Here</a></small>
+            </div>             
+        </form>
+    </div>
+</div> 
+{% endblock content %}
