@@ -3,9 +3,20 @@
 {% block content %}
     {% if user.is_authenticated %}
     <div class="card">
-        <div class="card-body">
-            Welcome {{ user.get_username }}
-        </div>
+        <div class="row">
+            <div class="column left" style="background-color:#aaa;">
+              <h2>Column 1</h2>
+              <p>Some text..</p>
+            </div>
+            <div class="column middle" style="background-color:#bbb;">
+              <h2>Column 2</h2>
+              <p>Some text..</p>
+            </div>
+            <div class="column right" style="background-color:#ccc;">
+              <h2>Column 3</h2>
+              <p>Some text..</p>
+            </div>
+          </div>
         <a href="{% url 'logout' %}">Click here to logout</a>
     </div>
     {% endif %}i
