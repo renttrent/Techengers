@@ -6,11 +6,11 @@ body {
     box-sizing: border-box;
   }
   
-/* Create three unequal columns that floats next to each other */
+
 .column {
   float: left;
   padding: 10px;
-  height: 1000px; /* Should be removed. Only for demonstration */
+  
 }
 
 .left, .right {
