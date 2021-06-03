@@ -8,6 +8,12 @@ python manage.py createsuperuser
 
 After super user creation you can control all models in admin dashboard.
 
+## Requirements
+
+``
+pip install django-crispy-forms
+``
+
 ## Login App
 
 Login is functional.
