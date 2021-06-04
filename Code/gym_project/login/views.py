@@ -30,4 +30,4 @@ def register(request):
 
 
 def welcome(request):
-    return HttpResponse('Welcome')
+    return render(request, 'login/welcome-page.html')
