@@ -1,5 +1,10 @@
 {% extends 'login/base.html' %}
 {% load crispy_forms_tags %}
+
+{% block title %}
+<title>Register</title>
+{% endblock title %}
+
 {% block content %}
 <div class="go-home">
     <a id="home-btn" href="{% url 'welcome-page' %}">Go Home</a>

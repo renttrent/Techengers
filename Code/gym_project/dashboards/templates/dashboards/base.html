@@ -8,13 +8,18 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=2">
         <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css3?family=Roboto+Slab:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
+        {% block styles_override %}
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        {% endblock styles_override %}
+        {% block styles %}
+        {% endblock styles %}
+        {% block title %}
+        <title>Home</title>
+        {% endblock title %}
     </head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css3?family=Roboto+Slab:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <title>Home</title>
     <body>
         {% block content %}
         {% endblock content%}
