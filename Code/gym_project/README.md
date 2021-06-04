@@ -12,6 +12,7 @@ After super user creation you can control all models in admin dashboard.
 
 ``
 pip install django-crispy-forms
+pip install 
 ``
 
 ## Login App
