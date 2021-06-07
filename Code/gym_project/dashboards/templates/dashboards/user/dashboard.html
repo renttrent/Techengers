@@ -1,20 +1,79 @@
-{% extends 'dashboards/base.html' %} 
 {% load static %}
 
-{% block styles %}
-{% comment %} <link rel="stylesheet" href="{% static 'css/dashboards/dashboard.css' %}"> {% endcomment %}
-<link rel="stylesheet" href="{% static 'css/dashboards/main.css' %}">
-{% endblock styles %}
+<html>
+  <head>
+    <meta charset="utf-7">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">        
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/dashboards/main.css' %}">
+    {% endblock styles %}
 
-{% block content %}
-{% if user.is_authenticated %}
-  <div class="navigation">
-  
-  </div>
-  <div class="middle">
-  </div>
-  <div class="events">
-  </div>
-{% endif %} 
-{% endblock content %}
+    {% block title %}
+    <title>{{user.first_name}} Dashboard</title>
+    {% endblock title %}
+  </head>
+  <body>
 
+  {% block content %}
+  {% if user.is_authenticated %}
+  <div class="mycontainer">
+    <div class="navigation">
+      <div class="nav-col">
+        <div class="options">
+          {% for key, item in options.items %}
+            {% if item.isActive %}
+            <div class="option-active"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            {% else %}
+            <div class="option"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="user-btn">
+          <img src="" alt="">
+          <span>{{user.first_name}}<span> </span>{{user.last_name}}</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+    </div>
+    <div class="middle">
+    {% block middle %}
+    {% endblock middle %}
+    </div>
+    <div class="events-section">
+      <div class="divider"></div>
+      <div class="events">
+        <div class="latest">
+          Latest Events
+        </div>
+        <div class="items overflow-auto">
+        {% for item in events %}
+          <div class="event-item">
+            <div class="event-item-left">
+              <div class="event-thumb"><img src="{{item.thumbnail.url}}"></div>
+            </div>
+            <div class="event-item-right">
+              <div class="title">{{item.title}}</div>
+              <div class="date">{{item.date}}</div>
+              {% if item.desc|length > 30 %}
+                <div class="desc">{{item.desc|slice:":30"}}...</div>
+              {% else %}
+                <div class="desc">{{item.desc}}</div>
+              {% endif %}
+              <div class="details">Detalis</div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %} 
+  {% endblock content %}
+  </body>
+<html>

@@ -8,19 +8,18 @@ class DietPlan(models.Model):
     title = models.CharField(max_length=30, blank=True)
     desc = models.TextField(blank=True)
     thumbnail = models.ImageField(
-        upload_to='media/diets/', default='media/diets/default.jpg')
+        upload_to='diets/', default='diets/default.jpg')
 
     def __str__(self):
         return f"Diet Plan - {self.title}"
 
 
 class Event(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=60, blank=True)
     date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     desc = models.TextField(blank=True)
     thumbnail = models.ImageField(
-        upload_to='media/events/', default='media/events/default.jpg')
+        upload_to='events/', default='events/default.jpg')
 
     def __str__(self):
         return f"Event - {self.title}"
@@ -34,7 +33,7 @@ class Routine(models.Model):
     title = models.CharField(max_length=60, blank=True)
     desc = models.TextField(blank=True)
     thumbnail = models.ImageField(
-        upload_to='media/routines/', default='media/routines/default.jpg')
+        upload_to='routines/', default='routines/default.jpg')
 
     def __str__(self):
         return f"Routine - {self.title}"
