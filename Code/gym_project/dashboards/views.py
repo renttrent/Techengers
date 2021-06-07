@@ -1,8 +1,7 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='login')
 def home(request):
-    if request.user.is_anonymous == True:
-        return redirect('welcome-page')
-    else:
-        return render(request, 'dashboards/userdashboard.html')
+    return render(request, 'dashboards/user/dashboard.html')

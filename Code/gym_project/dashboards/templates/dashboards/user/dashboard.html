@@ -1,0 +1,20 @@
+{% extends 'dashboards/base.html' %} 
+{% load static %}
+
+{% block styles %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/dashboards/dashboard.css' %}"> {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/dashboards/main.css' %}">
+{% endblock styles %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <div class="navigation">
+  
+  </div>
+  <div class="middle">
+  </div>
+  <div class="events">
+  </div>
+{% endif %} 
+{% endblock content %}
+

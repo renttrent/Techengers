@@ -1,42 +1,53 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class DietPlan(models.Model):
-    diet_name = models.CharField(max_length=30)
-    diet_dscr = models.TextField()
-    last_modified = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=30, blank=True)
+    desc = models.TextField(blank=True)
+    thumbnail = models.ImageField(
+        upload_to='media/diets/', default='media/diets/default.jpg')
 
     def __str__(self):
-        return f"Diet Plan - {self.diet_name}"
+        return f"Diet Plan - {self.title}"
 
 
 class Event(models.Model):
-    event_name = models.CharField(max_length=60)
-    pub_date = models.DateTimeField('date published')
-    event_dscr = models.TextField()
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=60, blank=True)
+    date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
+    desc = models.TextField(blank=True)
+    thumbnail = models.ImageField(
+        upload_to='media/events/', default='media/events/default.jpg')
 
     def __str__(self):
-        return f"Event - {self.event_name}"
+        return f"Event - {self.title}"
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
-
-
-class Exercise(models.Model):
-    exercise_name = models.CharField(max_length=60)
-    exercise_dscr = models.TextField()
-    exercise_thumbnail = models.ImageField(upload_to="media")
-
-    def __str__(self):
-        return f"Exercise - {self.exercise_name}"
+        return self.date >= timezone.now() - datetime.timedelta(days=1)
 
 
 class Routine(models.Model):
-    routine_name = models.CharField(max_length=60)
-    routine_dscr = models.TextField()
-    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=60, blank=True)
+    desc = models.TextField(blank=True)
+    thumbnail = models.ImageField(
+        upload_to='media/routines/', default='media/routines/default.jpg')
 
     def __str__(self):
-        return f"Routine - {self.routine_name}"
+        return f"Routine - {self.title}"
+
+
+class Exercise(models.Model):
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    routine = models.ManyToManyField(Routine)
+
+    title = models.CharField(max_length=60, blank=True)
+    reps = models.IntegerField(default=3, blank=True)
+    desc = models.TextField(blank=True)
+    link = models.CharField(max_length=300, blank=True)
+
+    def __str__(self):
+        return f"Exercise - {self.title}"

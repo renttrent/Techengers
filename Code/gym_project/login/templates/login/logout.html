@@ -1,9 +1,21 @@
 {% extends 'login/base.html' %}
+{% load static %}
+
 
 {% block title %}
 <title>Logged Out</title>
 {% endblock title %}
 
 {% block content %}
-    You have been logged out.
+    <div class="container mt-5">
+        <h1 style="color: white;">You have been logged out.</h1>
+        <div class="row mt-5" style="width: 35vw;">
+            <div class="col">
+                <a class="btn btn-primary" href="{% url 'welcome-page' %}">Go Home</a>
+            </div>
+            <div class="col">
+                <a class="btn btn-secondary" href="{% url 'login' %}">Click here to Log Back In</a>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

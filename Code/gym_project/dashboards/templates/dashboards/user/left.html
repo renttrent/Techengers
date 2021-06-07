@@ -1,0 +1,526 @@
+{% extends 'dashboards/base.html' %} 
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/dashboards/dashboard.css' %}">
+{% endblock styles %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <div class="container-fluid">
+      <div class="row justify-content-center">
+      {% comment %} NAVIGATION {% endcomment %}
+        <div class="col col-sm-12 col-md-12 col-lg-2 post">
+    <div class="btn-group-vertical">
+        <div class="btn-group" role="group" aria-label="Third group">
+            <button
+            type="button"
+            style="width: 200px; height: 70px; border-radius: 8px"
+            class="btn btn-secondary"
+            >
+            Schedule
+            </button>
+        </div>
+    <div class="btn-group" role="group" aria-label="Third group">
+        <button
+        type="button"
+        style="width: 200px; height: 70px; border-radius: 8px"
+        herf="exercises.html"
+        class="btn btn-secondary"
+        >
+        Exercises
+        </button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Third group">
+        <button
+        type="button"
+        style="width: 200px; height: 70px; border-radius: 8px"
+        class="btn btn-secondary"
+        >
+        Routines
+        </button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Third group">
+        <button
+        type="button"
+        style="width: 200px; height: 70px; border-radius: 8px"
+        class="btn btn-secondary"
+        >
+        Select Diet
+        </button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Third group">
+        <button
+        type="button"
+        style="width: 200px; height: 70px; border-radius: 8px"
+        class="btn btn-secondary"
+        >
+        Trainers
+        </button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Third group">
+        <button
+        type="button"
+        style="width: 200px; height: 70px; border-radius: 8px"
+        class="btn btn-secondary"
+        >
+        Comunity
+        </button>
+    </div>
+    <div class="btn-group dropend">
+        <button
+        type="button"
+        style="width: 230px; height: 90px; border-radius: 8px"
+        class="btn btn-secondary dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        >
+        <img
+            src=""
+            style="border-radius: 25px; width: 50px; height: 50px"
+        />
+        {{ user }}
+        </button>
+        <ul class="dropdown-menu">
+        <li><a href="#">CSS</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+      {% comment %} MIDDLE {% endcomment %}
+      <div class="col col-sm-12 col-md-12 col-lg-8">
+      <div class="shapedEdge">
+        <p>Today-22.06.2021</p>
+        <hr class="solid" />
+        <div class="row justify-content-center">
+          <div class="col col-lg-3">
+            <img
+              src=""
+              alt="six pack"
+              style="
+                height: 180px;
+                margin: 30px -60px 70px;
+                border-radius: 12px;
+              "
+            />
+          </div>
+          <div class="col col-lg-4">
+            <div class="row justify-content-around">
+              <h3>Abs Day</h3>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p>Tomorow-23.06.2021</p>
+        <hr class="solid" />
+        <div class="row justify-content-center">
+          <div class="col col-lg-3">
+            <img
+              src=""
+              alt="six pack"
+              style="
+                height: 180px;
+                margin: 30px -60px 70px;
+                border-radius: 12px;
+              "
+            />
+          </div>
+          <div class="col col-lg-4">
+            <div class="row justify-content-around">
+              <h3>Biceps Day</h3>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Wednesday-22.06.2021</p>
+        <hr class="solid" />
+        <div class="row justify-content-center">
+          <div class="col col-lg-3">
+            <img
+              src=""
+              alt="six pack"
+              style="
+                height: 180px;
+                margin: 30px -60px 70px;
+                border-radius: 12px;
+              "
+            />
+          </div>
+          <div class="col col-lg-4">
+            <div class="row justify-content-around">
+              <h3>Leg Day</h3>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Thursday-22.06.2021</p>
+        <hr class="solid" />
+        <div class="row justify-content-center">
+          <div class="col col-lg-3">
+            <img
+              src=""
+              alt="six pack"
+              style="
+                height: 180px;
+                margin: 30px -60px 70px;
+                border-radius: 12px;
+              "
+            />
+          </div>
+          <div class="col col-lg-4">
+            <div class="row justify-content-around">
+              <h3>Chest Day</h3>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Friday-22.06.2021</p>
+        <hr class="solid" />
+        <div class="row justify-content-center">
+          <div class="col col-lg-3">
+            <img
+              src=""
+              alt="six pack"
+              style="
+                height: 180px;
+                margin: 30px -60px 70px;
+                border-radius: 12px;
+              "
+            />
+          </div>
+          <div class="col col-lg-4">
+            <div class="row justify-content-around">
+              <h3>Back Day</h3>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Saturnday-22.06.2021</p>
+        <hr class="solid" />
+        <div class="row justify-content-center">
+          <div class="col col-lg-3">
+            <img
+              src=""
+              alt="six pack"
+              style="
+                height: 180px;
+                margin: 30px -60px 70px;
+                border-radius: 12px;
+              "
+            />
+          </div>
+          <div class="col col-lg-4">
+            <div class="row justify-content-around">
+              <h3>All Day</h3>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col col-lg-2">
+                <ul class="nav justify-content-around">
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Exercise </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% comment %} EVENTS {% endcomment %}
+      <div class="col col-sm-12 col-md-12 col-lg-2">
+      <div class="input-group">
+        <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Type..."
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <button type="button" class="btn">Search</button>
+      </div>
+      <div class="card">
+        <div class="row justify-content-start">
+          <div class="col-sm">
+            <img
+              src=""
+              style="
+                width: max-content;
+                max-width: 100%;
+                max-height: max-content;
+                margin: 25px 20px 13px;
+                border-radius: 15px;
+              "
+            />
+          </div>
+          <div class="col-sm">
+            <h6>Body Care</h6>
+            <h5>02-04-2022</h5>
+            <h5>Our 12 year anniversary will be a part of ...</h5>
+
+            <button
+              type="button"
+              style="
+                background-color: #0a1522;
+                width: fit-content;
+                border-radius: 6px;
+                font-size: 15px;
+              "
+              class="btn"
+            >
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row justify-content-start">
+          <div class="col-sm">
+            <img
+              src=""
+              style="
+                width: max-content;
+                max-width: 100%;
+                max-height: max-content;
+                margin: 25px 20px 13px;
+                border-radius: 15px;
+              "
+            />
+          </div>
+          <div class="col-sm">
+            <h6>Body Care</h6>
+            <h5>02-04-2022</h5>
+            <h5>Our 12 year anniversary will be a part of ...</h5>
+
+            <button
+              type="button"
+              style="
+                background-color: #0a1522;
+                width: fit-content;
+                border-radius: 6px;
+                font-size: 15px;
+              "
+              class="btn"
+            >
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row justify-content-start">
+          <div class="col-sm">
+            <img
+              src=""
+              style="
+                width: max-content;
+                max-width: 100%;
+                max-height: max-content;
+                margin: 25px 20px 13px;
+                border-radius: 15px;
+              "
+            />
+          </div>
+          <div class="col-sm">
+            <h6>Body Care</h6>
+            <h5>02-04-2022</h5>
+            <h5>Our 12 year anniversary will be a part of ...</h5>
+
+            <button
+              type="button"
+              style="
+                background-color: #0a1522;
+                width: fit-content;
+                border-radius: 6px;
+                font-size: 15px;
+              "
+              class="btn"
+            >
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row justify-content-start">
+          <div class="col-sm">
+            <img
+              src=""
+              style="
+                width: max-content;
+                max-width: 100%;
+                max-height: max-content;
+                margin: 25px 20px 13px;
+                border-radius: 15px;
+              "
+            />
+          </div>
+          <div class="col-sm">
+            <h6>Body Care</h6>
+            <h5>02-04-2022</h5>
+            <h5>Our 12 year anniversary will be a part of ...</h5>
+
+            <button
+              type="button"
+              style="
+                background-color: #0a1522;
+                width: fit-content;
+                border-radius: 6px;
+                font-size: 15px;
+              "
+              class="btn"
+            >
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      </div>
+  </div>
+{% endif %} 
+{% endblock content %}
+

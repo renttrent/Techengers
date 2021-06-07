@@ -1,5 +1,3 @@
-from django.contrib.auth import forms
-from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -13,9 +11,12 @@ def login(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(
-                request, f'Loggin In {username}')
+                request, f'Welcome {username}')
             return redirect('userdashboard')
-    return render(request, 'login/login.html')
+    else:
+        form = UserLoginForm()
+    context = {'form': form}
+    return render(request, 'login/login.html', context)
 
 
 def register(request):

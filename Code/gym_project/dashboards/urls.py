@@ -1,7 +1,9 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
 urlpatterns = [
-    path('userdashboard/', views.home, name="userdashboard"),
+    path('', views.home, name="userdashboard"),
 ]
