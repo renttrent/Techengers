@@ -2,6 +2,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
 
 
 class DietPlan(models.Model):
@@ -34,6 +35,12 @@ class Routine(models.Model):
     desc = models.TextField(blank=True)
     thumbnail = models.ImageField(
         upload_to='routines/', default='routines/default.jpg')
+    DAYS_OPTIONS = (('mon', 'Monday'), ('tue', 'Tuesday'),
+                    ('wed', 'Wednesday'), ('thu', 'Thurday'),
+                    ('fri', 'Friday'), ('sat', 'Saturday'),
+                    ('sun', 'Sunday'))
+
+    days = MultiSelectField(choices=DAYS_OPTIONS, default=DAYS_OPTIONS[0])
 
     def __str__(self):
         return f"Routine - {self.title}"

@@ -1,0 +1,69 @@
+.exercises {
+  display: grid;
+  gap: 1em;
+  width: 100%;
+  padding: 3em;
+}
+
+.exercise-card {
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+
+  border-radius: 5px;
+  background-color: #1f2f42;
+}
+
+.left-exercise-card {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.right-exercise-card {
+  flex-direction: column;
+  align-items: flex-end;
+  width: 20vw;
+}
+
+.exercise-desc-title {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.exercise-desc {
+  font-weight: 400;
+}
+
+.exercise-title {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.exercise-owner {
+  font-size: 0.8em;
+  color: rgb(236, 234, 234);
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.exercise-link {
+  margin-top: 10px;
+}
+
+.exercise-link a {
+  color: tomato;
+}
+
+.exercise-link a:hover {
+  text-decoration: none;
+  color: rgb(236, 234, 234);
+}
+
+.exercise-reps {
+  font-size: 1em;
+  font-weight: 300;
+}

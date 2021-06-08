@@ -1,0 +1,11 @@
+.routine-card {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+
+  border-radius: 5px;
+  background-color: #1f2f42;
+}

@@ -1,6 +1,23 @@
 {% extends 'dashboards/user/dashboard.html' %}
+{% load static %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/dashboards/routines.css' %}">
+{% endblock styles %}
+
+{% block title %}
+<title>{{user.username}}'s Dashboard</title>
+{% endblock title %}
 {% block middle %}
 {% comment %} KTU SHKRUAJ KODIN {% endcomment %}
-Routines
+{% for routine in routines %}
+    <div class="routine-card">
+        <div class="routine-title">Routine: {{routine.title}}</div>
+        <div class="routine-owner">Owner: {{routine.owner.username}}</div>
+        <div class="routine-desc">Desc: {{routine.desc}}</div>
+        
+        <div class="thumbnail"><img src="{{routine.thumbnail.link}}" alt=""></div>
+        <div class="exercises"></div>
+    </div>
+{% endfor %}
 {% endblock middle %}

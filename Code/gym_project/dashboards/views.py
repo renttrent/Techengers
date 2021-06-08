@@ -1,40 +1,11 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from .models import Event
+from .models import Event, Exercise, Routine
 
 
 @login_required(login_url='login')
 def home(request):
-    navigation = {
-        'schedule': {
-            'name': 'Schedule',
-            'isActive': True,
-            'url': 'schedule'
-        },
-        'exercises': {
-            'name': 'Exercises',
-            'isActive': False,
-            'url': 'exercises'
-        },
-        'routines': {
-            'name': 'Routines',
-            'isActive': False,
-            'url': 'routines'
-        },
-        'diets': {
-            'name': 'Selected Diets',
-            'isActive': False,
-            'url': 'diets'
-        },
-        'trainers': {
-            'name': 'Trainers',
-            'isActive': False,
-            'url': 'trainers'
-        },
-    }
-    events = Event.objects.all()[:4]
-    context = {'options': navigation, 'events': events}
-    return render(request, 'dashboards/user/dashboard.html', context)
+    return redirect('userdashboard-schedule')
 
 
 @login_required(login_url='login')
@@ -67,7 +38,10 @@ def schedule(request):
         },
     }
     events = Event.objects.all()[:4]
-    context = {'options': navigation, 'events': events}
+
+    schedule = Routine.objects.filter(owner=request.user)
+
+    context = {'options': navigation, 'events': events, 'schedule': schedule}
     return render(request, 'dashboards/user/schedule.html', context)
 
 
@@ -101,7 +75,8 @@ def exercises(request):
         },
     }
     events = Event.objects.all()[:4]
-    context = {'options': navigation, 'events': events}
+    exercises = Exercise.objects.all()
+    context = {'options': navigation, 'events': events, 'exercises': exercises}
     return render(request, 'dashboards/user/exercises.html', context)
 
 
@@ -135,7 +110,8 @@ def routines(request):
         },
     }
     events = Event.objects.all()[:4]
-    context = {'options': navigation, 'events': events}
+    routines = Routine.objects.all()
+    context = {'options': navigation, 'events': events, 'routines': routines}
     return render(request, 'dashboards/user/routines.html', context)
 
 
