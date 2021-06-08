@@ -1,6 +1,11 @@
 {% extends 'dashboards/user/dashboard.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/dashboards/schedule.css' %}">
+{% endblock style %}
 
 {% block middle %}
-{% comment %} KTU SHKRUAJ KODIN {% endcomment %}
+schedules
 {{schedules}}
 {% endblock middle %}
