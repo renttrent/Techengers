@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'login.apps.LoginConfig',
     'dashboards.apps.DashboardsConfig',
     'users.apps.UsersConfig',
+    'staff.apps.StaffConfig',
 ]
 
 MIDDLEWARE = [
