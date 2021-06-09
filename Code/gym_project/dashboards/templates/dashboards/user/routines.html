@@ -11,6 +11,8 @@
 
 {% block middle %}
 {% comment %} KTU SHKRUAJ KODIN {% endcomment %}
+<div class="routines">
+
 {% for routine in routines %}
     <div class="routine-card">
         <div class="routine-title">Routine: {{routine.title}}</div>
@@ -21,5 +23,5 @@
         <div class="exercises"></div>
     </div>
 {% endfor %}
-
+</div>
 {% endblock middle %}

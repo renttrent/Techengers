@@ -3,6 +3,9 @@
   gap: 1em;
   width: 100%;
   padding: 3em;
+
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .exercise-card {
@@ -12,7 +15,8 @@
   align-items: center;
   justify-content: space-between;
   color: white;
-
+  min-height: 150px;
+  max-height: 200px;
   border-radius: 5px;
   background-color: #1f2f42;
 }

@@ -1,11 +1,12 @@
 {% extends 'dashboards/user/dashboard.html' %}
 {% load static %}
 
-{% block style %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'css/dashboards/schedule.css' %}">
-{% endblock style %}
+{% endblock styles %}
 
 {% block middle %}
-schedules
+<div class="schedule">
+</div>
 {{schedules}}
 {% endblock middle %}

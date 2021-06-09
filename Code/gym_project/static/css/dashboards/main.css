@@ -31,7 +31,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin-top: 1em;
-  height: 50vh;
+  height: 400px;
 }
 
 .option {
@@ -81,9 +81,51 @@ body {
   text-align: center;
   border-radius: 4px;
   margin-top: 16em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .user-btn:hover {
+  background-color: #ed6459;
+  cursor: pointer;
+}
+
+.profile-pic img {
+  height: 30px;
+  border-radius: 50%;
+  width: auto;
+}
+
+#hidden {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  width: auto;
+  height: auto;
+  color: white;
+  background-color: #1f2f42;
+  display: block;
+  border-radius: 4px;
+  transform: translate(60%, -170%);
+}
+
+#hidden div {
+  padding: 1em;
+}
+
+#hidden div a {
+  text-decoration: none;
+  color: white;
+}
+#hidden div a:hover {
+  text-decoration: none;
+}
+
+#hidden div:hover {
   background-color: #ed6459;
   cursor: pointer;
 }
@@ -190,4 +232,17 @@ body {
 .event-item-right .details:hover {
   background-color: #a1e6ae;
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  margin-right: 1em;
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #0a1522;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aebac8;
+  border-radius: 10px;
 }
