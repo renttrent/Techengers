@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserLoginForm, UserRegisterForm
+from django.contrib.auth.models import User
 
 
 def login(request):
@@ -12,7 +13,14 @@ def login(request):
             username = form.cleaned_data.get('username')
             messages.success(
                 request, f'Welcome {username}')
-            return redirect('userdashboard')
+            u = User.objects.filter(username=username)[0]
+
+            if u.is_superuser:
+                return redirect('/admin')
+            elif u.groups.first():
+                return redirect('staff')
+            else:
+                return redirect('userdashboard')
     else:
         form = UserLoginForm()
     context = {'form': form}
