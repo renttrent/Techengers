@@ -1,3 +1,4 @@
+# BEGIN TRAINER
 TRAINER_ACTIVITY_NAV = {
     'activity': {
         'name': 'Latest Activity',
@@ -15,9 +16,9 @@ TRAINER_ACTIVITY_NAV = {
         'url': 'exercises',
     },
     'workingspace': {
-        'name': 'My Working Space',
+        'name': 'Working Space',
         'isActive': False,
-        'url': 'routines'
+        'url': 'workspace'
     },
 }
 TRAINER_ROUTINES_NAV = {
@@ -37,9 +38,9 @@ TRAINER_ROUTINES_NAV = {
         'url': 'exercises',
     },
     'workingspace': {
-        'name': 'My Working Space',
+        'name': 'Working Space',
         'isActive': False,
-        'url': 'routines'
+        'url': 'workspace'
     },
 }
 TRAINER_EXERCISES_NAV = {
@@ -59,9 +60,9 @@ TRAINER_EXERCISES_NAV = {
         'url': 'exercises',
     },
     'workingspace': {
-        'name': 'My Working Space',
+        'name': 'Working Space',
         'isActive': False,
-        'url': 'routines'
+        'url': 'workspace'
     },
 }
 TRAINER_WORK_NAV = {
@@ -81,8 +82,236 @@ TRAINER_WORK_NAV = {
         'url': 'exercises',
     },
     'workingspace': {
-        'name': 'My Working Space',
+        'name': 'Working Space',
         'isActive': True,
-        'url': 'routines'
+        'url': 'workspace'
     },
 }
+# END TRAINER
+# BEGIN MANAGER
+MANAGER_ACTIVITY_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': True,
+        'url': 'activity'
+    },
+    'mnginventory': {
+        'name': 'Manage Inventory',
+        'isActive': False,
+        'url': 'manage-inventory'
+    },
+    'mngevents': {
+        'name': 'Manage Events',
+        'isActive': False,
+        'url': 'manage-events',
+    },
+    'mngdiets': {
+        'name': 'Manage Diets',
+        'isActive': False,
+        'url': 'manage-diets'
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': False,
+        'url': 'workspace'
+    },
+}
+MANAGER_INVENTORY_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': False,
+        'url': 'activity'
+    },
+    'mnginventory': {
+        'name': 'Manage Inventory',
+        'isActive': True,
+        'url': 'manage-inventory'
+    },
+    'mngevents': {
+        'name': 'Manage Events',
+        'isActive': False,
+        'url': 'manage-events',
+    },
+    'mngdiets': {
+        'name': 'Manage Diets',
+        'isActive': False,
+        'url': 'manage-diets'
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': False,
+        'url': 'workspace'
+    },
+}
+MANAGER_EVENTS_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': False,
+        'url': 'activity'
+    },
+    'mnginventory': {
+        'name': 'Manage Inventory',
+        'isActive': False,
+        'url': 'manage-inventory'
+    },
+    'mngevents': {
+        'name': 'Manage Events',
+        'isActive': True,
+        'url': 'manage-events',
+    },
+    'mngdiets': {
+        'name': 'Manage Diets',
+        'isActive': False,
+        'url': 'manage-diets'
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': False,
+        'url': 'workspace'
+    },
+}
+MANAGER_DIETS_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': False,
+        'url': 'activity'
+    },
+    'mnginventory': {
+        'name': 'Manage Inventory',
+        'isActive': False,
+        'url': 'manage-inventory'
+    },
+    'mngevents': {
+        'name': 'Manage Events',
+        'isActive': False,
+        'url': 'manage-events',
+    },
+    'mngdiets': {
+        'name': 'Manage Diets',
+        'isActive': True,
+        'url': 'manage-diets'
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': False,
+        'url': 'workspace'
+    },
+}
+MANAGER_WORK_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': False,
+        'url': 'activity'
+    },
+    'mnginventory': {
+        'name': 'Manage Inventory',
+        'isActive': False,
+        'url': 'manage-inventory'
+    },
+    'mngevents': {
+        'name': 'Manage Events',
+        'isActive': False,
+        'url': 'manage-events',
+    },
+    'mngdiets': {
+        'name': 'Manage Diets',
+        'isActive': False,
+        'url': 'manage-diets'
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': True,
+        'url': 'workspace'
+    },
+}
+# END MANAGER
+# BEGIN ECONOMIST
+ECONOMIST_ACTIVITY_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': True,
+        'url': 'activity'
+    },
+    'mngstaff': {
+        'name': 'Manage Staff',
+        'isActive': False,
+        'url': 'manage-staff'
+    },
+    'viewinventory': {
+        'name': 'View Inventory',
+        'isActive': False,
+        'url': 'view-inventory',
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': False,
+        'url': 'workspace'
+    },
+}
+ECONOMIST_STAFF_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': False,
+        'url': 'activity'
+    },
+    'mngstaff': {
+        'name': 'Manage Staff',
+        'isActive': True,
+        'url': 'manage-staff'
+    },
+    'viewinventory': {
+        'name': 'View Inventory',
+        'isActive': False,
+        'url': 'view-inventory',
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': False,
+        'url': 'workspace'
+    },
+}
+ECONOMIST_INVENTORY_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': False,
+        'url': 'activity'
+    },
+    'mngstaff': {
+        'name': 'Manage Staff',
+        'isActive': False,
+        'url': 'manage-staff'
+    },
+    'viewinventory': {
+        'name': 'View Inventory',
+        'isActive': True,
+        'url': 'view-inventory',
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': False,
+        'url': 'workspace'
+    },
+}
+ECONOMIST_WORK_NAV = {
+    'activity': {
+        'name': 'Latest Activity',
+        'isActive': False,
+        'url': 'activity'
+    },
+    'mngstaff': {
+        'name': 'Manage Staff',
+        'isActive': False,
+        'url': 'manage-staff'
+    },
+    'viewinventory': {
+        'name': 'View Inventory',
+        'isActive': False,
+        'url': 'view-inventory',
+    },
+    'workingspace': {
+        'name': 'Working Space',
+        'isActive': True,
+        'url': 'workspace'
+    },
+}
+# END ECONOMIST

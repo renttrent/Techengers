@@ -40,19 +40,13 @@
     <div class="navigation">
       <div class="nav-col">
         <div class="options">
-          {% comment %} {% for key, item in options.items %}
+          {% for key, item in options.items %}
             {% if item.isActive %}
-            <div class="option-active"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            <div class="option active"><a href="/staff/{{item.url}}">{{ item.name }}</a></div>
             {% else %}
-            <div class="option"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            <div class="option"><a href="/staff/{{item.url}}">{{ item.name }}</a></div>
             {% endif %}
-          {% endfor %} {% endcomment %}
-          <div class="option active"><a href="">Latest Activities</a></div>
-          <div class="option"><a href="">Users</a></div>
-          <div class="option"><a href="">Exercises</a></div>
-          <div class="option"><a href="">Routines</a></div>
-          <div class="option"><a href="">Inenvtory</a></div>
-          <div class="option"><a href="">Manage Staff</a></div>
+          {% endfor %}
         </div>
         <div class="profile-wrapper">
           <div class="user-btn">
