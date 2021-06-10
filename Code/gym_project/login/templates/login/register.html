@@ -11,8 +11,8 @@
 </div>
 
 <div class="register card container"> 
-    <div class="form card-body container">
-        <form method="POST" action="{% url "register" %}">
+    <div class="register-body form card-body container">
+        <form method="POST" action="{% url "register" %}" class="register-form">
             {% csrf_token %}
             {{ form|crispy }}
             <div class="buttons">   

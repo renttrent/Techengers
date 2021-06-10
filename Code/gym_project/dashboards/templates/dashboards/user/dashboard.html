@@ -52,7 +52,7 @@
           <div class="user-btn">
             <div class="profile-pic"><img src="{{ user.profile.profile_photo.url }}" alt=""></div>
             {% if user.first_name %}
-            <span>{{user.first_name}}<span> </span>{{user.last_name}}</span>
+            <span>{{user.get_full_name}}</span>
             {% else %}
             <span>{{user.username}}</span>
             {% endif %}
