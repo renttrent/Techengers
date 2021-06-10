@@ -1,4 +1,4 @@
-from .models import DietPlan, Event, Exercise, Routine
+from .models import *
 from django.contrib import admin
 
 # Register your models here.

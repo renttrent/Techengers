@@ -115,6 +115,7 @@ body {
 
 #hidden div {
   padding: 1em;
+  transition: ease-in 0.2s;
 }
 
 #hidden div a {

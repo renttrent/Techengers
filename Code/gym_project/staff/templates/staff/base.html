@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">        
-    <link rel="stylesheet" href="{% static 'css/dashboards/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/staff_dashboards/main.css' %}">
     
     {% block styles %}
     {% endblock styles %}
@@ -42,9 +42,9 @@
         <div class="options">
           {% for key, item in options.items %}
             {% if item.isActive %}
-            <div class="option-active"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            <div class="option active"><a href="/staff/{{item.url}}">{{ item.name }}</a></div>
             {% else %}
-            <div class="option"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            <div class="option"><a href="/staff/{{item.url}}">{{ item.name }}</a></div>
             {% endif %}
           {% endfor %}
         </div>
@@ -52,7 +52,7 @@
           <div class="user-btn">
             <div class="profile-pic"><img src="{{ user.profile.profile_photo.url }}" alt=""></div>
             {% if user.first_name %}
-            <span>{{user.first_name}}<span> </span>{{user.last_name}}</span>
+            <span>{{user.get_full_name}}</span>
             {% else %}
             <span>{{user.username}}</span>
             {% endif %}
@@ -65,38 +65,13 @@
           </div>
         </div>
       </div>
-      <div class="divider"></div>
     </div>
     <div class="middle">
+      <div class="middle-nav">
+        <marquee behavior="" direction="">Notes from admin: Do this, Do that</marquee>
+      </div>
     {% block middle %}
     {% endblock middle %}
-    </div>
-    <div class="events-section">
-      <div class="divider"></div>
-      <div class="events">
-        <div class="latest">
-          Latest Events
-        </div>
-        <div class="items overflow-auto">
-        {% for item in events %}
-          <div class="event-item">
-            <div class="event-item-left">
-              <div class="event-thumb"><img src="{{item.thumbnail.url}}"></div>
-            </div>
-            <div class="event-item-right">
-              <div class="title">{{item.title}}</div>
-              <div class="date">{{item.date}}</div>
-              {% if item.desc|length > 30 %}
-                <div class="desc">{{item.desc|slice:":30"}}...</div>
-              {% else %}
-                <div class="desc">{{item.desc}}</div>
-              {% endif %}
-              <div class="details">Detalis</div>
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-      </div>
     </div>
   </div>
   {% endif %} 

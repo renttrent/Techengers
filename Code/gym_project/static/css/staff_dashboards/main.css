@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  font-family: "Roboto Slab", serif;
+  overflow: hidden;
+}
+
+body {
+  background-color: #0a1522;
+}
+
+.mycontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navigation {
+  width: 10vw;
+  height: 100vh;
+}
+
+.nav-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1f2f42;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 4em;
+  height: 50%;
+  width: 100%;
+}
+
+.option {
+  color: #fff;
+  padding: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
+  width: 100%;
+  text-align: center;
+  background-color: #313e4c;
+}
+
+.active {
+  background-color: #0a1522;
+}
+
+.option:hover,
+.active:hover {
+  background-color: #ed6459;
+  cursor: pointer;
+}
+
+.option a,
+.active a {
+  color: white;
+}
+.option a:hover,
+.active a:hover {
+  text-decoration: none;
+}
+
+.profile-wrapper {
+  width: 100%;
+}
+
+.user-btn {
+  background-color: #ed6459;
+  color: #fff;
+  padding: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
+  width: 100%;
+  text-align: center;
+  margin-top: 16em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-btn:hover {
+  background-color: #0a1522;
+  cursor: pointer;
+}
+
+.profile-pic img {
+  height: 30px;
+  border-radius: 50%;
+  width: auto;
+}
+
+#hidden {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  width: auto;
+  height: auto;
+  color: white;
+  background-color: #ed6459;
+  display: block;
+  transform: translate(60%, -170%);
+}
+
+#hidden div {
+  padding: 1em;
+}
+
+#hidden div a {
+  text-decoration: none;
+  color: white;
+}
+#hidden div a:hover {
+  text-decoration: none;
+}
+
+#hidden div:hover {
+  background-color: #0a1522;
+  cursor: pointer;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+}
+
+.middle {
+  width: 100%;
+  background-color: #0a1522;
+}
+
+.middle-nav {
+  width: 100%;
+  height: 3em;
+  background-color: #1f2f42;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  margin-right: 1em;
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #0a1522;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aebac8;
+  border-radius: 10px;
+}
