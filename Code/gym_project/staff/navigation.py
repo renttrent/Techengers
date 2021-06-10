@@ -98,17 +98,17 @@ MANAGER_ACTIVITY_NAV = {
     'mnginventory': {
         'name': 'Manage Inventory',
         'isActive': False,
-        'url': 'manage-inventory'
+        'url': 'inventory'
     },
     'mngevents': {
         'name': 'Manage Events',
         'isActive': False,
-        'url': 'manage-events',
+        'url': 'events',
     },
     'mngdiets': {
         'name': 'Manage Diets',
         'isActive': False,
-        'url': 'manage-diets'
+        'url': 'diets'
     },
     'workingspace': {
         'name': 'Working Space',
@@ -125,17 +125,17 @@ MANAGER_INVENTORY_NAV = {
     'mnginventory': {
         'name': 'Manage Inventory',
         'isActive': True,
-        'url': 'manage-inventory'
+        'url': 'inventory'
     },
     'mngevents': {
         'name': 'Manage Events',
         'isActive': False,
-        'url': 'manage-events',
+        'url': 'events',
     },
     'mngdiets': {
         'name': 'Manage Diets',
         'isActive': False,
-        'url': 'manage-diets'
+        'url': 'diets'
     },
     'workingspace': {
         'name': 'Working Space',
@@ -152,17 +152,17 @@ MANAGER_EVENTS_NAV = {
     'mnginventory': {
         'name': 'Manage Inventory',
         'isActive': False,
-        'url': 'manage-inventory'
+        'url': 'inventory'
     },
     'mngevents': {
         'name': 'Manage Events',
         'isActive': True,
-        'url': 'manage-events',
+        'url': 'events',
     },
     'mngdiets': {
         'name': 'Manage Diets',
         'isActive': False,
-        'url': 'manage-diets'
+        'url': 'diets'
     },
     'workingspace': {
         'name': 'Working Space',
@@ -179,17 +179,17 @@ MANAGER_DIETS_NAV = {
     'mnginventory': {
         'name': 'Manage Inventory',
         'isActive': False,
-        'url': 'manage-inventory'
+        'url': 'inventory'
     },
     'mngevents': {
         'name': 'Manage Events',
         'isActive': False,
-        'url': 'manage-events',
+        'url': 'events',
     },
     'mngdiets': {
         'name': 'Manage Diets',
         'isActive': True,
-        'url': 'manage-diets'
+        'url': 'diets'
     },
     'workingspace': {
         'name': 'Working Space',
@@ -206,17 +206,17 @@ MANAGER_WORK_NAV = {
     'mnginventory': {
         'name': 'Manage Inventory',
         'isActive': False,
-        'url': 'manage-inventory'
+        'url': 'inventory'
     },
     'mngevents': {
         'name': 'Manage Events',
         'isActive': False,
-        'url': 'manage-events',
+        'url': 'events',
     },
     'mngdiets': {
         'name': 'Manage Diets',
         'isActive': False,
-        'url': 'manage-diets'
+        'url': 'diets'
     },
     'workingspace': {
         'name': 'Working Space',
