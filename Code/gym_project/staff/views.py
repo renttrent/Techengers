@@ -26,7 +26,17 @@ def latest_activity(request):
         elif role == 'economist':
             navigation = ECONOMIST_ACTIVITY_NAV
 
-    context = {'options': navigation}
+    allusers = User.objects.all()
+    allexercises = Exercise.objects.all()
+    allroutines = Routine.objects.all()
+    alldiets = DietPlan.objects.all()
+    allevents = Event.objects.all()
+
+    context = {'options': navigation,
+               'allusers': allusers, 'nrusers': len(allusers), 'allexercises': allexercises, 'nrexercises': len(allexercises),
+               'allroutines': allroutines, 'nrroutines': len(allroutines), 'alldiets': alldiets, 'nrdiets': len(alldiets),
+               'allevents': allevents, 'nrevents': len(allevents)}
+
     return render(request, 'staff/shared/activity.html', context)
 
 
