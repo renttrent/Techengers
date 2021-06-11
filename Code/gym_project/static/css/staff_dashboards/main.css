@@ -95,7 +95,11 @@ body {
   width: auto;
 }
 
-#hidden {
+.hide {
+  display: none;
+}
+
+.show {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -109,19 +113,19 @@ body {
   transform: translate(40%, -165%);
 }
 
-#hidden div {
+.show div {
   padding: 1em;
 }
 
-#hidden div a {
+.show div a {
   text-decoration: none;
   color: white;
 }
-#hidden div a:hover {
+.show div a:hover {
   text-decoration: none;
 }
 
-#hidden div:hover {
+.show div:hover {
   background-color: #0a1522;
   cursor: pointer;
 }

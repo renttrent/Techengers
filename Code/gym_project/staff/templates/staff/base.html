@@ -58,7 +58,7 @@
             {% endif %}
             <div class="three-dot"><img src="{% static 'svg/3dots.svg' %}" alt=""></div>
           </div>
-          <div id="hidden">
+          <div id="menu" class="hide">
             <div><a href="">Go to Profile</a></div>
             {% comment %} <div class="hidden-divider"></div> {% endcomment %}
             <div><a href="{% url 'logout' %}">Logout</a></div>
@@ -79,9 +79,13 @@
 
   <script>
   $(() => {
-    $('#hidden').hide();
     $(".user-btn").click((e) => {
-      $('#hidden').toggle();
+      console.log($('menu').is('hide'))
+      if($('.hide')[0]) {
+        $('#menu').removeClass('hide').addClass('show');
+      } else {
+         $('#menu').removeClass('show').addClass('hide');
+      }
     });
   });
   </script>

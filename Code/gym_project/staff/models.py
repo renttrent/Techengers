@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 
 
@@ -12,3 +13,11 @@ class InventoryItem(models.Model):
 
     def getValue(self):
         return self.unit_price * self.quantity
+
+
+class AdminNotes(models.Model):
+    todo = models.CharField(max_length=200)
+    date = models.DateField(default=datetime.now())
+
+    def __str__(self):
+        return f'Admin Note {self.id}'

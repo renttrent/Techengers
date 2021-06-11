@@ -1,0 +1,25 @@
+{% extends 'dashboards/user/dashboard.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/dashboards/profile.css' %}">
+{% endblock styles %}
+
+{% block title %}
+<title>Profile: {{user.username}}</title>
+{% endblock title %}
+{% block middle %}
+
+<div>
+    <div>
+        <div>Name: {{user.first_name}}</div>
+        <div>Last Name: {{user.last_name}}</div>
+        <div>Height: {{user.profile.height}}</div>
+        <div>Weight: {{user.profile.weight}}</div>
+        <div>Weight Goal: {{user.profile.weight_goal}}</div>
+        <div>Gender: {{user.profile.gender}}</div>
+        <div>Weekly frequency: {{user.profile.week_frequency}}</div>
+    </div>
+</div>
+
+{% endblock middle %}

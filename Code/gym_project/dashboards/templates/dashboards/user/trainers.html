@@ -7,4 +7,9 @@
 
 {% block middle %}
 
+{% for trainer in trainers %}
+    {{trainer.username}}
+    <a href="{% url 'userdashboard-trainer-details' trainer.id %}">View Trainer</a>
+{% endfor %}
+
 {% endblock middle %}

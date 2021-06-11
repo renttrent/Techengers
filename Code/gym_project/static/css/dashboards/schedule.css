@@ -1,15 +1,11 @@
-body {
-  font-family: 'Roboto Slab', serif;
-}
-
 .card_sch {
-  border-radius: 20px;
+  border-radius: 6px;
   margin-top: 1em;
   margin-right: 1em;
   margin-left: 3em;
-  background: #5C8FCC;
+  background: #5c8fcc;
   text-align: center;
-  font-family: 'Roboto Slab';
+  font-family: "Roboto Slab";
   color: white;
   width: 90%;
 }
@@ -25,7 +21,7 @@ h3 {
   width: 280px;
   height: 170px;
   margin-bottom: 2em;
-  border-radius: 10px;
+  border-radius: 4px;
   opacity: 70;
   margin-right: 4em;
   margin-left: 2em;
@@ -36,21 +32,11 @@ h3 {
   width: 900px;
   margin-left: 2em;
   margin-top: -2em;
-    color: white;
+  color: white;
 }
 
 h5 {
   margin-top: 2rem;
-}
-
-a {
-  color: white;
-  font-size: 20px;
-  margin-top: 4em;
-}
-
-a:hover {
-  color: #10749b;
 }
 
 #right_col {
@@ -67,8 +53,12 @@ a:hover {
 }
 
 #exercise_select {
+  color: white;
+  font-size: 20px;
+  margin-top: 4em;
   margin-right: 2px;
 }
 
-
-
+#exercise_select:hover {
+  color: #10749b;
+}

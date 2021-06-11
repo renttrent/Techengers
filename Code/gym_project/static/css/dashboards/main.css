@@ -58,17 +58,9 @@ body {
 
 .option:hover,
 .option-active:hover {
-  background-color: #ed6459;
-  cursor: pointer;
-}
-
-.option a,
-.option-active a {
-  color: white;
-}
-.option a:hover,
-.option-active a:hover {
+  color: #fff;
   text-decoration: none;
+  background-color: #ed6459;
 }
 
 .user-btn {
@@ -98,7 +90,11 @@ body {
   width: auto;
 }
 
-#hidden {
+.hide {
+  display: none;
+}
+
+.show {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -113,20 +109,20 @@ body {
   transform: translate(60%, -170%);
 }
 
-#hidden div {
+.show div {
   padding: 1em;
   transition: ease-in 0.2s;
 }
 
-#hidden div a {
+.show div a {
   text-decoration: none;
   color: white;
 }
-#hidden div a:hover {
+.show div a:hover {
   text-decoration: none;
 }
 
-#hidden div:hover {
+.show div:hover {
   background-color: #ed6459;
   cursor: pointer;
 }

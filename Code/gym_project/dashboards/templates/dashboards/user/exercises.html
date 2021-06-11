@@ -28,26 +28,9 @@
             <div class="exercise-desc-title">Desc:</div>
             <div class="exercise-desc">{{exercise.desc}}</div>
         </div>
+        <a href="{% url 'userdashboard-exercise-details' exercise.id %}">View Exercise</a>
     </div>
     
-{% endfor %}
-{% for exercise in exercises %}
-    <div class="exercise-card">
-        <div class="left-exercise-card">
-            <div class="exercise-title">{{exercise.title}}</div>
-            {% if exercise.owner.first_name and exercise.owner.last_name %}
-            <div class="exercise-owner">Owner: {{exercise.owner.first_name}} {{exercise.owner.last_name}}</div>
-            {% else %}
-            <div class="exercise-owner">Owner: {{exercise.owner.username}}</div>
-            {% endif %}
-            <div class="exercise-reps">Number of reps: {{exercise.reps}}</div>
-            <div class="exercise-link"><a href="{{exercise.link}}">Video Link</a></div>
-        </div>
-        <div class="right-exercise-card">
-            <div class="exercise-desc-title">Desc:</div>
-            <div class="exercise-desc">{{exercise.desc}}</div>
-        </div>
-    </div>
 {% endfor %}
 </div>
 

@@ -42,9 +42,9 @@
         <div class="options">
           {% for key, item in options.items %}
             {% if item.isActive %}
-            <div class="option-active"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            <a class="option-active" href="/dashboard/{{item.url}}">{{ item.name }}</a>
             {% else %}
-            <div class="option"><a href="/dashboard/{{item.url}}">{{ item.name }}</a></div>
+            <a class="option" href="/dashboard/{{item.url}}">{{ item.name }}</a>
             {% endif %}
           {% endfor %}
         </div>
@@ -58,8 +58,8 @@
             {% endif %}
             <div class="three-dot"><img src="{% static 'svg/3dots.svg' %}" alt=""></div>
           </div>
-          <div id="hidden">
-            <div><a href="">Go to Profile</a></div>
+          <div id="menu" class="hide">
+            <div><a href="{% url 'profile' %}">Go to Profile</a></div>
             {% comment %} <div class="hidden-divider"></div> {% endcomment %}
             <div><a href="{% url 'logout' %}">Logout</a></div>
           </div>
@@ -104,9 +104,13 @@
 
   <script>
   $(() => {
-    $('#hidden').hide();
     $(".user-btn").click((e) => {
-      $('#hidden').toggle();
+      console.log($('menu').is('hide'))
+      if($('.hide')[0]) {
+        $('#menu').removeClass('hide').addClass('show');
+      } else {
+         $('#menu').removeClass('show').addClass('hide');
+      }
     });
   });
   </script>

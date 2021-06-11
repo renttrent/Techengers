@@ -76,14 +76,14 @@
     </div>
   </div>
 {% for routine in routines %}
-    <div class="routine-card">
+    {% comment %} <div class="routine-card">
         <div class="routine-title">Routine: {{routine.title}}</div>
         <div class="routine-owner">Owner: {{routine.owner.username}}</div>
         <div class="routine-desc">Desc: {{routine.desc}}</div>
         
         <div class="thumbnail"><img src="{{routine.thumbnail.link}}" alt=""></div>
         <div class="exercises"></div>
-    </div>
+    </div> {% endcomment %}
 {% endfor %}
 
 {% endblock middle %}

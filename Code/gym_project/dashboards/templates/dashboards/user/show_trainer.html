@@ -1,0 +1,22 @@
+{% extends 'dashboards/user/dashboard.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/dashboards/exercises.css' %}">
+{% endblock styles %}
+
+{% block title %}
+<title>Trainer: {{trainer.username}}</title>
+{% endblock title %}
+{% block middle %}
+
+<div class="exercise-card">
+    <div class="exercise-header">
+        <div class="exercise-title">{{trainer.username}}</div>
+    </div>
+    <div class="exercise-body">
+        <div class="exercise-details"></div>
+    </div>
+</div>
+
+{% endblock middle %}

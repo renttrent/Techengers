@@ -21,10 +21,9 @@
   background-color: #1f2f42;
 }
 
-  
 #middleCard {
   justify-content: center;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   font-size: 14px;
   color: white;
   width: 100%;
@@ -34,23 +33,23 @@
 #first {
   width: 250px;
   height: 200px;
-  border-radius: 10px;
-  background-color: #1F2F42;
+  border-radius: 4px;
+  background-color: #1f2f42;
   margin-top: 1em;
-  
+
   margin-left: 2em;
 }
 
 #title {
   color: white;
-  font-family: 'Roboto Slab', serif;
- font-size: 20px;
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
   margin-top: 1em;
   margin-left: 1em;
 }
 
 #Routine {
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
   margin-top: 1em;
   margin-bottom: 0px;
   margin-left: 1em;
@@ -58,7 +57,6 @@
 }
 
 #reps {
-
   margin-top: 1.5em;
   margin-left: 1em;
   font-size: 17px;
@@ -71,20 +69,18 @@
   margin-left: 1em;
   padding-top: 2em;
 
-  color: #ED6459;
+  color: #ed6459;
 }
 
 #btn {
   text-align: right;
-  background: rgb(42,71,98);
+  background: rgb(42, 71, 98);
   float: right;
   margin-top: 1em;
   margin-right: 1em;
-  border-radius: 10px;
-  
+  border-radius: 4px;
 }
 
 #col {
   justify-content: space-between;
 }
-
