@@ -9,3 +9,71 @@
   border-radius: 5px;
   background-color: #1f2f42;
 }
+
+  
+#middleCard {
+  justify-content: center;
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px;
+  color: white;
+  width: 100%;
+  padding-bottom: 2em;
+}
+
+#first {
+  width: 250px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #1F2F42;
+  margin-top: 1em;
+  
+  margin-left: 2em;
+}
+
+#title {
+  color: white;
+  font-family: 'Roboto Slab', serif;
+ font-size: 20px;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+#Routine {
+  color: rgb(255,255,255);
+  margin-top: 1em;
+  margin-bottom: 0px;
+  margin-left: 1em;
+  font-size: 18px;
+}
+
+#reps {
+  /*font-family: 'Roboto Slab', serif;*/
+  margin-top: 1.5em;
+  margin-left: 1em;
+  font-size: 17px;
+  font-weight: lighter;
+}
+
+#video-link {
+  font-size: 14px;
+  margin-top: 3em;
+  margin-left: 1em;
+  padding-top: 2em;
+
+  color: #ED6459;
+}
+
+#btn {
+  text-align: right;
+  background: rgb(42,71,98);
+  float: right;
+  margin-top: 1em;
+  margin-right: 1em;
+  border-radius: 10px;
+  
+}
+
+#col {
+  justify-content: space-between;
+}
+

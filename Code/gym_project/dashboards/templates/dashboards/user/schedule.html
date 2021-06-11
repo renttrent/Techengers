@@ -1,11 +1,56 @@
 {% extends 'dashboards/user/dashboard.html' %}
 {% load static %}
 
-{% block style %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'css/dashboards/schedule.css' %}">
-{% endblock style %}
+{% endblock styles %}
 
 {% block middle %}
-schedules
-{{schedules}}
+<div class="schedule">
+   
+    <div class="schedule-card">
+        
+        <div class="schedule-card-left">
+        
+        
+        <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
+        </div>
+        <div class="shcedule-card-right">
+
+            
+            
+            <div class="schedule-desc"> 
+                <div class="nav">
+                <ul class="nav-right">
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Exercise</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Exercise </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Exercise </a>
+                    </li>
+                  </ul>
+                <ul class="nav-left">
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Exercise</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Exercise </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Exercise </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="btn-mark">Mark as done</div>
+        </div>
+    </div>
+
+
+</div>
+
+
 {% endblock middle %}
