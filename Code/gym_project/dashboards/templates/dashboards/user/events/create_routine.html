@@ -12,6 +12,11 @@
         border-radius: 4px;
         outline: none !important;
     }
+
+    .back{
+        width: 10%;
+        transform: translate(100%, 150%);
+    }
 </style>
 {% endblock styles %}
 
@@ -19,8 +24,9 @@
 
 {% block middle %}
 
+<div class="back">
 <a class="container btn btn-primary rounded-1" href="{% url 'userdashboard-routines' %}">Back</a>
-
+</div>
 <div class="create-routine card container"> 
     <div class="create-routine-body form card-body container">
         <form method="POST" action="{% url "create-routine" %}" class="create-routine-form">
@@ -43,18 +49,18 @@
                     <input class="form-control {{thumbnailValid}}" type="file" id="thumbnail" name="thumbnail">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="days">Select Days</label>
+                    <label class="mb-2" for="days">Select Days:</label>
                     {% for day in days %}
                         <div class="form-check {{daysValid}}">
-                            <input class="form-check-input" type="checkbox" value="" id="days">
-                            <label class="form-check-label" for="days">
+                            <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days">
+                            <label class="form-check-label" for="{{day}}">
                                 {{day}}
                             </label>
                         </div>
                     {% endfor %}
                 </div>
 
-                <input class="btn btn-success p-2 rounded-1" type="submit" />      
+                <input class="btn btn-success p-2 mt-2" type="submit" />      
         </form>
     </div>
 </div> 

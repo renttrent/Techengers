@@ -149,20 +149,22 @@ def create_routine(request):
         title = request.POST['title']
         desc = request.POST['desc']
         thumbnail = request.POST['thumbnail']
-        day = request.POST['days']
-        print(title, desc, thumbnail, day)
-        # if title and reps and desc and link and routine:
-        #     ex = Exercise(title=title, reps=reps, desc=desc, link=link)
-        #     ex.save()
-        #     ex.routine.add(Routine.objects.get(id=routine))
-        #     ex.selected_by.add(request.user)
-        # else:
-        #     context['error'] = 'Please fill in all fields!'
-        #     context['titleValid'] = 'is-valid' if title else 'is-invalid'
-        #     context['repsValid'] = 'is-valid' if reps else 'is-invalid'
-        #     context['descValid'] = 'is-valid' if desc else 'is-invalid'
-        #     context['linkValid'] = 'is-valid' if link else 'is-invalid'
-        #     context['routineValid'] = 'is-valid' if routine else 'is-invalid'
-        #     return render(request, 'dashboards/user/events/create_exercise.html', context)
+        days = request.POST.getlist('days')
+
+        if title and desc and thumbnail and days:
+            rt = Routine(title=title, desc=desc, thumbnail=thumbnail)
+            save_days = []
+            for day in days:
+                save_days.append((day, day))
+            rt.days = save_days
+            rt.save()
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['titleValid'] = 'is-valid' if title else 'is-invalid'
+            context['descValid'] = 'is-valid' if desc else 'is-invalid'
+            context['thumbnailValid'] = 'is-valid' if thumbnail else 'is-invalid'
+            context['daysValid'] = 'is-valid' if days else 'is-invalid'
+
+            return render(request, 'dashboards/user/events/create_routine.html', context)
 
     return render(request, 'dashboards/user/events/create_routine.html', context)

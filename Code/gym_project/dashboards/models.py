@@ -1,8 +1,7 @@
-import datetime
+from datetime import datetime
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from multiselectfield import MultiSelectField
 
 
 class DietPlan(models.Model):
@@ -17,7 +16,7 @@ class DietPlan(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=60, blank=True)
-    date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
+    date = models.DateTimeField(default=datetime.now(), blank=True)
     desc = models.TextField(blank=True)
     thumbnail = models.ImageField(
         upload_to='events/', default='events/default.jpg')
@@ -29,18 +28,21 @@ class Event(models.Model):
         return self.date >= timezone.now() - datetime.timedelta(days=1)
 
 
+class WeekDay(models.Model):
+    day = models.CharField(max_length=60, blank=True)
+
+    def __str__(self):
+        return f'{self.day}'
+
+
 class Routine(models.Model):
     title = models.CharField(max_length=60, blank=True)
     selected_by = models.ManyToManyField(User)
     desc = models.TextField(blank=True)
     thumbnail = models.ImageField(
         upload_to='routines/', default='routines/default.jpg')
-    DAYS_OPTIONS = (('Monday', 'Monday'), ('Tuesday', 'Tuesday'),
-                    ('Wednesday', 'Wednesday'), ('Thursday', 'Thursday'),
-                    ('Friday', 'Friday'), ('Saturday', 'Saturday'),
-                    ('Sunday', 'Sunday'))
 
-    days = MultiSelectField(choices=DAYS_OPTIONS, default=DAYS_OPTIONS[0])
+    days = models.ManyToManyField(WeekDay)
 
     def __str__(self):
         return f"Routine - {self.title}"
