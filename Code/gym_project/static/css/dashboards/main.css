@@ -45,6 +45,9 @@ body {
   border-radius: 4px;
 }
 
+a {
+  text-decoration: none;
+}
 .option-active {
   background-color: #5c8fcc;
   color: #fff;

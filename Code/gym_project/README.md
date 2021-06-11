@@ -12,7 +12,8 @@ After super user creation you can control all models in admin dashboard.
 
 ``
 pip install django-crispy-forms
-pip install 
+pip install django-multiselectfield
+pip install pillow
 ``
 
 ## Login App

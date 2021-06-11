@@ -103,5 +103,65 @@ def profile(request):
     events = Event.objects.all()[:4]
 
     context = {'options': SCHEDULE_NAV,
-               'events': events, 'msg': 'is this working'}
+               'events': events}
     return render(request, 'dashboards/user/profile.html', context)
+
+
+@login_required(login_url='login')
+def create_exercise(request):
+    events = Event.objects.all()[:4]
+    routines = Routine.objects.all()
+    context = {'options': EXERCISES_NAV,
+               'events': events, 'routines': routines}
+
+    if request.POST:
+        title = request.POST['title']
+        reps = request.POST['reps']
+        desc = request.POST['desc']
+        link = request.POST['link']
+        routine = request.POST['routines']
+
+        if title and reps and desc and link and routine:
+            ex = Exercise(title=title, reps=reps, desc=desc, link=link)
+            ex.save()
+            ex.routine.add(Routine.objects.get(id=routine))
+            ex.selected_by.add(request.user)
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['titleValid'] = 'is-valid' if title else 'is-invalid'
+            context['repsValid'] = 'is-valid' if reps else 'is-invalid'
+            context['descValid'] = 'is-valid' if desc else 'is-invalid'
+            context['linkValid'] = 'is-valid' if link else 'is-invalid'
+            context['routineValid'] = 'is-valid' if routine else 'is-invalid'
+            return render(request, 'dashboards/user/events/create_exercise.html', context)
+
+    return render(request, 'dashboards/user/events/create_exercise.html', context)
+
+
+@login_required(login_url='login')
+def create_routine(request):
+    events = Event.objects.all()[:4]
+    context = {'options': ROUTINES_NAV,
+               'events': events}
+
+    if request.POST:
+        title = request.POST['title']
+        desc = request.POST['desc']
+        thumbnail = request.POST['thumbnail']
+        days = request.POST['days']
+        print(title, desc, thumbnail, days)
+        # if title and reps and desc and link and routine:
+        #     ex = Exercise(title=title, reps=reps, desc=desc, link=link)
+        #     ex.save()
+        #     ex.routine.add(Routine.objects.get(id=routine))
+        #     ex.selected_by.add(request.user)
+        # else:
+        #     context['error'] = 'Please fill in all fields!'
+        #     context['titleValid'] = 'is-valid' if title else 'is-invalid'
+        #     context['repsValid'] = 'is-valid' if reps else 'is-invalid'
+        #     context['descValid'] = 'is-valid' if desc else 'is-invalid'
+        #     context['linkValid'] = 'is-valid' if link else 'is-invalid'
+        #     context['routineValid'] = 'is-valid' if routine else 'is-invalid'
+        #     return render(request, 'dashboards/user/events/create_exercise.html', context)
+
+    return render(request, 'dashboards/user/events/create_routine.html', context)
