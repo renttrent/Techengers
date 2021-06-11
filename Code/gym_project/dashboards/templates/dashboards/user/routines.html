@@ -75,38 +75,6 @@
         <h5 id="reps">x-Reps</h5><a id="video-link" href="#">Video Link</a>
     </div>
   </div>
-  <div class="row" id="middleCard">
-    <div class="col" id="first">
-        <div class="row">
-            <div class="col">
-                <h2 id="title">Exercise 1</h2>
-            </div>
-            <div class="col" id="col"><button class="btn btn-primary" id="btn" type="button">Select</button></div>
-        </div>
-        <h3 id="Routine">Routine - Abs</h3>
-        <h5 id="reps">x-Reps</h5><a id="video-link" href="#">Video Link</a>
-    </div>
-    <div class="col" id="first">
-        <div class="row">
-            <div class="col">
-                <h2 id="title">Exercise 1</h2>
-            </div>
-            <div class="col" id="col"><button class="btn btn-primary" id="btn" type="button">Select</button></div>
-        </div>
-        <h3 id="Routine">Routine - Abs</h3>
-        <h5 id="reps">x-Reps</h5><a id="video-link" href="#">Video Link</a>
-    </div>
-    <div class="col" id="first">
-        <div class="row">
-            <div class="col">
-                <h2 id="title">Exercise 1</h2>
-            </div>
-            <div class="col" id="col"><button class="btn btn-primary" id="btn" type="button">Select</button></div>
-        </div>
-        <h3 id="Routine">Routine - Abs</h3>
-        <h5 id="reps">x-Reps</h5><a id="video-link" href="#">Video Link</a>
-    </div>
-  </div>
 {% for routine in routines %}
     <div class="routine-card">
         <div class="routine-title">Routine: {{routine.title}}</div>
@@ -117,5 +85,5 @@
         <div class="exercises"></div>
     </div>
 {% endfor %}
-</div>
+
 {% endblock middle %}
