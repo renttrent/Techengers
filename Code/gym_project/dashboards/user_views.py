@@ -143,13 +143,14 @@ def create_routine(request):
     events = Event.objects.all()[:4]
     context = {'options': ROUTINES_NAV,
                'events': events}
-
+    context['days'] = ['Monday', 'Tuesday', 'Wednesday',
+                       'Thursday', 'Friday', 'Saturday', 'Sunday']
     if request.POST:
         title = request.POST['title']
         desc = request.POST['desc']
         thumbnail = request.POST['thumbnail']
-        days = request.POST['days']
-        print(title, desc, thumbnail, days)
+        day = request.POST['days']
+        print(title, desc, thumbnail, day)
         # if title and reps and desc and link and routine:
         #     ex = Exercise(title=title, reps=reps, desc=desc, link=link)
         #     ex.save()
