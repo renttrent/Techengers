@@ -16,8 +16,21 @@
     {% endblock styles %}
 
     {% block title %}
-    <title>{{user.first_name}} Dashboard</title>
+    <title>{{user.first_name}}'s Dashboard</title>
     {% endblock title %}
+
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    {% comment %} CUSTOM SCRIPTS {% endcomment %}
+    {% block scripts %}
+    {% endblock scripts %}
+    <script type="text/javascript" scr="{% static 'js/profile-menu.js' %}"></script>
   </head>
   <body>
 
@@ -35,9 +48,21 @@
             {% endif %}
           {% endfor %}
         </div>
-        <div class="user-btn">
-          <img src="" alt="">
-          <span>{{user.first_name}}<span> </span>{{user.last_name}}</span>
+        <div class="profile-wrapper">
+          <div class="user-btn">
+            <div class="profile-pic"><img src="{{ user.profile.profile_photo.url }}" alt=""></div>
+            {% if user.first_name %}
+            <span>{{user.get_full_name}}</span>
+            {% else %}
+            <span>{{user.username}}</span>
+            {% endif %}
+            <div class="three-dot"><img src="{% static 'svg/3dots.svg' %}" alt=""></div>
+          </div>
+          <div id="hidden">
+            <div><a href="">Go to Profile</a></div>
+            {% comment %} <div class="hidden-divider"></div> {% endcomment %}
+            <div><a href="{% url 'logout' %}">Logout</a></div>
+          </div>
         </div>
       </div>
       <div class="divider"></div>
@@ -76,5 +101,14 @@
   </div>
   {% endif %} 
   {% endblock content %}
+
+  <script>
+  $(() => {
+    $('#hidden').hide();
+    $(".user-btn").click((e) => {
+      $('#hidden').toggle();
+    });
+  });
+  </script>
   </body>
 <html>

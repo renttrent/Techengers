@@ -1,0 +1,209 @@
+{% extends 'staff/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/staff_dashboards/shared/activity.css' %}">
+{% endblock styles %}
+
+{% block middle %}
+
+<div class="activity">
+    <div class="info">
+        <div class="title">Users Information</div>
+        <div class="divider"></div>
+        <div class="cards">
+            <div class="left-card">
+                <div class="card-title">All Users</div>
+                <div class="active-users">Current Active Users: 3</div>
+                <div class="allnr">Total Number of Users: {{nrusers}}</div>
+            </div>
+            {% for user in allusers  %}
+            {% if not user.is_staff and not user.is_superuser %}
+            <div class="child-card">
+                
+                <div class="header">
+                    <div class="profile-pic"><img src="{{ user.profile.profile_photo.url }}"></div>
+                    {% if user.get_full_name %}
+                    <div class="card-title">{{user.get_full_name}}</div>
+                    {% else %}
+                    <div class="card-title">{{user.username}}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="body">
+                    <div class="card-details">
+                        <div class="card-details-li">Name: {{user.first_name}}</div>
+                        <div class="card-details-li">Last Name: {{user.last_name}}</div>
+                        <div class="card-details-li">Height: {{user.profile.height}}</div>
+                        <div class="card-details-li">Weight: {{user.profile.weight}}</div>
+                        <div class="card-details-li">Weight Goal: {{user.profile.weight_goal}}</div>
+                        <div class="card-details-li">Gender: {{user.profile.gender}}</div>
+                        <div class="card-details-li">Weekly frequency: {{user.profile.week_frequency}}</div>
+                    </div>
+                </div>
+                
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% for user in allusers  %}
+            {% if not user.is_staff and not user.is_superuser %}
+            <div class="child-card">
+                
+                <div class="header">
+                    <div class="profile-pic"><img src="{{ user.profile.profile_photo.url }}"></div>
+                    {% if user.get_full_name %}
+                    <div class="card-title">{{user.get_full_name}}</div>
+                    {% else %}
+                    <div class="card-title">{{user.username}}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="body">
+                    <div class="card-details">
+                        <div class="card-details-li">Name: {{user.first_name}}</div>
+                        <div class="card-details-li">Last Name: {{user.last_name}}</div>
+                        <div class="card-details-li">Height: {{user.profile.height}}</div>
+                        <div class="card-details-li">Weight: {{user.profile.weight}}</div>
+                        <div class="card-details-li">Weight Goal: {{user.profile.weight_goal}}</div>
+                        <div class="card-details-li">Gender: {{user.profile.gender}}</div>
+                        <div class="card-details-li">Frequents the gym: {{user.profile.week_frequency}} per week</div>
+                    </div>
+                </div>
+                
+            </div>
+            {% endif %}
+            {% endfor %}
+          
+        </div>
+    </div>
+    <div class="info">
+        <div class="title">Exercise Information</div>
+        <div class="divider"></div>
+        <div class="cards">
+            <div class="left-card">
+                <div class="card-title">All Exercises</div>
+                <div class="allnr">Total Number of Exercises: {{nrexercises}}</div>
+            </div>
+            {% for exercise in allexercises  %}
+            <div class="child-card">
+                
+                <div class="header">
+                    <div class="profile-pic"><img src="{{ exercise.thumbnail.url }}"></div>
+
+                    <div class="card-title">{{exercise.title}}</div>
+                </div>
+                
+                <div class="body">
+                    <div class="card-details">
+                        <div class="card-details-li">Routines: [
+                            {% for routine in exercise.routine.all %} {{routine}},{% endfor %} ]
+                        </div>
+                        <div class="card-details-li">Selected by: [
+                            {% for user in exercise.selected_by.all %} {{user}},{% endfor %} ]
+                            {% comment %} SHOULD BE A LINK TO USER {% endcomment %}
+                        </div>
+                        <div class="card-details-li">Reps: {{exercise.reps}}
+                        </div>
+                        <div class="card-details-li">Description: {{exercise.desc}}</div>
+                        <div class="card-details-li"><a href="{{exercise.link}}">Link</a></div>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+          
+        </div>
+    </div>
+    <div class="info">
+        <div class="title">Routine Information</div>
+        <div class="divider"></div>
+        <div class="cards">
+            <div class="left-card">
+                <div class="card-title">All Routines</div>
+                <div class="allnr">Total Number of Routines: {{nrroutines}}</div>
+            </div>
+            {% for routine in allroutines  %}
+            <div class="child-card">
+                
+                <div class="header">
+                    <div class="profile-pic"><img src="{{ routine.thumbnail.url }}"></div>
+
+                    <div class="card-title">{{routine.title}}</div>
+                </div>
+                
+                <div class="body">
+                    <div class="card-details">
+                        <div class="card-details-li">Selected by: [
+                            {% for user in routine.selected_by.all %} {{user}},{% endfor %} ]
+                            {% comment %} SHOULD BE A LINK TO USER {% endcomment %}
+                        </div>
+                        <div class="card-details-li">Description: {{routine.desc}}</div>
+                        <div class="card-details-li">Days: {{routine.days}}</div>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+          
+        </div>
+    </div>
+    <div class="info">
+        <div class="title">Diet Plans Information</div>
+        <div class="divider"></div>
+        <div class="cards">
+            <div class="left-card">
+                <div class="card-title">All Diets</div>
+                <div class="allnr">Total Number of Diets: {{nrdiets}}</div>
+            </div>
+            {% for diet in alldiets  %}
+            <div class="child-card">
+                
+                <div class="header">
+                    <div class="profile-pic"><img src="{{ diet.thumbnail.url }}"></div>
+
+                    <div class="card-title">{{diet.title}}</div>
+                </div>
+                
+                <div class="body">
+                    <div class="card-details">
+                        <div class="card-details-li">Description: {{diet.desc}}</div> 
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+          
+        </div>
+    </div>
+    <div class="info">
+        <div class="title">Events Information</div>
+        <div class="divider"></div>
+        <div class="cards">
+            <div class="left-card">
+                <div class="card-title">All Events</div>
+                <div class="allnr">Total Number of Events: {{nrevents}}</div>
+            </div>
+            {% for event in allevents  %}
+            <div class="child-card">
+                
+                <div class="header">
+                    <div class="profile-pic"><img src="{{ event.thumbnail.url }}"></div>
+
+                    <div class="card-title">{{event.title}}</div>
+                </div>
+                
+                <div class="body">
+                    <div class="card-details">
+                        <div class="card-details-li">Date: {{event.date}}</div>
+                        <div class="card-details-li">Description: {{event.desc}}</div>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+          
+        </div>
+    </div>
+</div>
+
+{% endblock middle %}

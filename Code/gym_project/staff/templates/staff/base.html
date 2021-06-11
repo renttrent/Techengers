@@ -1,0 +1,89 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="utf-7">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">        
+    <link rel="stylesheet" href="{% static 'css/staff_dashboards/main.css' %}">
+    
+    {% block styles %}
+    {% endblock styles %}
+
+    {% block title %}
+    <title>{{user.first_name}}'s Dashboard</title>
+    {% endblock title %}
+
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    {% comment %} CUSTOM SCRIPTS {% endcomment %}
+    {% block scripts %}
+    {% endblock scripts %}
+    <script type="text/javascript" scr="{% static 'js/profile-menu.js' %}"></script>
+  </head>
+  <body>
+
+  {% block content %}
+  {% if user.is_authenticated %}
+  <div class="mycontainer">
+    <div class="navigation">
+      <div class="nav-col">
+        <div class="options">
+          {% for key, item in options.items %}
+            {% if item.isActive %}
+            <div class="option active"><a href="/staff/{{item.url}}">{{ item.name }}</a></div>
+            {% else %}
+            <div class="option"><a href="/staff/{{item.url}}">{{ item.name }}</a></div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="profile-wrapper">
+          <div class="user-btn">
+            <div class="profile-pic"><img src="{{ user.profile.profile_photo.url }}" alt=""></div>
+            {% if user.first_name %}
+            <span>{{user.get_full_name}}</span>
+            {% else %}
+            <span>{{user.username}}</span>
+            {% endif %}
+            <div class="three-dot"><img src="{% static 'svg/3dots.svg' %}" alt=""></div>
+          </div>
+          <div id="hidden">
+            <div><a href="">Go to Profile</a></div>
+            {% comment %} <div class="hidden-divider"></div> {% endcomment %}
+            <div><a href="{% url 'logout' %}">Logout</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="middle">
+      <div class="middle-nav">
+        <marquee behavior="" direction="">Notes from admin: Do this, Do that</marquee>
+      </div>
+    {% block middle %}
+    {% endblock middle %}
+    </div>
+  </div>
+  {% endif %} 
+  {% endblock content %}
+
+  <script>
+  $(() => {
+    $('#hidden').hide();
+    $(".user-btn").click((e) => {
+      $('#hidden').toggle();
+    });
+  });
+  </script>
+  </body>
+<html>

@@ -30,15 +30,15 @@ class Event(models.Model):
 
 
 class Routine(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=60, blank=True)
+    selected_by = models.ManyToManyField(User)
     desc = models.TextField(blank=True)
     thumbnail = models.ImageField(
         upload_to='routines/', default='routines/default.jpg')
-    DAYS_OPTIONS = (('mon', 'Monday'), ('tue', 'Tuesday'),
-                    ('wed', 'Wednesday'), ('thu', 'Thurday'),
-                    ('fri', 'Friday'), ('sat', 'Saturday'),
-                    ('sun', 'Sunday'))
+    DAYS_OPTIONS = (('Monday', 'Monday'), ('Tuesday', 'Tuesday'),
+                    ('Wednesday', 'Wednesday'), ('Thursday', 'Thursday'),
+                    ('Friday', 'Friday'), ('Saturday', 'Saturday'),
+                    ('Sunday', 'Sunday'))
 
     days = MultiSelectField(choices=DAYS_OPTIONS, default=DAYS_OPTIONS[0])
 
@@ -47,9 +47,8 @@ class Routine(models.Model):
 
 
 class Exercise(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     routine = models.ManyToManyField(Routine)
-
+    selected_by = models.ManyToManyField(User)
     title = models.CharField(max_length=60, blank=True)
     reps = models.IntegerField(default=3, blank=True)
     desc = models.TextField(blank=True)
