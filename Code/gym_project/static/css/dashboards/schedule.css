@@ -1,111 +1,74 @@
-.schedule{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 4em;
-    justify-content: space-between;
-    overflow-y: scroll;
-  }
-  
-  .schedule-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
-    background-color: #1f2f42;
+body {
+  font-family: 'Roboto Slab', serif;
+}
+
+.card_sch {
+  border-radius: 20px;
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: 3em;
+  background: #5C8FCC;
+  text-align: center;
+  font-family: 'Roboto Slab';
+  color: white;
+  width: 90%;
+}
+
+h3 {
+  text-align: left;
+  margin-left: 0.5em;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+#images {
+  width: 280px;
+  height: 170px;
+  margin-bottom: 2em;
+  border-radius: 10px;
+  opacity: 70;
+  margin-right: 4em;
+  margin-left: 2em;
+}
+
+#line {
+  height: 20px;
+  width: 900px;
+  margin-left: 2em;
+  margin-top: -2em;
     color: white;
-    border-radius: 10px;
-    padding: 1em;
-    margin-bottom: 2em;
-  }
-  
-  .schedule-card-left {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    margin-left: 3em;
-  }
-  
-  .thumbnail {
-    margin-top: 1em;
-  }
-  .thumbnail img {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .shcedule-card-right {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .schedule-title {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  .schedule-desc {
-    margin-top: 1em;
-    font-weight: 400;
-  }
-  
-  .btn-mark {
-    background-color: #6ed383;
-    padding: 10px 5px 10px 5px;
-    width: 30%;
-    text-align: center;
-    margin-top: 1em;
-    border-radius: 10px;
-    align-self: flex-end;
-  }
-  
-  .btn-preorder:hover {
-    background-color: #96e2a5;
-    cursor: pointer;
-  }
-  .nav{
-    width: 90%;
-    padding: 1em;
-    margin-bottom: 2em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+}
 
-  }
-  .nav-right {
-   width: 40%;
-    display: flex;
-    flex-direction: column;
-   
+h5 {
+  margin-top: 2rem;
+}
 
-  }
-  .nav-left {
-    width: 40%;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    margin-left: 1em;
+a {
+  color: white;
+  font-size: 20px;
+  margin-top: 4em;
+}
 
-  }
-  .nav-link{
-    color: white;
-    text-align-last: center;
-    
-    
-  }
-  .nav-link:hover{
-    color: #C6DBF3;
-  }
-  hr.solid{
-    border-top: 2px solid white;
-    
-    border-radius: 70px;
-    width: 72%;
-   
-    
-  }
+a:hover {
+  color: #10749b;
+}
+
+#right_col {
+  margin-left: 0em;
+  margin-right: 3em;
+}
+
+#ex {
+  margin-top: 22px;
+}
+
+#ex_1 {
+  margin-top: 0px;
+}
+
+#exercise_select {
+  margin-right: 2px;
+}
+
+
 
