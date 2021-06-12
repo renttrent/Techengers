@@ -1,38 +1,30 @@
-.exercises{
-
+.exercises {
+  margin-top: 1em;
+  display: flex;
   flex-direction: column;
-
-  
- 
-  overflow-y: scroll;
-
-
- 
- 
+  overflow-y: auto;
+  height: 95vh;
 }
 
- 
- .card_sch {
+.card_sch {
   border-radius: 6px;
   margin-top: 1em;
   margin-right: 1em;
   margin-left: 3em;
-  background: #1F2F42;
+  background: #1f2f42;
   text-align: center;
-  font-family: "Roboto Slab";
   color: white;
   width: 90%;
-  flex-direction: row;
- 
+  height: 300px;
+  min-height: 300px;
 }
-
 
 h3 {
   text-align: left;
   margin-left: 0.5em;
   margin-bottom: 1em;
   padding: 1em;
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 #images {
@@ -55,8 +47,6 @@ h3 {
 
 h5 {
   margin-top: 2rem;
-    
-    
 }
 
 #right_col {
@@ -82,4 +72,3 @@ h5 {
 #exercise_select:hover {
   color: #10749b;
 }
-
