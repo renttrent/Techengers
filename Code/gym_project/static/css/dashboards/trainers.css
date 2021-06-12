@@ -19,6 +19,7 @@
     background-color: #1F2F42;
     border-radius: 20px;
     margin-top: 2em;
+    overflow-y: scroll;
   }
   
   #tr{
