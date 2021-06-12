@@ -1,0 +1,31 @@
+#back {
+   margin-top: 2em;
+   color: white;
+ 
+
+  }
+#profil{
+    width: 100px;
+    height: 100px;
+    margin-top: 2em;
+    margin-right: 1em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    border-radius: 150px;
+
+  }
+
+  .row{
+    background-color: #1F2F42;
+    border-radius: 20px;
+    margin-top: 2em;
+  }
+  
+  #tr{
+      background-color: #313E4C;
+  }
+  .btn{
+      margin-top: 3.5em;
+      background-color: #6ED383;
+      color: white;
+  }

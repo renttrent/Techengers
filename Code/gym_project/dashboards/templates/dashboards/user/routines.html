@@ -11,7 +11,7 @@
 
 {% block middle %}
 {% comment %} KTU SHKRUAJ KODIN {% endcomment %}
-<div class="row" id="middleCard">
+<!-- /*<div class="row" id="middleCard">
     <div class="col" id="first">
         <div class="row">
             <div class="col">
@@ -74,8 +74,36 @@
         <h3 id="Routine">Routine - Abs</h3>
         <h5 id="reps">x-Reps</h5><a id="video-link" href="#">Video Link</a>
     </div>
-  </div>
-  <a class="btn btn-success btn-lg" href="{% url 'create-routine' %}">Add New Routine</a>
+  </div> */ -->
+
+
+
+  <div class="routines">
+    <div class="routine_in">
+        <h2>Routine Abs<button id="btn-edit" class="btn" type="button">Edit</button></h2>
+        <hr/>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col"><button id="bnt-exit" class="btn" type="button">Exercise 1</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button id="bnt-exit" class="btn" type="button">Exercise 1</button></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col"><button id="bnt-exit" class="btn" type="button">Exercise 1</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button id="bnt-exit" class="btn" type="button">Exercise 1</button></div>
+                </div>
+            </div>
+        </div>
+        <h5>Owner: Trainer X</h5>
+    </div>
+</div>
+  <a class="btn btn-success btn-lg" style="margin-left: 3em;" href="{% url 'create-routine' %}">Add New Routine</a>
 {% for routine in routines %}
     {% comment %} <div class="routine-card">
         <div class="routine-title">Routine: {{routine.title}}</div>

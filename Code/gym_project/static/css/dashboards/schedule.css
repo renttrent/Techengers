@@ -7,9 +7,6 @@
   overflow-y: scroll;
 
 
-
- 
- 
  
  
 }
@@ -39,7 +36,7 @@ h3 {
 }
 
 #images {
-  width: 280px;
+  width: 400px;
   height: 170px;
   margin-bottom: 2em;
   border-radius: 4px;

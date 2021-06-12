@@ -1,4 +1,4 @@
-.routines {
+/* .routines {
   display: grid;
   gap: 1em;
   width: 100%;
@@ -83,4 +83,43 @@
 
 #col {
   justify-content: space-between;
+} */
+
+.routines {
+  background-color: #1F2F42;
+}
+
+.btn{
+  font-size: 15px;
+  color: white;
+}
+.routines{
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 3em;
+  margin-bottom: 4em;
+  border-radius: 7px;
+  color: white;
+}
+h2,h5{
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+#bnt-exit{
+  margin-left: 5.2em;
+  font-size: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 13em;
+  height: 4em;
+  background-color: #ED6459;
+  border-radius: 7px;
+  
+
+}
+#btn-edit{
+  background-color: #6ED383;
+  margin-left: 45em;
+  font-size: 15px;
 }
