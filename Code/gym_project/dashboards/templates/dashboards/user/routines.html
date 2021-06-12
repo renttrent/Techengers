@@ -75,6 +75,7 @@
         <h5 id="reps">x-Reps</h5><a id="video-link" href="#">Video Link</a>
     </div>
   </div>
+  <a class="btn btn-success btn-lg" href="{% url 'create-routine' %}">Add New Routine</a>
 {% for routine in routines %}
     {% comment %} <div class="routine-card">
         <div class="routine-title">Routine: {{routine.title}}</div>

@@ -9,6 +9,10 @@ from django.contrib.auth.models import User
 
 @login_required(login_url='login')
 def home(request):
+    if request.user.is_superuser:
+        return redirect('/admin')
+    if request.user.is_staff:
+        return redirect('staff')
     return redirect('userdashboard-schedule')
 
 

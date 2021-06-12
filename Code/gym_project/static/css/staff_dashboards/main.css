@@ -59,6 +59,7 @@ body {
 .option a,
 .active a {
   color: white;
+  text-decoration: none;
 }
 .option a:hover,
 .active a:hover {

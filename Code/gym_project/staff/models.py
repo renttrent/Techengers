@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class InventoryItem(models.Model):
@@ -21,3 +22,10 @@ class AdminNotes(models.Model):
 
     def __str__(self):
         return f'Admin Note {self.id}'
+
+
+class Workspace(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    salary = models.FloatField(default=0)
+    working_days = models.CharField(max_length=200, default="")
