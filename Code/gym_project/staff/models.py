@@ -1,6 +1,6 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
+from datetime import datetime
 
 
 class InventoryItem(models.Model):
@@ -18,7 +18,8 @@ class InventoryItem(models.Model):
 
 class AdminNotes(models.Model):
     todo = models.CharField(max_length=200)
-    date = models.DateField(blank=True)
+    date = models.DateTimeField(
+        default=datetime.now(), blank=True)
 
     def __str__(self):
         return f'Admin Note {self.id}'
@@ -29,3 +30,10 @@ class Workspace(models.Model):
 
     salary = models.FloatField(default=0)
     working_days = models.CharField(max_length=200, default="")
+    starts_work_at = models.DateTimeField(
+        default=datetime.now(), blank=True)
+    ends_work_at = models.DateTimeField(
+        default=datetime.now(), blank=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s Workspace"
