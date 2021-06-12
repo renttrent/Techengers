@@ -156,7 +156,8 @@ def create_routine(request):
         days = request.POST.getlist('days')
 
         if title and desc and thumbnail and days:
-            rt = Routine(title=title, desc=desc, thumbnail=thumbnail)
+            rt = Routine(title=title, desc=desc,
+                         thumbnail=f'routines/{thumbnail}')
             save_days = []
             for day in days:
                 save_days.append(day)

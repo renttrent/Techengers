@@ -1,0 +1,56 @@
+{% extends 'staff/base.html' %}
+
+{% block styles %}
+<style>
+    .create-diet {
+        width: 50%;
+        margin-top: 10%;
+    }
+
+    input[type=submit] {
+        background-color: #6ED383;
+        border-radius: 4px;
+        outline: none !important;
+    }
+
+    .back{
+        width: 10%;
+        transform: translate(100%, 150%);
+    }
+</style>
+{% endblock styles %}
+
+
+
+{% block middle %}
+
+<div class="back">
+<a class="container btn btn-primary rounded-1" href="{% url 'staff-manage-diets' %}">Back</a>
+</div>
+<div class="create-diet card container"> 
+    <div class="create-diet-body form card-body container">
+        <form method="POST" action="{% url "staff-add-diet" %}" class="create-diet-form">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+                {% endif %}
+               
+                <div class="form-group mt-3">
+                    <label for="title">Diet Plan Title</label>
+                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: ">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="desc">Diet Description</label>
+                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: ">
+                </div>
+            
+                <div class="form-group mt-3">
+                    <label for="thumbnail">Add a Thumbnail</label>
+                    <input class="form-control {{thumbnailValid}}" type="file" id="thumbnail" name="thumbnail">
+                </div>
+
+                <input class="btn btn-success p-2 mt-2" type="submit" />      
+        </form>
+    </div>
+</div> 
+{% endblock middle %}

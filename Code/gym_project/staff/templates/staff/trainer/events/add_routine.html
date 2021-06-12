@@ -1,0 +1,67 @@
+{% extends 'staff/base.html' %}
+
+{% block styles %}
+<style>
+    .create-routine {
+        width: 50%;
+        margin-top: 10%;
+    }
+
+    input[type=submit] {
+        background-color: #6ED383;
+        border-radius: 4px;
+        outline: none !important;
+    }
+
+    .back{
+        width: 10%;
+        transform: translate(100%, 150%);
+    }
+</style>
+{% endblock styles %}
+
+
+
+{% block middle %}
+
+<div class="back">
+<a class="container btn btn-primary rounded-1" href="{% url 'staff-manage-routines' %}">Back</a>
+</div>
+<div class="create-routine card container"> 
+    <div class="create-routine-body form card-body container">
+        <form method="POST" action="{% url "staff-add-routine" %}" class="create-routine-form">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+                {% endif %}
+               
+                <div class="form-group mt-3">
+                    <label for="title">Routine Title</label>
+                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: ">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="desc">Description</label>
+                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: ">
+                </div>
+            
+                <div class="form-group mt-3">
+                    <label for="thumbnail">Thumbnail</label>
+                    <input class="form-control {{thumbnailValid}}" type="file" id="thumbnail" name="thumbnail">
+                </div>
+                <div class="form-group mt-3">
+                    <label class="mb-2" for="days">Select Days:</label>
+                    {% for day in days %}
+                        <div class="form-check {{daysValid}}">
+                            <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days">
+                            <label class="form-check-label" for="{{day}}">
+                                {{day}}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <input class="btn btn-success p-2 mt-2" type="submit" />      
+        </form>
+    </div>
+</div> 
+{% endblock middle %}

@@ -1,0 +1,66 @@
+{% extends 'staff/base.html' %}
+
+{% block styles %}
+<style>
+    .create-exercise {
+        width: 50%;
+        margin-top: 10%;
+    }
+
+    input[type=submit] {
+        background-color: #6ED383;
+        border-radius: 4px;
+    }
+
+    .back{
+        width: 10%;
+        transform: translate(100%, 150%);
+    }
+
+</style>
+{% endblock styles %}
+
+{% block middle %}
+
+<div class="back">
+<a class="container btn btn-primary rounded-1" href="{% url 'staff-manage-exercises' %}">Back</a>
+</div>
+
+<div class="create-exercise card container"> 
+    <div class="create-exercise-body form card-body container">
+        <form method="POST" action="{% url "staff-add-exercise" %}" class="create-exercise-form">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+                {% endif %}
+               
+                <div class="form-group mt-3">
+                    <label for="title">Exercise Title</label>
+                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: ">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="reps">Number of Repetitions</label>
+                    <input type="text" class="form-control {{repsValid}}" id="reps" name="reps" placeholder="Reps: ">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="desc">Description</label>
+                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: ">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="link">Video URL</label>
+                    <input type="text" class="form-control {{linkValid}}" id="link" name="link" placeholder="Add video link: ">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="title">Add to Routine</label>
+                    <select class="form-select mb-3 {{routineValid}}" name="routines" id="routines">
+                        {% for routine in routines %}
+                            <option value="{{routine.id}}">{{routine}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <input class="btn btn-success p-2 mt-2" type="submit" />      
+        </form>
+    </div>
+</div> 
+{% endblock middle %}
