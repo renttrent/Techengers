@@ -28,13 +28,6 @@ class Event(models.Model):
         return self.date >= timezone.now() - datetime.timedelta(days=1)
 
 
-class WeekDay(models.Model):
-    day = models.CharField(max_length=60, blank=True)
-
-    def __str__(self):
-        return f'{self.day}'
-
-
 class Routine(models.Model):
     title = models.CharField(max_length=60, blank=True)
     selected_by = models.ManyToManyField(User)
@@ -42,7 +35,7 @@ class Routine(models.Model):
     thumbnail = models.ImageField(
         upload_to='routines/', default='routines/default.jpg')
 
-    days = models.ManyToManyField(WeekDay)
+    days = models.CharField(max_length=60, blank=True)
 
     def __str__(self):
         return f"Routine - {self.title}"

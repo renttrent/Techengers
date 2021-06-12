@@ -1,20 +1,41 @@
-.card_sch {
+.exercises{
+
+  flex-direction: column;
+
+  
+ 
+  overflow-y: scroll;
+
+
+
+ 
+ 
+ 
+ 
+}
+
+ 
+ .card_sch {
   border-radius: 6px;
   margin-top: 1em;
   margin-right: 1em;
   margin-left: 3em;
-  background: #5c8fcc;
+  background: #1F2F42;
   text-align: center;
   font-family: "Roboto Slab";
   color: white;
   width: 90%;
+  flex-direction: row;
+ 
 }
+
 
 h3 {
   text-align: left;
   margin-left: 0.5em;
   margin-bottom: 1em;
   padding: 1em;
+    font-size: 1.5em;
 }
 
 #images {
@@ -28,7 +49,7 @@ h3 {
 }
 
 #line {
-  height: 20px;
+  height: 3px;
   width: 900px;
   margin-left: 2em;
   margin-top: -2em;
@@ -37,6 +58,8 @@ h3 {
 
 h5 {
   margin-top: 2rem;
+    
+    
 }
 
 #right_col {
@@ -62,3 +85,4 @@ h5 {
 #exercise_select:hover {
   color: #10749b;
 }
+

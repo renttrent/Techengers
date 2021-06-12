@@ -14,13 +14,8 @@ def login(request):
             username = form.cleaned_data.get('username')
             messages.success(
                 request, f'Welcome {username}')
-            u = User.objects.filter(username=username)[0]
-            if u.is_superuser:
-                return redirect('/admin')
-            elif u.groups.first():
-                return redirect('staff')
-            else:
-                return redirect('userdashboard')
+
+            return redirect('userdashboard')
 
     else:
         form = UserLoginForm()

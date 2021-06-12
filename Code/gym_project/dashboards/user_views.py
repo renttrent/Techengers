@@ -9,6 +9,10 @@ from django.contrib.auth.models import User
 
 @login_required(login_url='login')
 def home(request):
+    if request.user.is_superuser:
+        return redirect('/admin')
+    if request.user.is_staff:
+        return redirect('staff')
     return redirect('userdashboard-schedule')
 
 
@@ -155,8 +159,8 @@ def create_routine(request):
             rt = Routine(title=title, desc=desc, thumbnail=thumbnail)
             save_days = []
             for day in days:
-                save_days.append((day, day))
-            rt.days = save_days
+                save_days.append(day)
+            rt.days = ' '.join(save_days)
             rt.save()
         else:
             context['error'] = 'Please fill in all fields!'

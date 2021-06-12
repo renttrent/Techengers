@@ -71,3 +71,62 @@
   font-size: 1em;
   font-weight: 300;
 }
+.show-exercise {
+  flex-direction: row;
+
+}
+
+.exercise1 {
+  background: #1f2f42;
+  color: white;
+  margin-left: 3em;
+  margin-right: 3em;
+    margin-top: 2em;
+    border-radius: 7px;
+    
+    
+}
+.video-box{
+    margin-top: 1em;
+    margin-left: 14em;
+  
+    margin-bottom: 3em;
+  
+}
+#edit{
+  background-color: #ED6459;
+    margin-left: 28em;
+    
+  
+}
+#remove{
+  background-color: #6ED383;
+  margin-left: 1em;
+    
+}
+#back{
+  background-color: #4784BC;
+    margin-left: 2em;
+    margin-bottom: 2em
+}
+.btn{
+  font-size: 15px;
+  margin-left: 10em;
+}
+
+
+h1, h3,p, h4{
+  margin-left: 1.4em;
+  margin-right: 2em;
+  margin-bottom: 1.2em;
+  margin-top: 0.5em;
+}
+h1{
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  margin-left: 1em;
+  
+}
+p{
+    margin-bottom: 6em;
+}
