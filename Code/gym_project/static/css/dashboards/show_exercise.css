@@ -1,0 +1,91 @@
+.show-exercise {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 90%;
+  background-color: #1f2f42;
+  border-radius: 10px;
+  transform: translate(10%, 5%);
+  color: white;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.actions {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.exercise-body {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-box {
+  margin-top: 1em;
+  align-self: center;
+}
+
+.divider-ex {
+  margin: 0;
+  background-color: rgb(246, 243, 243);
+  height: 2px;
+  width: 95%;
+  align-self: center;
+}
+.divider2-ex {
+  margin: 0;
+  background-color: rgb(128, 158, 223);
+  height: 1px;
+  width: 80%;
+  align-self: center;
+  margin-bottom: 1em;
+}
+
+#back {
+  align-self: flex-start;
+  margin: 1em;
+}
+
+.routines a {
+  font-size: 1.5em;
+}
+
+.reps {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.desc {
+  color: rgb(221, 221, 221);
+  margin-bottom: 1em;
+  padding: 0 2em 1em 2em;
+}
+
+.vid-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  align-self: center;
+}
+
+/* #edit {
+  background-color: darkgreen;
+}
+
+#remove {
+  background-color: crimson;
+} */
