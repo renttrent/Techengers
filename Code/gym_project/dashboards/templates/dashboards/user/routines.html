@@ -12,122 +12,57 @@
 {% block middle %}
 
 <div class="routines">
+    {% for routine in routines %}
     <div class="routine-card">
         
         <div class="header">
-            <h4>Routine Abs</h4>
-            <a id="btn-edit" class="btn">Edit</a>
+            <h4>{{routine.title}}</h4>
+            <div class="buttons">
+           
+                {% if request.user in routine.selected_by.all %}
+                <div class="selected">Selected <img id="tick" src="{% static 'svg/tick.svg' %}"> </div>
+                {% else %}
+                <div class="trash">
+                <form action="{% url 'userdashboard-routines' %}" method="POST">
+                      {% csrf_token %}
+                        <input type="hidden" value="{{routine.id}}" name="select">
+                        <input type="hidden" value="-1" name="deselect">
+                        <input class="form-control btn btn-success " type="submit" value="Select">
+                </form>
+                </div>
+                {% endif %}
+                <a id="view" class="btn btn-success" href="{% url 'userdashboard-routine-details' routine.id %}">View</a>
+                {% if routine.owner == user %}
+                <a class="btn btn-light">Edit</a>
+                {% endif %}
+                {% if request.user in routine.selected_by.all %}
+                <div class="trash">
+                    <form action="{% url 'userdashboard-routines' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="-1" name="select">
+                        <input type="hidden" value="{{routine.id}}" name="deselect">
+                        <button id="hidden-btn">
+                        <img id="trash" src="{% static 'svg/trash.svg' %}" alt="">
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+             </div>
         </div>
         <hr/>
         
         <div class="routine-body">
             <div class="routine-thumbnail">
-                <div class="thumbnail"><img src="/media/routines/default.jpg" alt=""></div>
+                <div class="thumbnail"><img src="{{routine.thumbnail.url}}" alt=""></div>
             </div>
             <div class="exercise-grid">
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
+                {% for exercise in routine.exercises.all %}
+                <a href="{% url 'userdashboard-exercise-details' exercise.id %}" class="exlink">{{exercise.title}}</a>
+                {% endfor %}
             </div>
         </div>
     </div>
-    <div class="routine-card">
-        
-        <div class="header">
-            <h4>Routine Abs</h4>
-            <a id="btn-edit" class="btn">Edit</a>
-        </div>
-        <hr/>
-        
-        <div class="routine-body">
-            <div class="routine-thumbnail">
-                <div class="thumbnail"><img src="/media/routines/default.jpg" alt=""></div>
-            </div>
-            <div class="exercise-grid">
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-            </div>
-        </div>
-    </div>
-    <div class="routine-card">
-        
-        <div class="header">
-            <h4>Routine Abs</h4>
-            <a id="btn-edit" class="btn">Edit</a>
-        </div>
-        <hr/>
-        
-        <div class="routine-body">
-            <div class="routine-thumbnail">
-                <div class="thumbnail"><img src="/media/routines/default.jpg" alt=""></div>
-            </div>
-            <div class="exercise-grid">
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-            </div>
-        </div>
-    </div>
-    <div class="routine-card">
-        
-        <div class="header">
-            <h4>Routine Abs</h4>
-            <a id="btn-edit" class="btn">Edit</a>
-        </div>
-        <hr/>
-        
-        <div class="routine-body">
-            <div class="routine-thumbnail">
-                <div class="thumbnail"><img src="/media/routines/default.jpg" alt=""></div>
-            </div>
-            <div class="exercise-grid">
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-            </div>
-        </div>
-    </div>
-    <div class="routine-card">
-        
-        <div class="header">
-            <h4>Routine Abs</h4>
-            <a id="btn-edit" class="btn">Edit</a>
-        </div>
-        <hr/>
-        
-        <div class="routine-body">
-            <div class="routine-thumbnail">
-                <div class="thumbnail"><img src="/media/routines/default.jpg" alt=""></div>
-            </div>
-            <div class="exercise-grid">
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-            </div>
-        </div>
-    </div>
-    
+    {% endfor %}
 </div>
     <a id="addroutine" class="btn btn-success" href="{% url 'create-routine' %}">Add New Routine</a>
-{% for routine in routines %}
-    {% comment %} <div class="routine-card">
-        <div class="routine-title">Routine: {{routine.title}}</div>
-        <div class="routine-owner">Owner: {{routine.owner.username}}</div>
-        <div class="routine-desc">Desc: {{routine.desc}}</div>
-        
-        <div class="thumbnail"><img src="{{routine.thumbnail.link}}" alt=""></div>
-        <div class="exercises"></div>
-    </div> {% endcomment %}
-{% endfor %}
 {% endblock middle %}

@@ -58,6 +58,21 @@ def routines(request):
     events = Event.objects.all()[:4]
     routines = Routine.objects.all()
     context = {'options': ROUTINES_NAV, 'events': events, 'routines': routines}
+
+    if request.POST:
+        deselect = request.POST['deselect']
+        select = request.POST['select']
+
+        if deselect and select:
+
+            if int(deselect) > 0:
+                routine = Routine.objects.get(id=deselect)
+                routine.selected_by.remove(request.user)
+            if int(select) > 0:
+                routine = Routine.objects.get(id=select)
+                routine.selected_by.add(request.user)
+            return render(request, 'dashboards/user/routines.html', context)
+
     return render(request, 'dashboards/user/routines.html', context)
 
 
@@ -82,7 +97,6 @@ def diets(request):
 
     if request.POST:
         id = request.POST['select']
-
         if id:
             request.user.profile.selected_diets.add(
                 DietPlan.objects.get(id=id))
@@ -96,8 +110,15 @@ def diets(request):
 def trainers(request):
 
     events = Event.objects.all()[:4]
+    routines = Routine.objects.all()
+    routines_owned = []
     trainers = User.objects.all().filter(groups__name='trainer')
-    context = {'options': TRAINERS_NAV, 'events': events, 'trainers': trainers}
+    for trainer in trainers:
+        routines_owned.append(
+            sum([1 for ru in routines if ru.owner == trainer]))
+
+    context = {'options': TRAINERS_NAV, 'events': events,
+               'trainers_info': zip(trainers, routines_owned)}
     return render(request, 'dashboards/user/trainers.html', context)
 
 
@@ -105,10 +126,14 @@ def trainers(request):
 def trainer_details(request, tid):
 
     events = Event.objects.all()[:4]
+    routines = Routine.objects.all()
     t = get_object_or_404(User, id=tid)
     if t:
+        routines_owned = sum([1 for ru in routines if ru.owner == t])
+
         if t.is_staff and t.groups.first().name == 'trainer':
-            context = {'options': TRAINERS_NAV, 'events': events, 'trainer': t}
+            context = {'options': TRAINERS_NAV, 'events': events,
+                       'trainer': t, 'routines_owned': routines_owned}
             return render(request, 'dashboards/user/show_trainer.html', context)
         else:
             return redirect('userdashboard-trainers')

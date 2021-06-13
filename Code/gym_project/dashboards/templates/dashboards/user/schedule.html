@@ -7,7 +7,7 @@
 
 {% block middle %}
 <div class="days">
-    {% if schedule %}
+    {% if routines %}
         {% for day in schedule %}
             <div class="day-card">
                 <h3>{{day}}</h3>
@@ -37,7 +37,10 @@
             </div>
         {% endfor %}
     {% else %}
-        <h3>Your schedule is empty! Add some routines to get started.</h3>
+        <div class="h3 container w-50 m-auto">
+        <span>Your schedule is empty!</span>
+        <span>Add some routines to get started.</span>
+        </div>
     {% endif %}
 </div>
 
