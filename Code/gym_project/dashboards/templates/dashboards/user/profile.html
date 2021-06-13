@@ -15,7 +15,7 @@
     <div class="col">
         <div class="row">
             <div class="col">
-                <picture><img id="profil" src="{% static 'images/xhoi.jpg' %}" ></picture>
+                <picture><img id="profil" src="{{user.profile.profile_photo.url}}" ></picture>
             </div>
         </div>
         <hr/>
@@ -24,7 +24,7 @@
                 <div class="name">Name</div>
             </div>
             <div class="col">
-                <div>Xhois</div>
+                <div>{{user.first_name}}</div>
             </div>
         </div>
         <div class="row">
@@ -32,7 +32,7 @@
                 <div class="name">Surname</div>
             </div>
             <div class="col">
-                <div>Shaholli</div>
+                <div>{{user.last_name}}</div>
             </div>
         </div>
         <div class="row">
@@ -40,7 +40,7 @@
                 <div class="name">Height</div>
             </div>
             <div class="col">
-                <div>180cm</div>
+                <div>{{user.profile.height}}</div>
             </div>
         </div>
         <div class="row">
@@ -48,7 +48,7 @@
                 <div class="name">Weight</div>
             </div>
             <div class="col">
-                <div>95 KG</div>
+                <div>{{user.profile.weight}} KG</div>
             </div>
         </div>
         <div class="row">
@@ -56,7 +56,7 @@
                 <div class="name">Weight Goal</div>
             </div>
             <div class="col">
-                <div>80 KG</div>
+                <div>{{user.profile.weight_goal}} KG</div>
             </div>
         </div>
         <div class="row">
@@ -64,32 +64,19 @@
                 <div class="name">Gender</div>
             </div>
             <div class="col">
-                <div>Male</div>
+                <div>{{user.profile.gender|slice:"7:13"}}</div>
             </div>
         </div>
         <div class="row" id="space">
             <div class="col">
-                <div class="name">Weekly Frequency</div>
+                <div class="name">Weekly <Frequenc></Frequenc>y</div>
             </div>
             <div class="col">
-                <div>6 Times a Week</div>
+                <div>{{user.profile.week_frequency|slice:"8:22"}}</div>
             </div>
             
         </div>
     </div>
 </div>
-
-
-<!-- <div>
-    <div>
-        <div>Name: {{user.first_name}}</div>
-        <div>Last Name: {{user.last_name}}</div>
-        <div>Height: {{user.profile.height}}</div>
-        <div>Weight: {{user.profile.weight}}</div>
-        <div>Weight Goal: {{user.profile.weight_goal}}</div>
-        <div>Gender: {{user.profile.gender}}</div>
-        <div>Weekly frequency: {{user.profile.week_frequency}}</div>
-    </div>
-</div> -->
 
 {% endblock middle %}

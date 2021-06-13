@@ -24,12 +24,23 @@ def schedule(request):
                  "Thursday", "Friday", "Saturday", "Sunday"]
     week_num = datetime.today().date().weekday()
     WEEK_DAYS = WEEK_DAYS[week_num:] + WEEK_DAYS[:week_num]
+    DISPLAY_WEEK_DAYS = ['Today'] + WEEK_DAYS[1:]
 
     routines = Routine.objects.filter(
         selected_by__username=request.user.username)
 
     context = {'options': SCHEDULE_NAV,
-               'events': events, 'schedule': WEEK_DAYS, 'routines': routines}
+               'events': events, 'schedule': DISPLAY_WEEK_DAYS, 'routines': routines}
+
+    day_dict = {}
+    for day in WEEK_DAYS:
+        daily_routines = []
+        for r in routines:
+            if day in r.days:
+                daily_routines.append(r)
+        day_dict[day] = r
+
+    context['day_dict'] = day_dict
     return render(request, 'dashboards/user/schedule.html', context)
 
 

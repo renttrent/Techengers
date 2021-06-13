@@ -9,32 +9,58 @@
 <div class="days">
     {% if routines %}
         {% for day in schedule %}
+            {% for calc_day, routines in day_dict.items %}
+            {% if day is calc_day %}
             <div class="day-card">
                 <h3>{{day}}</h3>
                 <div class="routines">
-                    {% for routine in routines %}
-                    <div class="routine-container">
-                        <hr id="line" />
-                        <div class="routine">
-                            <div class="routine-header">
-                                <div class="routine-title">{{routine}}</div>
-                                <div class="left"><img id="images" src="{{routine.thumbnail.url}}"></div>
-                            </div>
-                            <div class="routine-exercises">
-                                <div class="routine-title">
-                                    Exercises
+                    {% if routines is iterable %}
+                        {% for routine in routines %}
+                        <div class="routine-container">
+                            <hr id="line" />
+                            <div class="routine">
+                                <div class="routine-header">
+                                    <div class="routine-title">{{routine}}</div>
+                                    <div class="left"><img id="thumb" src="{{routine.thumbnail.url}}"></div>
                                 </div>
-                                <div class="exercise-grid">
-                                    {% for exercise in routine.exercises.all %}
-                                        <a href="" class="exlink">{{exercise.title}}</a>
-                                    {% endfor %}
+                                <div class="routine-exercises">
+                                    <div class="routine-title">
+                                        Exercises
+                                    </div>
+                                    <div class="exercise-grid">
+                                        {% for exercise in routine.exercises.all %}
+                                            <a href="" class="exlink">{{exercise.title}}</a>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                        <div class="routine-container">
+                            <hr id="line" />
+                            <div class="routine">
+                                <div class="routine-header">
+                                    <div class="routine-title">{{routines}}</div>
+                                    <div class="left"><img id="thumb" src="{{routines.thumbnail.url}}"></div>
+                                </div>
+                                <div class="routine-exercises">
+                                    <div class="routine-title">
+                                        Exercises
+                                    </div>
+                                    <div class="exercise-grid">
+                                        {% for exercise in routines.exercises.all %}
+                                            <a href="" class="exlink">{{exercise.title}}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
+            {% endif %}
+            {% endfor %}
         {% endfor %}
     {% else %}
         <div class="h3 container w-50 m-auto">

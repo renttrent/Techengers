@@ -20,6 +20,14 @@
   border-radius: 5px;
 }
 
+#left {
+  width: 50%;
+}
+#thumb {
+  width: 200px;
+  height: auto;
+}
+
 #line {
   height: 3px;
 }
@@ -51,8 +59,6 @@
 .routine-container {
   align-self: center;
   width: 80%;
-  min-height: 200px;
-  max-height: 200px;
 }
 
 .routine {
