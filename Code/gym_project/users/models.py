@@ -1,3 +1,4 @@
+from dashboards.models import DietPlan
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -26,6 +27,8 @@ class Profile(models.Model):
         max_length=20, choices=FREQUENCY, default=FREQUENCY[0])
 
     profile_complete = False
+
+    selected_diets = models.ManyToManyField(DietPlan)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

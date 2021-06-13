@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+from django.db.models.deletion import CASCADE
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -28,21 +29,9 @@ class Event(models.Model):
         return self.date >= timezone.now() - datetime.timedelta(days=1)
 
 
-class Routine(models.Model):
-    title = models.CharField(max_length=60, blank=True)
-    selected_by = models.ManyToManyField(User)
-    desc = models.TextField(blank=True)
-    thumbnail = models.ImageField(
-        upload_to='routines/', default='routines/default.jpg')
-
-    days = models.CharField(max_length=60, blank=True)
-
-    def __str__(self):
-        return f"Routine - {self.title}"
-
-
 class Exercise(models.Model):
-    routine = models.ManyToManyField(Routine)
+    owner = models.ForeignKey(User, on_delete=CASCADE,
+                              related_name='%(class)s_username', null=True)
     selected_by = models.ManyToManyField(User)
     title = models.CharField(max_length=60, blank=True)
     reps = models.IntegerField(default=3, blank=True)
@@ -51,3 +40,18 @@ class Exercise(models.Model):
 
     def __str__(self):
         return f"Exercise - {self.title}"
+
+
+class Routine(models.Model):
+    owner = models.ForeignKey(User, on_delete=CASCADE,
+                              related_name='%(class)s_username', null=True)
+    title = models.CharField(max_length=60, blank=True)
+    selected_by = models.ManyToManyField(User)
+    desc = models.TextField(blank=True)
+    thumbnail = models.ImageField(
+        upload_to='routines/', default='routines/default.jpg')
+    exercises = models.ManyToManyField(Exercise)
+    days = models.CharField(max_length=60, blank=True)
+
+    def __str__(self):
+        return f"Routine - {self.title}"

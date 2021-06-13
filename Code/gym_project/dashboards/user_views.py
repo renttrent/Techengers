@@ -20,15 +20,16 @@ def home(request):
 def schedule(request):
 
     events = Event.objects.all()[:4]
+    WEEK_DAYS = ["Monday", "Tuesday", "Wednesday",
+                 "Thursday", "Friday", "Saturday", "Sunday"]
     week_num = datetime.today().date().weekday()
+    WEEK_DAYS = WEEK_DAYS[week_num:] + WEEK_DAYS[:week_num]
 
     routines = Routine.objects.filter(
         selected_by__username=request.user.username)
-    today = None
-    if routines:
-        today = routines[0].DAYS_OPTIONS[week_num][1]
+
     context = {'options': SCHEDULE_NAV,
-               'events': events, 'schedule': routines, 'today': today}
+               'events': events, 'schedule': WEEK_DAYS, 'routines': routines}
     return render(request, 'dashboards/user/schedule.html', context)
 
 
@@ -114,21 +115,19 @@ def profile(request):
 @login_required(login_url='login')
 def create_exercise(request):
     events = Event.objects.all()[:4]
-    routines = Routine.objects.all()
     context = {'options': EXERCISES_NAV,
-               'events': events, 'routines': routines}
+               'events': events}
 
     if request.POST:
         title = request.POST['title']
         reps = request.POST['reps']
         desc = request.POST['desc']
         link = request.POST['link']
-        routine = request.POST['routines']
 
-        if title and reps and desc and link and routine:
-            ex = Exercise(title=title, reps=reps, desc=desc, link=link)
+        if title and reps and desc and link:
+            ex = Exercise(owner=request.user, title=title,
+                          reps=reps, desc=desc, link=link)
             ex.save()
-            ex.routine.add(Routine.objects.get(id=routine))
             ex.selected_by.add(request.user)
         else:
             context['error'] = 'Please fill in all fields!'
@@ -136,7 +135,6 @@ def create_exercise(request):
             context['repsValid'] = 'is-valid' if reps else 'is-invalid'
             context['descValid'] = 'is-valid' if desc else 'is-invalid'
             context['linkValid'] = 'is-valid' if link else 'is-invalid'
-            context['routineValid'] = 'is-valid' if routine else 'is-invalid'
             return render(request, 'dashboards/user/events/create_exercise.html', context)
 
     return render(request, 'dashboards/user/events/create_exercise.html', context)
@@ -145,8 +143,9 @@ def create_exercise(request):
 @login_required(login_url='login')
 def create_routine(request):
     events = Event.objects.all()[:4]
+    exercises = Exercise.objects.all()
     context = {'options': ROUTINES_NAV,
-               'events': events}
+               'events': events, 'exercises': exercises}
     context['days'] = ['Monday', 'Tuesday', 'Wednesday',
                        'Thursday', 'Friday', 'Saturday', 'Sunday']
     if request.POST:
@@ -154,14 +153,17 @@ def create_routine(request):
         desc = request.POST['desc']
         thumbnail = request.POST['thumbnail']
         days = request.POST.getlist('days')
+        exercises_list = request.POST.getlist('days')
 
-        if title and desc and thumbnail and days:
+        if title and desc and thumbnail and days and exercises_list:
             rt = Routine(title=title, desc=desc,
                          thumbnail=f'routines/{thumbnail}')
             save_days = []
             for day in days:
                 save_days.append(day)
             rt.days = ' '.join(save_days)
+            rt.selected_by.add(request.user)
+            rt.exercises.add()
             rt.save()
         else:
             context['error'] = 'Please fill in all fields!'
@@ -169,6 +171,7 @@ def create_routine(request):
             context['descValid'] = 'is-valid' if desc else 'is-invalid'
             context['thumbnailValid'] = 'is-valid' if thumbnail else 'is-invalid'
             context['daysValid'] = 'is-valid' if days else 'is-invalid'
+            context['exercisesValid'] = 'is-valid' if exercises_list else 'is-invalid'
 
             return render(request, 'dashboards/user/events/create_routine.html', context)
 
