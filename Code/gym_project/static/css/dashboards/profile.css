@@ -1,9 +1,9 @@
 .profile_user{
     color: white;
     background-color: 1F2F42;
-    margin: 7em;
-    margin-left: 12em;
-    margin-right: 12em;
+    margin: 2em;
+    margin-bottom: 2em;
+   
     border-radius: 7px;
 
 }
@@ -14,7 +14,7 @@
      margin-top: 2.5em;
  
      border-radius: 150px;
-    margin-left: 15.2em
+    margin-left: 25em
 
  }
  .left_way{
@@ -26,5 +26,32 @@
     float: right 
 }
 #space{
-    margin-bottom: 3em;
+    margin-bottom: 2em;
+}
+
+
+
+
+.form-control {
+   
+   
+    border-radius: 2px;
+  
+    background: #313E4D;
+    color: #2e323c;
+ 
+}
+
+.edit{
+    background-color: #1F2F42;
+    color: white;
+
+  
+    border-radius: 7px;
+
+    margin-bottom: 1em;
+   margin: 2em;
+}
+.gutters{
+    margin: 1em;
 }
