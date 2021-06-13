@@ -16,11 +16,21 @@
             <div class="diet-card-right">
                 <div class="diet-title">Benefits:</div>
                 <div class="diet-desc">{{diet.desc}}</div>
-                <form action="{% url 'userdashboard-diets' %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" value="{{diet.id}}" name="select">
-                <input class="btn btn-preorder" type="submit" value="Select">
-                </form>
+                {% if diet in user.profile.selected_diets.all %}
+                    <form action="{% url 'userdashboard-diets' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="-1" name="select">
+                        <input type="hidden" value="{{diet.id}}" name="remove">
+                        <input class="btn btn-danger p-2 mt-4" type="submit" value="Remove">
+                    </form>
+                {% else %}
+                    <form action="{% url 'userdashboard-diets' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{diet.id}}" name="select">
+                        <input type="hidden" value="-1" name="remove">
+                        <input class="btn btn-success p-2 mt-4" type="submit" value="Select">
+                    </form>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

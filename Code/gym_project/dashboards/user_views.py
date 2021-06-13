@@ -96,10 +96,15 @@ def diets(request):
     context = {'options': DIETS_NAV, 'events': events, 'diets': diets}
 
     if request.POST:
-        id = request.POST['select']
-        if id:
-            request.user.profile.selected_diets.add(
-                DietPlan.objects.get(id=id))
+        select = request.POST['select']
+        remove = request.POST['remove']
+        if select and remove:
+            if int(select) > 0:
+                request.user.profile.selected_diets.add(
+                    DietPlan.objects.get(id=select))
+            if int(remove) > 0:
+                request.user.profile.selected_diets.remove(
+                    DietPlan.objects.get(id=remove))
 
         return render(request, 'dashboards/user/diets.html', context)
 
