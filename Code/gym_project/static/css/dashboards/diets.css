@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4em;
+  margin-top: 2em;
+  padding: 0 4em 0 4em;
   justify-content: space-between;
-  height: 100vh;
-  overflow-y: scroll;
+  height: 90vh;
+  overflow-y: auto;
   width: 100%;
 }
 

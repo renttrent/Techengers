@@ -1,21 +1,22 @@
 .exercises {
+  margin-top: 2em;
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1em;
   width: 100%;
-  padding: 3em;
-
-  height: 100vh;
-  overflow-y: scroll;
+  padding: 0 2em 0 2em;
+  height: 85vh;
+  overflow-y: auto;
 }
 
 .exercise-card {
   padding: 1em;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   color: white;
-  min-height: 150px;
+  min-height: 200px;
   max-height: 200px;
   border-radius: 5px;
   background-color: #1f2f42;
@@ -55,7 +56,7 @@
 }
 
 .exercise-link {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .exercise-link a {
@@ -70,8 +71,6 @@
 .exercise-reps {
   font-size: 1em;
   font-weight: 300;
-}
-.show-exercise {
 }
 
 .exercise1 {

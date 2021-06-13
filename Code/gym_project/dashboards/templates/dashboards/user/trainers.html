@@ -6,27 +6,103 @@
 {% endblock styles %}
 
 {% block middle %}
-<div class="row justify-content-center">
-    <div id="tr" class="col-xl-2"></div>
-    <div class="col-xl-2 align-middle">
-        <picture><img id="profil" src="{% static 'images/xhoi.jpg' %}" ></picture>
+
+<div class="trainers">
+
+    {% for trainer, nrofroutines in trainers_info %}
+    <div class="trainer">
+        <div class="left">
+            <div class="profile"><img id="profil" src="{{trainer.profile.profile_photo.url}}" ></div>
+            <div class="info">
+               {% if trainer.get_full_name %}
+                <h4>{{trainer.get_full_name}}</h4>
+                {% else %}
+                <h4>{{trainer.username}}</h4>
+                {% endif %}
+                
+                <h5>Age: {{ trainer.profile.age }} Years Old</h5>
+                <h6>Owner of {{nrofroutines}} routines</h6>
+            </div>
+        </div>
+        <div class="right">
+            <a href="{% url 'userdashboard-trainer-details' trainer.id %}" class="btn btn-success">View trainer</a>
+        </div>
     </div>
-    <div id="back" class="col-xl-4">
-        <h4>Xhois Shaholli</h4>
-        <h5>Age: 21 Years Old</h5>
-        <h6>Owner of 15 routines</h6>
+        <div class="trainer">
+        <div class="left">
+            <div class="profile"><img id="profil" src="{{trainer.profile.profile_photo.url}}" ></div>
+            <div class="info">
+               {% if trainer.get_full_name %}
+                <h4>{{trainer.get_full_name}}</h4>
+                {% else %}
+                <h4>{{trainer.username}}</h4>
+                {% endif %}
+                
+                <h5>Age: {{ trainer.profile.age }} Years Old</h5>
+                <h6>Owner of {{nrofroutines}} routines</h6>
+            </div>
+        </div>
+        <div class="right">
+            <a href="{% url 'userdashboard-trainer-details' trainer.id %}" class="btn btn-success">View trainer</a>
+        </div>
     </div>
-    <div class="col-xl-2"><button class="btn" type="button">View Trainer</button></div>
-    <div id="tr" class="col-xl-2"></div>
+        <div class="trainer">
+        <div class="left">
+            <div class="profile"><img id="profil" src="{{trainer.profile.profile_photo.url}}" ></div>
+            <div class="info">
+               {% if trainer.get_full_name %}
+                <h4>{{trainer.get_full_name}}</h4>
+                {% else %}
+                <h4>{{trainer.username}}</h4>
+                {% endif %}
+                
+                <h5>Age: {{ trainer.profile.age }} Years Old</h5>
+                <h6>Owner of {{nrofroutines}} routines</h6>
+            </div>
+        </div>
+        <div class="right">
+            <a href="{% url 'userdashboard-trainer-details' trainer.id %}" class="btn btn-success">View trainer</a>
+        </div>
+    </div>
+        <div class="trainer">
+        <div class="left">
+            <div class="profile"><img id="profil" src="{{trainer.profile.profile_photo.url}}" ></div>
+            <div class="info">
+               {% if trainer.get_full_name %}
+                <h4>{{trainer.get_full_name}}</h4>
+                {% else %}
+                <h4>{{trainer.username}}</h4>
+                {% endif %}
+                
+                <h5>Age: {{ trainer.profile.age }} Years Old</h5>
+                <h6>Owner of {{nrofroutines}} routines</h6>
+            </div>
+        </div>
+        <div class="right">
+            <a href="{% url 'userdashboard-trainer-details' trainer.id %}" class="btn btn-success">View trainer</a>
+        </div>
+    </div>
+        <div class="trainer">
+        <div class="left">
+            <div class="profile"><img id="profil" src="{{trainer.profile.profile_photo.url}}" ></div>
+            <div class="info">
+               {% if trainer.get_full_name %}
+                <h4>{{trainer.get_full_name}}</h4>
+                {% else %}
+                <h4>{{trainer.username}}</h4>
+                {% endif %}
+                
+                <h5>Age: {{ trainer.profile.age }} Years Old</h5>
+                <h6>Owner of {{nrofroutines}} routines</h6>
+            </div>
+        </div>
+        <div class="right">
+            <a href="{% url 'userdashboard-trainer-details' trainer.id %}" class="btn btn-success">View trainer</a>
+        </div>
+    </div>
+
+    {% endfor %}
+
 </div>
-
-
-
-
-
-{% for trainer in trainers %}
-    {{trainer.username}}
-    <a href="{% url 'userdashboard-trainer-details' trainer.id %}">View Trainer</a>
-{% endfor %}
 
 {% endblock middle %}

@@ -6,223 +6,68 @@
 {% endblock styles %}
 
 {% block middle %}
-<div class="exercises">
-    <div class="card_sch">
-    <h3>Today - 02.04.2022</h3>
-    <hr id="line">
-    <div class="row">
-        <div class="col" id="left_col"><img id="images" src="{% static 'images/rectangle 17.jpg' %}"></div>
-        <div class="col" id="right_col">
-            <div>
-                <h4>Abs day</h4>
-                <div class="row">
-                    <div class="col" id="ex">
-                        <div class="row" id="ex-1">
-                            <div class="col" id="ex_-1"><a id="exercise_select" href="#">Exercise 1</a></div>
+<div class="days">
+    {% if routines %}
+        {% for day in schedule %}
+            {% for calc_day, routines in day_dict.items %}
+            {% if day is calc_day %}
+            <div class="day-card">
+                <h3>{{day}}</h3>
+                <div class="routines">
+                    {% if routines is iterable %}
+                        {% for routine in routines %}
+                        <div class="routine-container">
+                            <hr id="line" />
+                            <div class="routine">
+                                <div class="routine-header">
+                                    <div class="routine-title">{{routine}}</div>
+                                    <div class="left"><img id="thumb" src="{{routine.thumbnail.url}}"></div>
+                                </div>
+                                <div class="routine-exercises">
+                                    <div class="routine-title">
+                                        Exercises
+                                    </div>
+                                    <div class="exercise-grid">
+                                        {% for exercise in routine.exercises.all %}
+                                            <a href="" class="exlink">{{exercise.title}}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="row" id="ex-2">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="routine-container">
+                            <hr id="line" />
+                            <div class="routine">
+                                <div class="routine-header">
+                                    <div class="routine-title">{{routines}}</div>
+                                    <div class="left"><img id="thumb" src="{{routines.thumbnail.url}}"></div>
+                                </div>
+                                <div class="routine-exercises">
+                                    <div class="routine-title">
+                                        Exercises
+                                    </div>
+                                    <div class="exercise-grid">
+                                        {% for exercise in routines.exercises.all %}
+                                            <a href="" class="exlink">{{exercise.title}}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="row" id="ex-3">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                    <div class="col" id="ex">
-                        <div class="row" id="ex1">
-                            <div class="col" id="ex_1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <div class="h3 container w-50 m-auto">
+        <span>Your schedule is empty!</span>
+        <span>Add some routines to get started.</span>
         </div>
-    </div>
-    </div>
-    <div class="card_sch">
-        <h3>Today - 02.04.2022</h3>
-        <hr id="line">
-        <div class="row">
-            <div class="col" id="left_col"><img id="images" src="{% static 'images/rectangle 17.jpg' %}"></div>
-            <div class="col" id="right_col">
-            <div>
-                <h4>Abs day</h4>
-                <div class="row">
-                    <div class="col" id="ex">
-                        <div class="row" id="ex-1">
-                            <div class="col" id="ex_-1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex-2">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex-3">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                    <div class="col" id="ex">
-                        <div class="row" id="ex1">
-                            <div class="col" id="ex_1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="card_sch">
-    <h3>Today - 02.04.2022</h3>
-    <hr id="line">
-    <div class="row">
-        <div class="col" id="left_col"><img id="images" src="{% static 'images/rectangle 17.jpg' %}"></div>
-        <div class="col" id="right_col">
-            <div>
-                <h4>Abs day</h4>
-                <div class="row">
-                    <div class="col" id="ex">
-                        <div class="row" id="ex-1">
-                            <div class="col" id="ex_-1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex-2">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex-3">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                    <div class="col" id="ex">
-                        <div class="row" id="ex1">
-                            <div class="col" id="ex_1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="card_sch">
-    <h3>Today - 02.04.2022</h3>
-    <hr id="line">
-    <div class="row">
-        <div class="col" id="left_col"><img id="images" src="{% static 'images/rectangle 17.jpg' %}"></div>
-        <div class="col" id="right_col">
-            <div>
-                <h4>Abs day</h4>
-                <div class="row">
-                    <div class="col" id="ex">
-                        <div class="row" id="ex-1">
-                            <div class="col" id="ex_-1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex-2">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex-3">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                    <div class="col" id="ex">
-                        <div class="row" id="ex1">
-                            <div class="col" id="ex_1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="card_sch">
-    <h3>Today - 02.04.2022</h3>
-    <hr id="line">
-    <div class="row">
-        <div class="col" id="left_col"><img id="images" src="{% static 'images/rectangle 17.jpg' %}"></div>
-        <div class="col" id="right_col">
-            <div>
-                <h4>Abs day</h4>
-                <div class="row">
-                    <div class="col" id="ex">
-                        <div class="row" id="ex-1">
-                            <div class="col" id="ex_-1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex-2">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex-3">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                    <div class="col" id="ex">
-                        <div class="row" id="ex1">
-                            <div class="col" id="ex_1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="card_sch">
-    <h3>Today - 02.04.2022</h3>
-    <hr id="line">
-    <div class="row">
-        <div class="col" id="left_col"><img id="images" src="{% static 'images/rectangle 17.jpg' %}"></div>
-        <div class="col" id="right_col">
-            <div>
-                <h4>Abs day</h4>
-                <div class="row">
-                    <div class="col" id="ex">
-                        <div class="row" id="ex-1">
-                            <div class="col" id="ex_-1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex-2">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex-3">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                    <div class="col" id="ex">
-                        <div class="row" id="ex1">
-                            <div class="col" id="ex_1"><a id="exercise_select" href="#">Exercise 1</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 2</a></div>
-                        </div>
-                        <div class="row" id="ex1">
-                            <div class="col"><a id="exercise_select" href="#">Exercise 3</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
+    {% endif %}
 </div>
 
 {% endblock middle %}
