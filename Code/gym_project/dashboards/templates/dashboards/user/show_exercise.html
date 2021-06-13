@@ -12,7 +12,7 @@
 
 <div class="show-exercise">
     <div class="header">
-        <div class="title">Exercise Title</div>
+        <div class="title">Exercise: {{exercise.title}}</div>
         <div class="actions">
             <a id="edit" href="" class="btn btn-primary">Edit</a>
             <a id="remove" href="" class="btn btn-danger">Remove</a>
@@ -20,18 +20,16 @@
     </div>
     <div class="divider-ex"></div>
     <div class="exercise-body">
-        <div class="routines">
-            <a href="">Routines - Abs</a>
-        </div>
-        <div class="reps">x - Number of Repetitions</div>
+        <div class="reps">{{exercise.reps}} - Number of Repetitions</div>
          <div class="divider2-ex"></div>
-        <div class="desc">At vero eos et accusamus et iusts dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</div>
+        <div class="desc">{{exercise.desc}}</div>
         <div class="vid-title">6 PACK ABS For Beginners You Can Do Anywhere</div>
         <div class="video-box">
-            <iframe width="500" height="320"
-            src="https://www.youtube.com/embed/2pLT-olgUJs?autoplay=0&mute=0">
-            </iframe>
-                
+
+            <object style="height: 320px; width: 500px"><param name="movie" value="{{exercise.link}}">
+            <param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always">
+            <embed src="{{exercise.link}}" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="500" height="320"></object>
+
         </div>
     </div>
     <a id="back" class="btn btn-primary" href="{% url 'userdashboard-exercises' %}">Back</a>

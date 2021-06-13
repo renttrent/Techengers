@@ -32,13 +32,16 @@ def schedule(request):
     context = {'options': SCHEDULE_NAV,
                'events': events, 'schedule': DISPLAY_WEEK_DAYS, 'routines': routines}
 
-    day_dict = {}
-    for day in WEEK_DAYS:
-        daily_routines = []
-        for r in routines:
-            if day in r.days:
-                daily_routines.append(r)
-        day_dict[day] = r
+    day_dict = None
+
+    if routines:
+        day_dict = {}
+        for day in WEEK_DAYS:
+            daily_routines = []
+            for r in routines:
+                if day in r.days:
+                    daily_routines.append(r)
+            day_dict[day] = r
 
     context['day_dict'] = day_dict
     return render(request, 'dashboards/user/schedule.html', context)
