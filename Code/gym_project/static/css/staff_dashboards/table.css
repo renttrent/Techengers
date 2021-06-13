@@ -1,0 +1,25 @@
+
+
+#tablecss{
+    color: white;
+    margin: 3em; 
+    background-color: #1F2F42;
+    margin-right: 5em;
+    
+}
+#delete{
+    background-color: #ED6459;
+}
+#edit{
+    background-color: #5C8FCC;
+}
+.btn{
+    margin-left: 2em;
+}
+#first-row{
+    background-color: black;
+}
+#short{
+    margin-right: 3em;
+    
+}
