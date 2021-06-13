@@ -7,72 +7,23 @@
 
 {% block middle %}
 <div class="diets">
-    <div class="diet-card">
-        <div class="diet-card-left">
-        <div class="diet-title">Protien diet</div>
-        <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
-        </div>
-        <div class="diet-card-right">
-            <div class="diet-title">Benefits:</div>
-            <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-            <div class="btn-preorder">Pre Order</div>
-        </div>
-    </div>
-    <div class="diet-card">
-        <div class="diet-card-left">
-        <div class="diet-title">Protien diet</div>
-        <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
-        </div>
-        <div class="diet-card-right">
-            <div class="diet-title">Benefits:</div>
-            <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-            <div class="btn-preorder">Pre Order</div>
-        </div>
-    </div>
-    <div class="diet-card">
-        <div class="diet-card-left">
-        <div class="diet-title">Protien diet</div>
-        <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
-        </div>
-        <div class="diet-card-right">
-            <div class="diet-title">Benefits:</div>
-            <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-            <div class="btn-preorder">Pre Order</div>
-        </div>
-    </div>
-    <div class="diet-card">
-        <div class="diet-card-left">
-        <div class="diet-title">Protien diet</div>
-        <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
-        </div>
-        <div class="diet-card-right">
-            <div class="diet-title">Benefits:</div>
-            <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-            <div class="btn-preorder">Pre Order</div>
-        </div>
-    </div>
+    {% for diet in diets %}
         <div class="diet-card">
-        <div class="diet-card-left">
-        <div class="diet-title">Protien diet</div>
-        <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
+            <div class="diet-card-left">
+            <div class="diet-title">{{diet.title}}</div>
+            <div class="thumbnail"><img src="{{diet.thumbnail.url}}" alt=""></div>
+            </div>
+            <div class="diet-card-right">
+                <div class="diet-title">Benefits:</div>
+                <div class="diet-desc">{{diet.desc}}</div>
+                <form action="{% url 'userdashboard-diets' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{diet.id}}" name="select">
+                <input class="btn btn-preorder" type="submit" value="Select">
+                </form>
+            </div>
         </div>
-        <div class="diet-card-right">
-            <div class="diet-title">Benefits:</div>
-            <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-            <div class="btn-preorder">Pre Order</div>
-        </div>
-    </div>
-    <div class="diet-card">
-        <div class="diet-card-left">
-        <div class="diet-title">Protien diet</div>
-        <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
-        </div>
-        <div class="diet-card-right">
-            <div class="diet-title">Benefits:</div>
-            <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-            <div class="btn-preorder">Pre Order</div>
-        </div>
-    </div>
+    {% endfor %}
 
 </div>
 

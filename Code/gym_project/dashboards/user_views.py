@@ -1,7 +1,7 @@
 from dashboards.navigation import DIETS_NAV, EXERCISES_NAV, ROUTINES_NAV, SCHEDULE_NAV, TRAINERS_NAV
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from .models import Event, Exercise, Routine
+from .models import DietPlan, Event, Exercise, Routine
 from datetime import datetime
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
@@ -76,7 +76,19 @@ def routine_details(request, rid):
 def diets(request):
 
     events = Event.objects.all()[:4]
-    context = {'options': DIETS_NAV, 'events': events}
+    diets = DietPlan.objects.all()
+
+    context = {'options': DIETS_NAV, 'events': events, 'diets': diets}
+
+    if request.POST:
+        id = request.POST['select']
+
+        if id:
+            request.user.profile.selected_diets.add(
+                DietPlan.objects.get(id=id))
+
+        return render(request, 'dashboards/user/diets.html', context)
+
     return render(request, 'dashboards/user/diets.html', context)
 
 
