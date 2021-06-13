@@ -44,6 +44,7 @@ def latest_activity(request):
         notes = AdminNotes.objects.all()[nr-1]
 
         if notes.date < timezone.now():
+            # TODO
             context['notes'] = notes
 
     return render(request, 'staff/shared/activity.html', context)
