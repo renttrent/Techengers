@@ -6,11 +6,14 @@
 {% endblock styles %}
 
 {% block middle %}
+
+<div class="trainers">
+
 {% for trainer, nrofroutines in trainers_info %}
 <div class="row justify-content-center">
     <div id="tr" class="col-xl-2"></div>
     <div class="col-xl-2 align-middle">
-        <picture><img id="profil" src="{% static 'images/xhoi.jpg' %}" ></picture>
+        <picture><img id="profil" src="{{trainer.profile.profile_photo.url}}" ></picture>
     </div>
     <div id="back" class="col-xl-4">
         {% if trainer.get_full_name %}
@@ -26,5 +29,7 @@
     <div id="tr" class="col-xl-2"></div>
 </div>
 {% endfor %}
+
+</div>
 
 {% endblock middle %}
