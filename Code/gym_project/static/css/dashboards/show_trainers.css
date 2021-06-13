@@ -1,208 +1,190 @@
-
-
-
 .routines {
-    display: flex;
-    flex-direction: column;
-    height: 85vh;
-    overflow-y: auto;
-    margin-top: 2em;
-  }
-  
-  .btn {
-    color: white;
-  }
-  .routine-card {
-    background-color: #1f2f42;
-    margin-left: 2em;
-    margin-right: 2em;
-    margin-bottom: 4em;
-    border-radius: 7px;
-    color: white;
-    min-height: 350px;
-    height: 350px;
-  }
-  h2,
-  h4 {
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-bottom: 1em;
-  }
-  
-  #btn-edit {
-    background-color: #6ed383;
-    outline: none !important;
-    padding: 1em;
-    font-size: 1em;
-    text-align: center;
-    margin-right: 1em;
-  }
-  
-  hr {
-    margin: 0;
-    margin-bottom: 1em;
-  }
-  
-  .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .exercise-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.4em;
-    width: 55%;
-      
-  }
-  
-  .exlink {
-    padding: 1em;
-    color: #1f2f42;
-    transition: ease-in 0.2s;
-  }
-  
-  .exlink:hover {
-    background-color: rgb(241, 241, 241);
-    color: #ed6459;
-  }
-  
-  .routine-body {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    justify-content: space-between;
-    transform: translate(12%, 0);
-  }
-  
-  .thumbnail{
-    width: 120px;
-      height: 120px;
-      
-  
-    
-      
-  }
-  
-  #addroutine {
-    width: 20%;
-    margin-left: 2em;
-    margin-top: 1em;
-  }
-  .diets {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4em;
-    justify-content: space-between;
-    height: 100vh;
-    overflow-y: scroll;
-    width: 100%;
-     
-  }
-  
-  .diet-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-    min-height: 200px;
-      max-width: 450px;
-    background-color: #1f2f42;
-    color: white;
-    border-radius: 5px;
-    padding: 1em;
-    margin-bottom: 2em;
-      margin-left: 2.5em;
-      margin-right: 3em;
-  }
-  
-  .diet-card-left {
-  
-    display: flex;
-    flex-direction: column;
-    
-  }
-  
-  .thumbnail {
-    margin-top: 1em;
-  }
-  .thumbnail img {
-    width: 120px;
-    height: auto;
-  }
-  
-  .diet-card-right {
-    width: 70%;
-    display: flex;
-    
-    flex-direction: column;
-  }
-  
-  .diet-title {
-    font-size: 1em;
-    font-weight: bold;
-  }
-  .diet-desc {
-    margin-top: 1em;
-      font-size: 0.8em;
-      margin-left: 1em; 
-    font-weight: 300;
-  }
-  
-  .btn-preorder {
-    background-color: #6ed383;
-    padding: 10px 5px 10px 5px;
-    width: 30%;
-    text-align: center;
-    margin-top: 1em;
-    border-radius: 5px;
-    align-self: flex-end;
-  }
-  
-  .btn-preorder:hover {
-    background-color: #96e2a5;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  overflow-y: auto;
+  margin-top: 2em;
+}
 
-  .about{
-      color: white;
-      margin-left: 2em;
-      
-  }
-    
-.name{
-    float: right;
-   
+.btn {
+  color: white;
 }
-#profil{
-    margin-top: 2em;
-    margin-bottom: 2em;
-    width: 150px;
-    height: 150px;
-   
-        float: right;
-     
-    
+.routine-card {
+  background-color: #1f2f42;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 4em;
+  border-radius: 7px;
+  color: white;
+  min-height: 350px;
+  height: 350px;
 }
-.days{
-    margin-left: 24em;
-    
+
+h2,
+h4 {
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-bottom: 1em;
 }
-.row{
-    color: white;
+
+#btn-edit {
+  background-color: #6ed383;
+  outline: none !important;
+  padding: 1em;
+  font-size: 1em;
+  text-align: center;
+  margin-right: 1em;
 }
-.user{
-    font-size: 2em;
-    margin-top: 2.5em
-      
-    
+
+hr {
+  margin: 0;
+  margin-bottom: 1em;
 }
-.profile{
-    margin: 1em;
-    background-color: #0A1522;
-    border-radius: 7px;
-    
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4em;
+  width: 55%;
+}
+
+.exlink {
+  padding: 1em;
+  color: #1f2f42;
+  transition: ease-in 0.2s;
+}
+
+.exlink:hover {
+  background-color: rgb(241, 241, 241);
+  color: #ed6459;
+}
+
+.routine-body {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+  transform: translate(12%, 0);
+}
+
+.thumbnail {
+  width: 120px;
+  height: 120px;
+}
+
+#addroutine {
+  width: 20%;
+  margin-left: 2em;
+  margin-top: 1em;
+}
+.diets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4em;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.diet-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  min-height: 200px;
+  max-width: 450px;
+  background-color: #1f2f42;
+  color: white;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 2em;
+  margin-left: 2.5em;
+  margin-right: 3em;
+}
+
+.diet-card-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail {
+  margin-top: 1em;
+}
+.thumbnail img {
+  width: 120px;
+  height: auto;
+}
+
+.diet-card-right {
+  width: 70%;
+  display: flex;
+
+  flex-direction: column;
+}
+
+.diet-title {
+  font-size: 1em;
+  font-weight: bold;
+}
+.diet-desc {
+  margin-top: 1em;
+  font-size: 0.8em;
+  margin-left: 1em;
+  font-weight: 300;
+}
+
+.btn-preorder {
+  background-color: #6ed383;
+  padding: 10px 5px 10px 5px;
+  width: 30%;
+  text-align: center;
+  margin-top: 1em;
+  border-radius: 5px;
+  align-self: flex-end;
+}
+
+.btn-preorder:hover {
+  background-color: #96e2a5;
+  cursor: pointer;
+}
+
+.about {
+  color: white;
+  margin-left: 2em;
+}
+
+.name {
+  float: right;
+}
+#profil {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 150px;
+  height: 150px;
+
+  float: right;
+}
+.days {
+  margin-left: 24em;
+}
+.row {
+  color: white;
+}
+.user {
+  font-size: 2em;
+  margin-top: 2.5em;
+}
+.profile {
+  margin: 1em;
+  background-color: #0a1522;
+  border-radius: 7px;
 }

@@ -31,9 +31,10 @@
                 </form>
                 </div>
                 {% endif %}
-                <a id="view" class="btn btn-success" href="{% url 'userdashboard-routine-details' routine.id %}">View</a>
                 {% if routine.owner == user %}
-                <a class="btn btn-light">Edit</a>
+                <a id="view" class="btn btn-success" href="{% url 'userdashboard-routine-details' routine.id %}">Edit</a>
+                {% else %}
+                <a id="view" class="btn btn-success" href="{% url 'userdashboard-routine-details' routine.id %}">View</a>
                 {% endif %}
                 {% if request.user in routine.selected_by.all %}
                 <div class="trash">

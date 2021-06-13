@@ -31,9 +31,10 @@
 .left {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 50%;
+  justify-content: space-between;
+  width: 60%;
   align-items: center;
+  padding: 1em;
 }
 
 .right {
@@ -41,7 +42,7 @@
 }
 
 .info {
-  margin-left: 2em;
+  background: none;
 }
 
 .info > h5 {
