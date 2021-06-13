@@ -78,7 +78,8 @@ hr {
   transform: translate(12%, 0);
 }
 
-.thumbnail img {
+.thumbnail > img {
+  border-radius: 10px;
   width: 200px;
   height: auto;
 }

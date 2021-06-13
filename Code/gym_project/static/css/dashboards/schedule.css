@@ -24,6 +24,7 @@
   width: 50%;
 }
 #thumb {
+  border-radius: 10px;
   width: 200px;
   height: auto;
 }

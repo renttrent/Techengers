@@ -1,273 +1,201 @@
-{% extends 'dashboards/user/dashboard.html' %}
-{% load static %}
+{% extends 'dashboards/user/dashboard.html' %} 
+{% load static %} 
 
-{% block styles %}
-<link rel="stylesheet" href="{% static 'css/dashboards/show_trainers.css' %}">
-{% endblock styles %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/dashboards/show_trainers.css' %}" />
+{% endblock styles %} 
 
 {% block title %}
-
 <title>Trainer: {{trainer.username}}</title>
-{% endblock title %}
+{% endblock title %} 
+
 {% block middle %}
 
-
-<div class="col">
-  
-
-  
-    <div class="row profile">
-        <div class="col">
-            <div class="row">
-                <div class="col profile-pic">
-                    <picture><img id="profil" src="{% static 'images/xhoi.jpg' %}" ></picture>
-                </div>
-
-
-                  <div class="col">
-                      <div class="user">Xhois  Shaholli</div>
-                      
-                  </div>
-                 
-              
-                
-
-
-
-
-            </div>
-
-            <div class="about" > About </div>
-            <hr/>
-            <div class="row ">
-                <div class="col about_trainer">
-
-                         <div class="row">
-                             <div class="col">
-                                 <div class="name">Height</div>
-                             </div>
-                             <div class="col">
-                                 <div>180cm</div>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <div class="name">Weight</div>
-                             </div>
-                             <div class="col">
-                                 <div>95 KG</div>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <div class="name">Weight Goal</div>
-                             </div>
-                             <div class="col">
-                                 <div>80 KG</div>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <div class="name">Gender</div>
-                             </div>
-                             <div class="col">
-                                 <div>Male</div>
-                             </div>
-                         </div>
-
-
-                         <div class="row" id="space">
-                                     <div class="col">
-                                         <div class="name">Weekly Frequency</div>
-                                     </div>
-                                     <div class="col">
-                                         <div>6 Times a Week</div>
-                                     </div>
-
-                        </div>
-
-
-
-
-
-                </div>
-
-
-            </div>
-
-
-            <div class="about"> Available Days</div>
-            <hr/>
-            <div class="row">
-                <div class="col">
-                  <div class="row days">
-                    Wednesday - 09:00 am to 04:00 pm
-
-                  </div>
-                  <div class="row days">
-                    Wednesday - 09:00 am to 04:00 pm
-
-                  </div>
-                  <div class="row days">
-                    Wednesday - 09:00 am to 04:00 pm
-
-                  </div>
-                  <div class="row days">
-                    Wednesday - 09:00 am to 04:00 pm
-
-                  </div>
-                  <div class="row days">
-                    Wednesday - 09:00 am to 04:00 pm
-
-                  </div>
-                  <div class="row days">
-                    Wednesday - 09:00 am to 04:00 pm
-
-                  </div>
-                </div>
-            </div>
-
-
-
-            <div class="about" >Xhois's Diets</div>
-            <hr/>
-
-            <div class="row">
-                <div class="col">
-                  <div class="row diet_box">
-                    <div class="diet-card">
-                            <div class="diet-card-left">
-                            <div class="diet-title">Protien diet</div>
-                            <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
-                            </div>
-                            <div class="diet-card-right">
-                                <div class="diet-title">Benefits:</div>
-                                <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-                                <div class="btn-preorder">Pre Order</div>
-                            </div>
-                        </div>
-                  </div>
-
-                </div>
-                <div class="col">
-                  <div class="row diet_box">
-                    <div class="diet-card">
-                            <div class="diet-card-left">
-                            <div class="diet-title">Protien diet</div>
-                            <div class="thumbnail"><img src="{% static 'images/JumpRope.jpg' %}" alt=""></div>
-                            </div>
-                            <div class="diet-card-right">
-                                <div class="diet-title">Benefits:</div>
-                                <div class="diet-desc">Food allergies affect 5% to 10% of people. Peanuts (which are legumes, like beans and peas), and tree nuts, like pecans and almonds, are common triggers. If you have a severe allergy, even something that has touched nuts can cause swelling, vomiting, and diarrhea. It could even inflame your throat and make it hard to breathe or talk. This is a potentially deadly condition called anaphylactic shock. Call 911 if you see these symptoms.</div>
-                                <div class="btn-preorder">Pre Order</div>
-                            </div>
-                        </div>
-                  </div>
-
-
-                </div>
-            </div>
-            <div class="about">Xhois's Routines</div>
-            <hr/>
-            <div class="row">
-                <div class="col">
-                  <div class="routine-card">
-
-                          <div class="header">
-                              <h4>Routine Abs</h4>
-                              <a id="btn-edit" class="btn">Edit</a>
-                          </div>
-                          <hr/>
-
-                          <div class="routine-body">
-                              <div class="routine-thumbnail">
-                                  <div class="thumbnail"><img src="/media/routines/default.jpg" alt=""></div>
-                              </div>
-                              <div class="exercise-grid">
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                              </div>
-                          </div>
-                      </div>
-
-                </div>
-
-                <div class="col">
-
-                  <div class="routine-card">
-
-                          <div class="header">
-                              <h4>Routine Abs</h4>
-                              <a id="btn-edit" class="btn">Edit</a>
-                          </div>
-                          <hr/>
-
-                          <div class="routine-body">
-                              <div class="routine-thumbnail">
-                                  <div class="thumbnail"><img src="/media/routines/default.jpg" alt=""></div>
-                              </div>
-                              <div class="exercise-grid">
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                                  <a href="" class="btn btn-light exlink">Exercise</a>
-                              </div>
-                          </div>
-                      </div>
-
-                </div>
-            </div>
+<div class="container overflow-auto">
+  <div class="row profile">
+    <div class="col">
+      <div class="row">
+        <div class="col profile-pic">
+          <picture
+            ><img id="profil" src="{% static 'images/xhoi.jpg' %}"
+          /></picture>
         </div>
+        <div class="col">
+          <div class="user">Xhois Shaholli</div>
+        </div>
+      </div>
+      <div class="about">About</div>
+      <hr />
+      <div class="row">
+        <div class="col about_trainer">
+          <div class="row">
+            <div class="col">
+              <div class="name">Height</div>
+            </div>
+            <div class="col">
+              <div>180cm</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="name">Weight</div>
+            </div>
+            <div class="col">
+              <div>95 KG</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="name">Weight Goal</div>
+            </div>
+            <div class="col">
+              <div>80 KG</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="name">Gender</div>
+            </div>
+            <div class="col">
+              <div>Male</div>
+            </div>
+          </div>
+
+          <div class="row" id="space">
+            <div class="col">
+              <div class="name">Weekly Frequency</div>
+            </div>
+            <div class="col">
+              <div>6 Times a Week</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about">Available Days</div>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
+          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
+          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
+          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
+          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
+          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
+        </div>
+      </div>
+
+      <div class="about">Xhois's Diets</div>
+      <hr />
+
+      <div class="row">
+        <div class="col">
+          <div class="row diet_box">
+            <div class="diet-card">
+              <div class="diet-card-left">
+                <div class="diet-title">Protien diet</div>
+                <div class="thumbnail">
+                  <img src="{% static 'images/JumpRope.jpg' %}" alt="" />
+                </div>
+              </div>
+              <div class="diet-card-right">
+                <div class="diet-title">Benefits:</div>
+                <div class="diet-desc">
+                  Food allergies affect 5% to 10% of people. Peanuts (which are
+                  legumes, like beans and peas), and tree nuts, like pecans and
+                  almonds, are common triggers. If you have a severe allergy,
+                  even something that has touched nuts can cause swelling,
+                  vomiting, and diarrhea. It could even inflame your throat and
+                  make it hard to breathe or talk. This is a potentially deadly
+                  condition called anaphylactic shock. Call 911 if you see these
+                  symptoms.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row diet_box">
+            <div class="diet-card">
+              <div class="diet-card-left">
+                <div class="diet-title">Protien diet</div>
+                <div class="thumbnail">
+                  <img src="{% static 'images/JumpRope.jpg' %}" alt="" />
+                </div>
+              </div>
+              <div class="diet-card-right">
+                <div class="diet-title">Benefits:</div>
+                <div class="diet-desc">
+                  Food allergies affect 5% to 10% of people. Peanuts (which are
+                  legumes, like beans and peas), and tree nuts, like pecans and
+                  almonds, are common triggers. If you have a severe allergy,
+                  even something that has touched nuts can cause swelling,
+                  vomiting, and diarrhea. It could even inflame your throat and
+                  make it hard to breathe or talk. This is a potentially deadly
+                  condition called anaphylactic shock. Call 911 if you see these
+                  symptoms.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about">Xhois's Routines</div>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <div class="routine-card">
+            <div class="header">
+              <h4>Routine Abs</h4>
+              <a id="btn-edit" class="btn">Edit</a>
+            </div>
+            <hr />
+
+            <div class="routine-body">
+              <div class="routine-thumbnail">
+                <div class="thumbnail">
+                  <img src="/media/routines/default.jpg" alt="" />
+                </div>
+              </div>
+              <div class="exercise-grid">
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="routine-card">
+            <div class="header">
+              <h4>Routine Abs</h4>
+              <a id="btn-edit" class="btn">Edit</a>
+            </div>
+            <hr />
+
+            <div class="routine-body">
+              <div class="routine-thumbnail">
+                <div class="thumbnail">
+                  <img src="/media/routines/default.jpg" alt="" />
+                </div>
+              </div>
+              <div class="exercise-grid">
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+                <a href="" class="btn btn-light exlink">Exercise</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
-
-
-
-
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- <div class="col show-trainer-box">
     <div class="row">
@@ -364,19 +292,6 @@
 <div class="row">
     <div class="col"><button class="btn" id="back" type="button">Back</button></div>
 </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- <div class="exercise-card">
     <div class="exercise-header">

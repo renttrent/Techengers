@@ -33,7 +33,8 @@
 .thumbnail {
   margin-top: 1em;
 }
-.thumbnail img {
+.thumbnail > img {
+  border-radius: 10px;
   width: 250px;
   height: auto;
 }

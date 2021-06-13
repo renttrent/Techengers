@@ -4,7 +4,7 @@ from dashboards.models import *
 from django.contrib.admin.views.decorators import staff_member_required
 from .navigation import *
 from .models import *
-from datetime import datetime
+from django.utils import timezone
 
 
 @login_required(login_url='login')
@@ -37,6 +37,14 @@ def latest_activity(request):
                'allusers': allusers, 'nrusers': len(allusers), 'allexercises': allexercises, 'nrexercises': len(allexercises),
                'allroutines': allroutines, 'nrroutines': len(allroutines), 'alldiets': alldiets, 'nrdiets': len(alldiets),
                'allevents': allevents, 'nrevents': len(allevents)}
+
+    notes = 'No notes posted'
+    if AdminNotes.objects.first():
+        nr = len(AdminNotes.objects.all())
+        notes = AdminNotes.objects.all()[nr-1]
+
+        if notes.date < timezone.now():
+            context['notes'] = notes
 
     return render(request, 'staff/shared/activity.html', context)
 
