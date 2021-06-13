@@ -1,1 +1,91 @@
 {% extends 'staff/base.html' %}
+
+{% block middle %}
+                    
+<div class="table-responsive" id="short">
+    <table class="table" id="tablecss">
+        <thead>
+            <tr id="first-row">
+                <th>ID</th>
+                <th>Title</th>
+                <th>Reps:</th>
+                <th>Video Url</th>
+                <th>Description</th>
+                <th>Edit / Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div>1</div>
+                </td>
+                <td>
+                    <div>Abs</div>
+                </td>
+                <td>
+                    <div>20 x 5</div>
+                </td>
+                <td>
+                    <div><iframe width="200" height="80"
+                        src="https://www.youtube.com/embed/2pLT-olgUJs?autoplay=0&mute=0">
+                        </iframe></div>
+                </td>
+                <td>
+                    <div>Mass Gain</div>
+                </td>
+                <td>
+                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>2</div>
+                </td>
+                <td>
+                    <div>Leg</div>
+                </td>
+                <td>
+                    <div>32 x 10</div>
+                </td>
+                <td>
+                    <div><iframe width="200" height="80"
+                        src="https://www.youtube.com/embed/2pLT-olgUJs?autoplay=0&mute=0">
+                        </iframe></div>
+                   
+                </td>
+                <td>
+                    <div> Mass Gain</div>
+                </td>
+                <td>
+                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>3</div>
+                </td>
+                <td>
+                    <div>Chest</div>
+                </td>
+                <td>
+                    <div>4 x 10</div>
+                </td>
+                <td>
+                    <div><iframe width="200" height="80"
+                        src="https://www.youtube.com/embed/2pLT-olgUJs?autoplay=0&mute=0">
+                        </iframe></div>
+                    
+                </td>
+                <td>
+                    <div>Mass Gain</div>
+                </td>
+                <td>
+                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock middle %}
