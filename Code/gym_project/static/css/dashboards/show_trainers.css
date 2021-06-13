@@ -1,0 +1,56 @@
+.show-trainer-box{
+    border-radius: 7px;
+    margin-top: 2em;
+    margin-left: 10em;
+    margin-right: 10em;
+    background-color: #1F2F42;
+    color: white;
+
+  }
+
+
+
+
+  .row{
+      margin-top: 2em;
+      margin-bottom: 2em;
+      
+  }
+ 
+
+
+  #profil{
+     float: right;
+      width: 150px;
+      height: 150px;
+      margin-top: 0.5em;
+    margin-right: 3em;
+      border-radius: 150px;
+
+  }
+.detail{
+    margin-top: 2em;
+}
+
+.hours, .days{
+    font-size: 1em;
+    font-weight: bold;
+   
+    
+}
+.n, .d, .w{
+    font-size: 1.3em;
+    font-weight: bold;
+   
+   
+}
+.hours_col{
+    margin-left: 10em;
+    
+}
+#back{
+    background-color: #6ED383;
+    font-size: 1em;
+    margin-left: 10em;
+
+}

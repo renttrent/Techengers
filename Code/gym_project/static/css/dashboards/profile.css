@@ -1,0 +1,30 @@
+.profile_user{
+    color: white;
+    background-color: 1F2F42;
+    margin: 7em;
+    margin-left: 12em;
+    margin-right: 12em;
+    border-radius: 7px;
+
+}
+#profil{
+ 
+     width: 150px;
+     height: 150px;
+     margin-top: 2.5em;
+ 
+     border-radius: 150px;
+    margin-left: 15.2em
+
+ }
+ .left_way{
+     margin-bottom: 1em;
+   
+     
+ }
+.name{
+    float: right 
+}
+#space{
+    margin-bottom: 3em;
+}

@@ -10,7 +10,76 @@
 {% endblock title %}
 {% block middle %}
 
-<div>
+
+<div class="row profile_user">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <picture><img id="profil" src="{% static 'images/xhoi.jpg' %}" ></picture>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="name">Name</div>
+            </div>
+            <div class="col">
+                <div>Xhois</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="name">Surname</div>
+            </div>
+            <div class="col">
+                <div>Shaholli</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="name">Height</div>
+            </div>
+            <div class="col">
+                <div>180cm</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="name">Weight</div>
+            </div>
+            <div class="col">
+                <div>95 KG</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="name">Weight Goal</div>
+            </div>
+            <div class="col">
+                <div>80 KG</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="name">Gender</div>
+            </div>
+            <div class="col">
+                <div>Male</div>
+            </div>
+        </div>
+        <div class="row" id="space">
+            <div class="col">
+                <div class="name">Weekly Frequency</div>
+            </div>
+            <div class="col">
+                <div>6 Times a Week</div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- <div>
     <div>
         <div>Name: {{user.first_name}}</div>
         <div>Last Name: {{user.last_name}}</div>
@@ -20,6 +89,6 @@
         <div>Gender: {{user.profile.gender}}</div>
         <div>Weekly frequency: {{user.profile.week_frequency}}</div>
     </div>
-</div>
+</div> -->
 
 {% endblock middle %}

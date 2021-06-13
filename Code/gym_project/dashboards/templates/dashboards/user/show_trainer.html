@@ -2,13 +2,65 @@
 {% load static %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/dashboards/exercises.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboards/show_trainers.css' %}">
 {% endblock styles %}
 
 {% block title %}
 <title>Trainer: {{trainer.username}}</title>
 {% endblock title %}
 {% block middle %}
+
+<div class="col show-trainer-box">
+    <div class="row">
+        <div class="col image">
+            <picture><img id="profil" src="{% static 'images/xhoi.jpg' %}" ></picture>
+        </div>
+        <div class="col detail">
+            <div class="n">Xhois Shaholli</div>
+            <div class="d">21 Years Old</div>
+            
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col hours_col">
+            <div class="w">Working Hours</div>
+           <div class="hours"> 09am - 04pm</div>
+           <div class="hours"> 09am - 04pm</div>
+           <div class="hours"> 09am - 04pm</div>
+           <div class="hours"> 09am - 04pm</div>
+           <div class="hours"> 09am - 04pm</div>
+           <div class="hours"> 09am - 04pm</div>
+        </div>
+        <div class="col days_col">
+            <div class="w">Working Days</div>
+            <div class="days"> Monday</div>
+            <div class="days"> Tuesday</div>
+            <div class="days"> Wednesday</div>
+            <div class="days"> Thursday</div>
+            <div class="days"> Friday</div>
+            <div class="days"> Saturday</div>
+        </div>
+    </div>
+  
+    
+</div>
+<div class="row">
+    <div class="col"><button class="btn" id="back" type="button">Back</button></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="exercise-card">
     <div class="exercise-header">
