@@ -10,7 +10,7 @@
 {% endblock title %}
 {% block middle %}
 
-
+<div class="col mid">
 <div class="row profile_user">
     <div class="col">
         <div class="row">
@@ -78,5 +78,181 @@
         </div>
     </div>
 </div>
+<div class="col edit">
+   
+            <div class="row gutters">
+                <div class="col-col">
+                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Name</label>
+                        <input type="text" class="form-control"  placeholder="Enter Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Surname</label>
+                        <input type="email" class="form-control"  placeholder="Enter Surname">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Gender</label>
+                        <input type="text" class="form-control" placeholder=" M for Male andd F for Female ">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Age</label>
+                        <input type="url" class="form-control"  placeholder="Enter Your Age">
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters">
+                
+                <div class="col">
+                    <div class="form-group">
+                        <label >Weight</label>
+                        <input type="name" class="form-control"  placeholder="Enter your weight in KG">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Height</label>
+                        <input type="name" class="form-control"  placeholder="Enter your height in CM ">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Weight Goal</label>
+                        <input type="text" class="form-control"  placeholder="Enter you weight goal in KG">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Attendance Frequency</label>
+                        <input type="text" class="form-control" placeholder="Times per Week">
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters">
+                <div class="col">
+                    <div class="text-right">
+                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    <div class="about">Xhois's Selected Diets</div>
+    <hr />
+    <div class="row">
+        <div class="col">
+          <div class="row diet_box">
+            <div class="diet-card">
+              <div class="diet-card-left">
+                <div class="diet-title">Protien diet</div>
+                <div class="thumbnail">
+                  <img src="{% static 'images/JumpRope.jpg' %}" alt="" />
+                </div>
+              </div>
+              <div class="diet-card-right">
+                <div class="diet-title">Benefits:</div>
+                <div class="diet-desc">
+                  Food allergies affect 5% to 10% of people. Peanuts (which are
+                  legumes, like beans and peas), and tree nuts, like pecans and
+                  almonds, are common triggers. If you have a severe allergy,
+                  even something that has touched nuts can cause swelling,
+                  vomiting, and diarrhea. It could even inflame your throat and
+                  make it hard to breathe or talk. This is a potentially deadly
+                  condition called anaphylactic shock. Call 911 if you see these
+                  symptoms.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row diet_box">
+            <div class="diet-card">
+              <div class="diet-card-left">
+                <div class="diet-title">Protien diet</div>
+                <div class="thumbnail">
+                  <img src="{% static 'images/JumpRope.jpg' %}" alt="" />
+                </div>
+              </div>
+              <div class="diet-card-right">
+                <div class="diet-title">Benefits:</div>
+                <div class="diet-desc">
+                  Food allergies affect 5% to 10% of people. Peanuts (which are
+                  legumes, like beans and peas), and tree nuts, like pecans and
+                  almonds, are common triggers. If you have a severe allergy,
+                  even something that has touched nuts can cause swelling,
+                  vomiting, and diarrhea. It could even inflame your throat and
+                  make it hard to breathe or talk. This is a potentially deadly
+                  condition called anaphylactic shock. Call 911 if you see these
+                  symptoms.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about">Xhois's Selected Routines</div>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <div class="routine-card">
+            <div class="header">
+              <h4>Routine Abs</h4>
+              <a id="btn-edit" class="btn">Edit</a>
+            </div>
+            <hr />
+
+            <div class="routine-body">
+              <div class="routine-thumbnail">
+                <div class="thumbnail">
+                  <img src="/media/routines/default.jpg" alt="" />
+                </div>
+              </div>
+              <div class="exercise-grid">
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="routine-card">
+            <div class="header">
+              <h4>Routine Abs</h4>
+              <a id="btn-edit" class="btn">Edit</a>
+            </div>
+            <hr />
+
+            <div class="routine-body">
+              <div class="routine-thumbnail">
+                <div class="thumbnail">
+                  <img src="/media/routines/default.jpg" alt="" />
+                </div>
+              </div>
+              <div class="exercise-grid">
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+                <a href="" class="btn exlink">Exercise</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 {% endblock middle %}

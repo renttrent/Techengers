@@ -185,6 +185,17 @@ hr {
 }
 .profile {
   margin: 1em;
-  background-color: #0a1522;
+
   border-radius: 7px;
+}
+.mid{
+  overflow-y: scroll;
+  height: 100%;
+  position: absolute;
+
+  width: 55.5%;
+ 
+}
+::-webkit-scrollbar{
+  width: 5px;
 }
