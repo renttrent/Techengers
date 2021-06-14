@@ -1,10 +1,33 @@
-.routines-table {
-  transform: translate(10%, 0);
+.main {
+  margin: auto;
   width: 80%;
+  background-color: #313e4c;
+  height: 100vh;
 }
+
+.main-table {
+  padding: 1em 1em 3em 1em;
+  transform: translate(3%, 0);
+  width: 95%;
+  border: 5px solid #465464;
+  border-radius: 5px;
+  max-height: 90%;
+}
+
 .table {
   align-self: center;
   margin: auto;
+}
+
+.header {
+  padding: 2em;
+  margin: auto;
+  width: 80%;
+  color: white;
+}
+
+.header > h1 {
+  font-weight: 800;
 }
 
 th {

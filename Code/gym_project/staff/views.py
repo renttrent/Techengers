@@ -1,10 +1,10 @@
+from staff.notes import getNotes
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from dashboards.models import *
 from django.contrib.admin.views.decorators import staff_member_required
 from .navigation import *
 from .models import *
-from django.utils import timezone
 
 
 @login_required(login_url='login')
@@ -36,16 +36,7 @@ def latest_activity(request):
     context = {'options': navigation,
                'allusers': allusers, 'nrusers': len(allusers), 'allexercises': allexercises, 'nrexercises': len(allexercises),
                'allroutines': allroutines, 'nrroutines': len(allroutines), 'alldiets': alldiets, 'nrdiets': len(alldiets),
-               'allevents': allevents, 'nrevents': len(allevents)}
-
-    notes = 'No notes posted'
-    if AdminNotes.objects.first():
-        nr = len(AdminNotes.objects.all())
-        notes = AdminNotes.objects.all()[nr-1]
-
-        if notes.date < timezone.now():
-            # TODO
-            context['notes'] = notes
+               'allevents': allevents, 'nrevents': len(allevents), 'notes': getNotes()}
 
     return render(request, 'staff/shared/activity.html', context)
 
@@ -65,6 +56,7 @@ def workspace(request):
             navigation = ECONOMIST_WORK_NAV
 
     context = {'options': navigation}
+    context['notes'] = getNotes()
     return render(request, 'staff/shared/workspace.html', context)
 
 
@@ -82,6 +74,7 @@ def manage_exercises(request):
 
     exercises = Exercise.objects.all()
     context = {'options': navigation, 'exercises': exercises}
+    context['notes'] = getNotes()
     return render(request, f'staff/trainer/exercises.html', context)
 
 
@@ -101,7 +94,7 @@ def add_exercise(request):
     routines = Routine.objects.all()
     context = {'options': navigation,
                'exercises': exercises, 'routines': routines}
-
+    context['notes'] = getNotes()
     if request.POST:
         title = request.POST['title']
         reps = request.POST['reps']
@@ -140,6 +133,7 @@ def manage_routines(request):
 
     routines = Routine.objects.all()
     context = {'options': navigation, 'routines': routines}
+    context['notes'] = getNotes()
     return render(request, f'staff/trainer/routines.html', context)
 
 
@@ -159,7 +153,7 @@ def add_routine(request):
     context = {'options': navigation, 'routines': routines}
     context['days'] = ['Monday', 'Tuesday', 'Wednesday',
                        'Thursday', 'Friday', 'Saturday', 'Sunday']
-
+    context['notes'] = getNotes()
     if request.POST:
         title = request.POST['title']
         desc = request.POST['desc']
@@ -201,6 +195,7 @@ def manage_staff(request):
 
     allusers = User.objects.all()
     context = {'options': navigation, 'allusers': allusers}
+    context['notes'] = getNotes()
     return render(request, f'staff/economist/manage_staff.html', context)
 
 
@@ -219,7 +214,7 @@ def add_staff(request):
 
     allusers = User.objects.all()
     context = {'options': navigation, 'allusers': allusers}
-
+    context['notes'] = getNotes()
     # if request.POST:
     #     title = request.POST['title']
     #     desc = request.POST['desc']
@@ -261,6 +256,8 @@ def view_inventory(request):
 
     inventory = InventoryItem.objects.all()
     context = {'options': navigation, 'inventory': inventory}
+    context['notes'] = getNotes()
+
     return render(request, f'staff/economist/view_inventory.html', context)
 
 
@@ -279,6 +276,7 @@ def manage_inventory(request):
 
     inventory = InventoryItem.objects.all()
     context = {'options': navigation, 'inventory': inventory}
+    context['notes'] = getNotes()
 
     return render(request, f'staff/manager/manage_inventory.html', context)
 
@@ -298,6 +296,7 @@ def add_inventory(request):
 
     inventory = InventoryItem.objects.all()
     context = {'options': navigation, 'inventory': inventory}
+    context['notes'] = getNotes()
 
     if request.POST:
         name = request.POST['name']
@@ -336,6 +335,7 @@ def manage_events(request):
 
     events = Event.objects.all()
     context = {'options': navigation, 'events': events}
+    context['notes'] = getNotes()
 
     return render(request, f'staff/manager/manage_events.html', context)
 
@@ -355,6 +355,7 @@ def add_event(request):
 
     events = Event.objects.all()
     context = {'options': navigation, 'events': events}
+    context['notes'] = getNotes()
 
     if request.POST:
         title = request.POST['title']
@@ -397,6 +398,8 @@ def manage_diets(request):
 
     diets = DietPlan.objects.all()
     context = {'options': navigation, 'diets': diets}
+    context['notes'] = getNotes()
+
     return render(request, f'staff/manager/manage_diets.html', context)
 
 
@@ -415,6 +418,7 @@ def add_diet(request):
 
     diets = DietPlan.objects.all()
     context = {'options': navigation, 'diets': diets}
+    context['notes'] = getNotes()
 
     if request.POST:
         title = request.POST['title']

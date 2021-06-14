@@ -6,65 +6,73 @@
 {% endblock styles %}
 
 {% block middle %}
-<div class="routines-table row justify-content-center" id="short">
-    <div class="col-auto overflow-auto">
-        <table class="table table-responsive" id="tablecss" cellspacing="0" cellpadding="0" border="0" width="325">
-            <thead>
-                <tr id="first-row">
-                    <th>ID</th>
-                    <th>Owner</th>
-                    <th>Selected by: </th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Exercises</th>
-                    <th>Days</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for routine in routines %}
-                <tr>
-                    <td>{{routine.id}}</td>
-                    <td>{{routine.owner}}</td>
-                    <td>
-                    <table class="table table-responsive table-hover">
-                        <tbody> 
-                        {% for u in routine.selected_by.all%}
-                            <tr>
-                            <td>{{u.username}}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    </td>
-                    <td>{{routine.title}}</td>
-                    <td>{{routine.desc}}</td>
-                    <td>
-                    <table class="table table-responsive table-hover">
-                        <tbody> 
-                        {% for e in routine.exercises.all%}
-                            <tr>
-                            <td><a href=""> {{e.title}}</a></td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    
-                    </td>
-                    <td>{{routine.days}}</td>
-                    <td>
-                        <a class="btn btn-primary">Edit</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+
+<div class="main">
+    <div class="header">
+        <h1>Manage Routines</h1>
+        <hr>
+        <p>You can view, edit or remove them.</p>
+        
+    </div>
+    <div class="main-table row justify-content-center" id="short">
+        <div class="col-auto overflow-auto">
+            <table class="table table-responsive" id="tablecss" cellspacing="0" cellpadding="0" border="0" width="325">
+                <thead>
+                    <tr id="first-row">
+                        <th>ID</th>
+                        <th>Owner</th>
+                        <th>Selected by: </th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Exercises</th>
+                        <th>Days</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for routine in routines %}
+                    <tr>
+                        <td>{{routine.id}}</td>
+                        <td>{{routine.owner}}</td>
+                        <td>
+                        <table class="table table-responsive table-hover">
+                            <tbody> 
+                            {% for u in routine.selected_by.all%}
+                                <tr>
+                                <td>{{u.username}}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        </td>
+                        <td>{{routine.title}}</td>
+                        <td>{{routine.desc}}</td>
+                        <td>
+                        <table class="table table-responsive table-hover">
+                            <tbody> 
+                            {% for e in routine.exercises.all%}
+                                <tr>
+                                <td><a href=""> {{e.title}}</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        
+                        </td>
+                        <td>{{routine.days}}</td>
+                        <td>
+                            <a class="btn btn-primary">Edit</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 
 {% endblock middle %}
