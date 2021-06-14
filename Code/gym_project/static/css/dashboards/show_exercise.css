@@ -7,6 +7,7 @@
   border-radius: 10px;
   transform: translate(10%, 5%);
   color: white;
+  padding: 2em;
 }
 
 .header {
@@ -26,7 +27,7 @@
 .actions {
   display: inline-flex;
   justify-content: space-between;
-  width: 20%;
+  width: 22%;
 }
 
 .exercise-body {
@@ -81,11 +82,3 @@
   font-weight: bold;
   align-self: center;
 }
-
-/* #edit {
-  background-color: darkgreen;
-}
-
-#remove {
-  background-color: crimson;
-} */

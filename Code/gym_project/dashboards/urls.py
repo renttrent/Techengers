@@ -16,6 +16,7 @@ urlpatterns = [
     path('exercise/<int:eid>', user_views.exercise_details,
          name='userdashboard-exercise-details'),
     path('exercise/create', user_views.create_exercise, name='create-exercise'),
+    path('exercise/<int:eid>/edit', user_views.edit_exercise, name='edit-exercise'),
 
     path('routines/', user_views.routines,
          name='userdashboard-routines'),

@@ -34,6 +34,19 @@
   width: 20vw;
 }
 
+.ex-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: stretch;
+}
+
+.ex-header > span {
+  margin-left: 0.7em;
+  font-size: 0.7em;
+  color: #6ed383;
+}
+
 .exercise-desc-title {
   font-size: 1.2em;
   font-weight: 600;

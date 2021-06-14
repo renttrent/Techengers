@@ -2,12 +2,57 @@
 
 {% block styles %}
 <style>
+    .create-exercise {
+        width: 80%;
+        margin-top: 10%;
+    }
+
+    input[type=submit] {
+        background-color: #6ED383;
+        border-radius: 4px;
+    }
+
+    .back{
+        width: 10%;
+        transform: translate(100%, 150%);
+    }
 
 </style>
 {% endblock styles %}
 
 {% block middle %}
 
+<div class="back">
+<a class="container btn btn-primary rounded-1" href="{% url 'userdashboard-exercises' %}">Back</a>
+</div>
 
+<div class="create-exercise card container"> 
+    <div class="create-exercise-body form card-body container">
+        <form method="POST" action="{% url "edit-exercise" exercise.id %}" class="create-exercise-form">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+                {% endif %}
+               
+                <div class="form-group mt-3">
+                    <label for="title">Exercise Title</label>
+                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: " value="{{exercise.title}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="reps">Number of Repetitions</label>
+                    <input type="number" class="form-control {{repsValid}}" id="reps" name="reps" placeholder="Reps: " value="{{exercise.reps}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="desc">Description</label>
+                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: " value="{{exercise.desc}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="link">Video URL</label>
+                    <input type="text" class="form-control {{linkValid}}" id="link" name="link" placeholder="Add video link: " value="{{exercise.link}}">
+                </div>    
 
+                <input class="btn btn-success p-2 mt-2" type="submit" value="Edit"/>      
+        </form>
+    </div>
+</div> 
 {% endblock middle %}

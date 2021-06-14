@@ -68,6 +68,11 @@ def exercise_details(request, eid):
 
         context = {'options': EXERCISES_NAV,
                    'events': events, 'exercise': e, 'embeded': embeded}
+
+        if request.POST:
+            e.delete()
+            return redirect('userdashboard-exercises')
+
         return render(request, 'dashboards/user/show_exercise.html', context)
 
 
@@ -199,6 +204,38 @@ def create_exercise(request):
             return render(request, 'dashboards/user/events/create_exercise.html', context)
 
     return render(request, 'dashboards/user/events/create_exercise.html', context)
+
+
+@login_required(login_url='login')
+def edit_exercise(request, eid):
+    events = Event.objects.all()[:4]
+
+    exercise = Exercise.objects.get(id=eid)
+    context = {'options': EXERCISES_NAV,
+               'events': events, 'exercise': exercise}
+
+    if request.POST:
+        title = request.POST['title']
+        reps = request.POST['reps']
+        desc = request.POST['desc']
+        link = request.POST['link']
+
+        if title and reps and desc and link:
+            exercise.title = title
+            exercise.reps = reps
+            exercise.desc = desc
+            exercise.link = link
+            exercise.save()
+            return redirect('userdashboard-exercise-details', eid=eid)
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['titleValid'] = 'is-valid' if title else 'is-invalid'
+            context['repsValid'] = 'is-valid' if reps else 'is-invalid'
+            context['descValid'] = 'is-valid' if desc else 'is-invalid'
+            context['linkValid'] = 'is-valid' if link else 'is-invalid'
+            return render(request, 'dashboards/user/edit_exercise.html', context)
+
+    return render(request, 'dashboards/user/events/edit_exercise.html', context)
 
 
 @login_required(login_url='login')

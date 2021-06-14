@@ -14,8 +14,13 @@
     <div class="header">
         <div class="title">Exercise: {{exercise.title}}</div>
         <div class="actions">
-            <a id="edit" href="" class="btn btn-primary">Edit</a>
-            <a id="remove" href="" class="btn btn-danger">Remove</a>
+            {% if exercise.owner == user %}
+            <a id="edit" href="{% url 'edit-exercise' exercise.id %}" class="btn btn-primary">Edit</a>
+            <form action="{% url 'userdashboard-exercise-details' exercise.id %}" method="POST">
+                {% csrf_token %}
+                <button id="remove" href="" class="btn btn-danger">Remove</button>
+            </form>
+            {% endif %}
         </div>
     </div>
     <div class="divider-ex"></div>
