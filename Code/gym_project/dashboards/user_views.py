@@ -26,14 +26,14 @@ def schedule(request):
     WEEK_DAYS = WEEK_DAYS[week_num:] + WEEK_DAYS[:week_num]
     DISPLAY_WEEK_DAYS = ['Today'] + WEEK_DAYS[1:]
 
-    routines = Routine.objects.filter(
-        selected_by__username=request.user.username)
+    routines = list(Routine.objects.filter(
+        selected_by__username=request.user.username))
 
     context = {'options': SCHEDULE_NAV,
-               'events': events, 'schedule': DISPLAY_WEEK_DAYS, 'routines': routines}
+               'events': events, 'routines': routines}
 
     day_dict = None
-
+    compare = Routine()
     if routines:
         day_dict = {}
         for day in WEEK_DAYS:
@@ -41,9 +41,9 @@ def schedule(request):
             for r in routines:
                 if day in r.days:
                     daily_routines.append(r)
-            day_dict[day] = r
+            day_dict[day] = daily_routines
 
-    context['day_dict'] = day_dict
+    context['day_dict'] = zip(day_dict.items(), DISPLAY_WEEK_DAYS)
     return render(request, 'dashboards/user/schedule.html', context)
 
 
