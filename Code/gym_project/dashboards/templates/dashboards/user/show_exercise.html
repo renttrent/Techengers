@@ -23,13 +23,9 @@
         <div class="reps">{{exercise.reps}} - Number of Repetitions</div>
          <div class="divider2-ex"></div>
         <div class="desc">{{exercise.desc}}</div>
-        <div class="vid-title">6 PACK ABS For Beginners You Can Do Anywhere</div>
+        <div class="vid-title">Exercise Video:</div>
         <div class="video-box">
-
-            <object style="height: 320px; width: 500px"><param name="movie" value="{{exercise.link}}">
-            <param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always">
-            <embed src="{{exercise.link}}" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="500" height="320"></object>
-
+            <iframe width="500" height="320" src="{{embeded}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
     <a id="back" class="btn btn-primary" href="{% url 'userdashboard-exercises' %}">Back</a>

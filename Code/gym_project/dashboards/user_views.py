@@ -61,8 +61,13 @@ def exercise_details(request, eid):
     events = Event.objects.all()[:4]
     e = get_object_or_404(Exercise, id=eid)
     if e:
+        if "watch?v=" in e.link:
+            embeded = e.link.replace("watch?v=", "embed/")
+        else:
+            embeded = 'https://www.youtube.com/embed/' + e.link[17:]
+
         context = {'options': EXERCISES_NAV,
-                   'events': events, 'exercise': e}
+                   'events': events, 'exercise': e, 'embeded': embeded}
         return render(request, 'dashboards/user/show_exercise.html', context)
 
 
