@@ -42,8 +42,8 @@ def schedule(request):
                 if day in r.days:
                     daily_routines.append(r)
             day_dict[day] = daily_routines
-
-    context['day_dict'] = zip(day_dict.items(), DISPLAY_WEEK_DAYS)
+    if day_dict:
+        context['day_dict'] = zip(day_dict.items(), DISPLAY_WEEK_DAYS)
     return render(request, 'dashboards/user/schedule.html', context)
 
 
