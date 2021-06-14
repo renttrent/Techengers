@@ -18,129 +18,116 @@
                 <picture><img id="profil" src="{{user.profile.profile_photo.url}}" ></picture>
             </div>
         </div>
-        <hr/>
-        <div class="row">
-            <div class="col">
-                <div class="name">Name</div>
-            </div>
-            <div class="col">
-                <div>{{user.first_name}}</div>
-            </div>
+        <div class="Personal-Info" >
+          Xhois Shaholli
         </div>
+        <hr class="pi"/>
         <div class="row">
-            <div class="col">
-                <div class="name">Surname</div>
-            </div>
-            <div class="col">
-                <div>{{user.last_name}}</div>
-            </div>
+          <button type="button" id="edit-profile" name="submit" class="btn">Edit Profile</button>
+
         </div>
         <div class="row">
-            <div class="col">
-                <div class="name">Height</div>
-            </div>
-            <div class="col">
-                <div>{{user.profile.height}}</div>
-            </div>
+
+          <button type="button" id="change-password" name="submit" class="btn">Change Password</button>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="name">Weight</div>
-            </div>
-            <div class="col">
-                <div>{{user.profile.weight}} KG</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="name">Weight Goal</div>
-            </div>
-            <div class="col">
-                <div>{{user.profile.weight_goal}} KG</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="name">Gender</div>
-            </div>
-            <div class="col">
-                <div>{{user.profile.gender|slice:"7:13"}}</div>
-            </div>
-        </div>
-        <div class="row" id="space">
-            <div class="col">
-                <div class="name">Weekly <Frequenc></Frequenc>y</div>
-            </div>
-            <div class="col">
-                <div>{{user.profile.week_frequency|slice:"8:22"}}</div>
-            </div>
-            
-        </div>
+
     </div>
 </div>
 <div class="col edit">
-   
+
             <div class="row gutters">
                 <div class="col-col">
-                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                    <h6 class="pd">Personal Details</h6>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label >Name</label>
-                        <input type="text" class="form-control"  placeholder="Enter Name">
+                        <hr/>
+                        <div class="Personal-Details" >
+                          Xhois 
+                        </div>
+                        <!-- <input type="text" class="form-control"  placeholder="Enter Name"> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label >Surname</label>
-                        <input type="email" class="form-control"  placeholder="Enter Surname">
+                        <hr/>
+                        <div class="Personal-Details" >
+                        Shaholli
+                        </div>
+                        <!-- <input type="email" class="form-control"  placeholder="Enter Surname"> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label >Gender</label>
-                        <input type="text" class="form-control" placeholder=" M for Male andd F for Female ">
+                        <hr/>
+                        <div class="Personal-Details" >
+                          Male
+                        </div>
+                        <!-- <input type="text" class="form-control" placeholder=" M for Male andd F for Female "> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label >Age</label>
-                        <input type="url" class="form-control"  placeholder="Enter Your Age">
+                        <hr/>
+                        <div class="Personal-Details" >
+                          21 Years Old
+                        </div>
+                        <!-- <input type="url" class="form-control"  placeholder="Enter Your Age"> -->
                     </div>
                 </div>
             </div>
             <div class="row gutters">
-                
+
                 <div class="col">
                     <div class="form-group">
                         <label >Weight</label>
-                        <input type="name" class="form-control"  placeholder="Enter your weight in KG">
+                        <hr/>
+                        <div class="Personal-Details" >
+                          95 KG
+                        </div>
+                        <!-- <input type="name" class="form-control"  placeholder="Enter your weight in KG"> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label >Height</label>
-                        <input type="name" class="form-control"  placeholder="Enter your height in CM ">
+                        <hr/>
+                        <div class="Personal-Details" >
+                         180 CM
+                        </div>
+                        <!-- <input type="name" class="form-control"  placeholder="Enter your height in CM "> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label >Weight Goal</label>
-                        <input type="text" class="form-control"  placeholder="Enter you weight goal in KG">
+                        <hr/>
+                        <div class="Personal-Details" >
+                         80 KG
+                        </div>
+                        <!-- <input type="text" class="form-control"  placeholder="Enter you weight goal in KG"> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label >Attendance Frequency</label>
-                        <input type="text" class="form-control" placeholder="Times per Week">
+                        <label  >Attendance Frequency</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                         4 Times a Week
+                        </div>
+                        <!-- <input type="text" class="form-control" placeholder="Times per Week"> -->
                     </div>
                 </div>
             </div>
             <div class="row gutters">
                 <div class="col">
                     <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                        <!-- <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button> -->
                     </div>
                 </div>
             </div>
@@ -209,7 +196,7 @@
               <h4>Routine Abs</h4>
               <a id="btn-edit" class="btn">Edit</a>
             </div>
-            <hr />
+            
 
             <div class="routine-body">
               <div class="routine-thumbnail">
@@ -234,7 +221,7 @@
               <h4>Routine Abs</h4>
               <a id="btn-edit" class="btn">Edit</a>
             </div>
-            <hr />
+           
 
             <div class="routine-body">
               <div class="routine-thumbnail">

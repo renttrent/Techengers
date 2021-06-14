@@ -2,8 +2,10 @@
     color: white;
     background-color: 1F2F42;
     margin: 2em;
+   height: 25em;
+   width: 20em;
     margin-bottom: 2em;
-   
+   margin-left: 23em;
     border-radius: 7px;
 
 }
@@ -12,9 +14,9 @@
      width: 150px;
      height: 150px;
      margin-top: 2.5em;
- margin-bottom: 2em;
+ margin-bottom: 1em;
      border-radius: 150px;
-    margin-left: 25em
+    margin-left: 4.8em;
     
 
  }
@@ -60,8 +62,17 @@
 hr {
     background-color: white;
     margin: 0;
-    width: 99%;
+    width: 30%;
     margin-bottom: 1em;
+  }
+  .pi{
+    
+      background-color: white;
+     
+      width: 99%;
+      margin-bottom: 1em;
+      
+    
   }
   
   .header {
@@ -252,3 +263,35 @@ hr {
   ::-webkit-scrollbar{
     width: 5px;
   }
+  .Personal-Details{
+    font-weight: bold;
+
+
+  }
+.pd{
+  color: #ed6459;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.personal-info{
+  margin-left: 5.7em;
+  margin-top: 2em;
+  font-weight: bold;
+}
+
+#change-password{
+  width: 90%;
+  background-color: #ed6459;
+  margin-left: 1em;
+  
+  margin-bottom: 1em;
+
+}
+#edit-profile{
+  width: 90%;
+  background-color: #ed6459;
+ margin-left: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+}
