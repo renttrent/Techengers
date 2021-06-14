@@ -1,85 +1,69 @@
 {% extends 'staff/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/staff_dashboards/trainer/routines.css' %}">
+{% endblock styles %}
 
 {% block middle %}
+<div class="routines-table row justify-content-center" id="short">
+    <div class="col-auto overflow-auto">
+        <table class="table table-responsive" id="tablecss" cellspacing="0" cellpadding="0" border="0" width="325">
+            <thead>
+                <tr id="first-row">
+                    <th>ID</th>
+                    <th>Owner</th>
+                    <th>Selected by: </th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Exercises</th>
+                    <th>Days</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for routine in routines %}
+                <tr>
+                    <td>{{routine.id}}</td>
+                    <td>{{routine.owner}}</td>
+                    <td>
+                    <table class="table table-responsive table-hover">
+                        <tbody> 
+                        {% for u in routine.selected_by.all%}
+                            <tr>
+                            <td>{{u.username}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </td>
+                    <td>{{routine.title}}</td>
+                    <td>{{routine.desc}}</td>
+                    <td>
+                    <table class="table table-responsive table-hover">
+                        <tbody> 
+                        {% for e in routine.exercises.all%}
+                            <tr>
+                            <td><a href=""> {{e.title}}</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                     
-<div class="table-responsive" id="short">
-    <table class="table" id="tablecss">
-        <thead>
-            <tr id="first-row">
-                <th>ID</th>
-                <th>Title</th>
-                <th>Selected from: </th>
-                <th>Days</th>
-                <th>Description</th>
-                <th>Edit / Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div>1</div>
-                </td>
-                <td>
-                    <div>Abs</div>
-                </td>
-                <td>
-                    <div>Xhois</div>
-                </td>
-                <td>
-                    <div>Monday</div>
-                </td>
-                <td>
-                    <div>Mass Gain</div>
-                </td>
-                <td>
-                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>2</div>
-                </td>
-                <td>
-                    <div>Leg</div>
-                </td>
-                <td>
-                    <div>Xhois</div>
-                </td>
-                <td>
-                    <div>Monday</div>
-                    <div>Tuesday</div>
-                </td>
-                <td>
-                    <div> Mass Gain</div>
-                </td>
-                <td>
-                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>3</div>
-                </td>
-                <td>
-                    <div>Chest</div>
-                </td>
-                <td>
-                    <div>Xhois</div>
-                </td>
-                <td>
-                    <div>Monday</div>
-                    <div>Tuesday</div>
-                    <div>Friday</div>
-                </td>
-                <td>
-                    <div>Mass Gain</div>
-                </td>
-                <td>
-                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    </td>
+                    <td>{{routine.days}}</td>
+                    <td>
+                        <a class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

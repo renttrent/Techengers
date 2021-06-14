@@ -1,0 +1,35 @@
+.routines-table {
+  transform: translate(10%, 0);
+  width: 80%;
+}
+.table {
+  align-self: center;
+  margin: auto;
+}
+
+th {
+  background-color: #5c8fcc !important;
+}
+
+td {
+  color: white !important;
+}
+
+td:hover {
+  color: rgb(246, 123, 114) !important;
+  cursor: pointer;
+}
+
+td > a {
+  text-decoration: none;
+  color: white !important;
+}
+
+td:hover > a {
+  color: rgb(246, 123, 114) !important;
+  cursor: pointer;
+}
+.routines-table {
+  display: flex;
+  flex-direction: column;
+}

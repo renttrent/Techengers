@@ -1,0 +1,40 @@
+{% extends 'dashboards/user/dashboard.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/dashboards/show_exercise.css' %}">
+{% endblock styles %}
+
+{% block title %}
+<title>Exercise: {{exercise.title}}</title>
+{% endblock title %}
+{% block middle %}
+
+<div class="show-exercise">
+    <div class="header">
+        <div class="title">Exercise: {{exercise.title}}</div>
+        <div class="actions">
+            {% if exercise.owner == user %}
+            <a id="edit" href="{% url 'edit-exercise' exercise.id %}" class="btn btn-primary">Edit</a>
+            <form action="{% url 'userdashboard-exercise-details' exercise.id %}" method="POST">
+                {% csrf_token %}
+                <button id="remove" href="" class="btn btn-danger">Remove</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="divider-ex"></div>
+    <div class="exercise-body">
+        <div class="reps">{{exercise.reps}} - Number of Repetitions</div>
+         <div class="divider2-ex"></div>
+        <div class="desc">{{exercise.desc}}</div>
+        <div class="vid-title">Exercise Video:</div>
+        <div class="video-box">
+            <iframe width="500" height="320" src="{{embeded}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <a id="back" class="btn btn-primary" href="{% url 'userdashboard-exercises' %}">Back</a>
+    
+</div>
+
+{% endblock middle %}
