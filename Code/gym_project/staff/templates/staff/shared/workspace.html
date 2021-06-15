@@ -31,14 +31,26 @@
             <div class="row">
                 <div class="col">
                     <div class="your-profile"> Your Profile </div>
+
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="followers">Diet Followers</div>
+                    <div class="followers">Diet Followers
+                        <hr id="tot"/>
+                        <div>342</div>
+                        <div>Followers</div>
+                    </div>
+                    
+                  
                 </div>
                 <div class="col">
-                    <div id="right-followers" class="followers">Routines Followers</div>
+                    <div id="right-followers" class="followers">Routines Followers
+                        <hr id="tot"/>
+                        <div>389</div>
+                        <div>Followers</div>
+                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -58,7 +70,7 @@
                     <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Friday</label></div>
                     <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Saturnday</label></div>
                 </div>
-                <button type="button" id="submit-btn" name="submit" class="btn">Submit Working Days</button>
+                <button type="button" id="submit-wd" name="submit" class="btn">Submit Working Days</button>
             </div>
         </div>
 
@@ -72,7 +84,7 @@
                    
         </div>
     </div>
-    <button type="button" id="submit-btn" name="submit" class="btn">Submit Working Hours</button>
+    <button type="button" id="submit-wh" name="submit" class="btn">Submit Working Hours</button>
     </div>
        
     </div>
@@ -107,32 +119,32 @@
               </div>
             <script>
                var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-labels: ["January", "February", "March", "April", "May", "Now"],
-datasets: [{
-label: 'Earnings',
-data: [500, 750, 780, 720, 730, 400],
-backgroundColor: [
-'rgba(255, 99, 132, 0.2)'
-],
-borderColor: [
-'rgba(255,99,132,1)'
-],
-borderWidth: 1
-}]
-},
-options: {
-scales: {
-yAxes: [{
-ticks: {
-beginAtZero: true
-}
-}]
-}
-}
-});
+                var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: ["January", "February", "March", "April", "May", "Now"],
+                datasets: [{
+                label: 'Earnings',
+                data: [500, 750, 780, 720, 730, 400],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                'rgba(255,99,132,1)'
+                ],
+                borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                yAxes: [{
+                ticks: {
+                beginAtZero: true
+                }
+                }]
+                }
+                }
+                });
                 </script>
         </div>
     </div>
