@@ -1,0 +1,131 @@
+.profile_user{
+    color: white;
+    background-color: #1F2F42;
+    margin: 2em;
+   height: 27em;
+   width: 20em;
+    margin-bottom: 2em;
+  float: right;
+
+    border-radius: 7px;
+
+}
+#profil{
+ 
+     width: 150px;
+     height: 150px;
+     margin-top: 2.5em;
+ margin-bottom: 1em;
+     border-radius: 150px;
+    margin-left: 4.8em;
+    
+
+ }
+
+hr {
+    background-color: white;
+    margin: 0;
+    width: 30%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+  .pi{
+    
+      background-color: white;
+     
+      width: 99%;
+      margin-bottom: 1em;
+      
+    
+  }
+  
+
+
+  .btn {
+    color: white;
+  }
+
+
+.personal-info{
+  margin-left: 5.7em;
+  margin-top: 2em;
+  font-weight: bold;
+}
+
+#change-password{
+  width: 90%;
+  background-color: #ed6459;
+  margin-left: 1em;
+  
+  margin-bottom: 1em;
+
+}
+#edit-profile{
+  width: 90%;
+  background-color: #ed6459;
+ margin-left: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+}
+
+.your-profile{
+  margin: 1em;
+  background-color: #1F2F42;
+  width: 200px;
+  height: 50px;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 30px;
+  margin-left: 6em;
+
+
+}
+.col{
+    color: white;
+    
+   
+}
+.followers{
+    margin: 1em;
+    background-color: #1F2F42;
+    width: 250px;
+    height: 250px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 22px;
+  
+}
+
+.working{
+    background-color: #1F2F42 ;
+    margin: 2em;
+}
+.totals{
+    background-color: #1F2F42  ;
+    width: 200px;
+    height: 200px;
+    margin: 2em;
+    text-align: center;
+    border-radius: 7px;
+}
+.working-details{
+    font-size: 18px;
+    margin-top: 1em;
+    text-align: center;
+
+}
+.total-days, .total-hours{
+    font-size: 22px;
+}
+#tot{
+    width: 99%;
+}
+.days-part{
+    background-color:#1F2F42 ;
+    margin: 2em;
+    
+}
+#hours-on-the-left{
+    margin-left: 19em;
+}

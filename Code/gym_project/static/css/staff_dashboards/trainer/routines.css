@@ -1,12 +1,12 @@
 .main {
   margin: auto;
-  width: 80%;
+  width: 95%;
   background-color: #313e4c;
   height: 100vh;
 }
 
 .main-table {
-  padding: 1em 1em 3em 1em;
+ 
   transform: translate(3%, 0);
   width: 95%;
   border: 5px solid #465464;
@@ -17,6 +17,8 @@
 .table {
   align-self: center;
   margin: auto;
+    width: fit-content ;
+    
 }
 
 .header {
@@ -56,3 +58,5 @@ td:hover > a {
   display: flex;
   flex-direction: column;
 }
+
+

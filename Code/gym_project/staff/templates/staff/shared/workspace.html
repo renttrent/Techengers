@@ -1,79 +1,103 @@
 {% extends 'staff/base.html' %}
 {% block middle %}
-<div class="table-responsive" id="short">
-    <table class="table" id="tablecss">
-        <thead>
-            <tr id="first-row">
-                <th>&nbsp;ID</th>
-                <th>Name&nbsp;</th>
-                <th>Surname</th>
-                <th>Working Hours/ Week</th>
-                <th>Role</th>
-                <th>Edit/ Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div>1</div>
-                </td>
-                <td>
-                    <div>Xhois</div>
-                </td>
-                <td>
-                    <div>Shaholli</div>
-                </td>
-                <td>
-                    <div>40 H</div>
-                </td>
-                <td>
-                    <div>Manager</div>
-                </td>
-                <td>
-                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>2</div>
-                </td>
-                <td>
-                    <div>Rei</div>
-                </td>
-                <td>
-                    <div>Balla</div>
-                </td>
-                <td>
-                    <div>40 H</div>
-                </td>
-                <td>
-                    <div>Manager</div>
-                </td>
-                <td>
-                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>3</div>
-                </td>
-                <td>
-                    <div>Xhesika</div>
-                </td>
-                <td>
-                    <div>Bicaku</div>
-                </td>
-                <td>
-                    <div>40 H</div>
-                </td>
-                <td>
-                    <div>Manager</div>
-                </td>
-                <td>
-                    <div><button class="btn" id="edit" type="button">Edit</button><button class="btn" id="delete" type="button">Delete</button></div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+<div class="col">
+    <div class="row">
+        <div class="col">
+            <div class="row profile_user">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <picture><img id="profil" src="{{user.profile.profile_photo.url}}" ></picture>
+                        </div>
+                    </div>
+                    <div class="Personal-Info" >
+                      Xhois Shaholli
+                    </div>
+                    <hr class="pi"/>
+                    <div class="row">
+                      <button type="button" id="edit-profile" name="submit" class="btn">Edit Profile</button>
+            
+                    </div>
+                    <div class="row">
+            
+                      <button type="button" id="change-password" name="submit" class="btn">Change Password</button>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="your-profile"> Your Profile </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="followers">Diet Followers</div>
+                </div>
+                <div class="col">
+                    <div class="followers">Routines Followers</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col days-part">
+            <div class="working-details">Add Working Days</div>
+            <hr id="tot"/>
+            <div class="row">
+                <div class="col working">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Monday</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Tuesday</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Wednesday</label></div>
+                </div>
+                <div class="col working">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Thursday</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Friday</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Saturnday</label></div>
+                </div>
+                <button type="button" id="submit-btn" name="submit" class="btn">Submit Working Days</button>
+            </div>
+        </div>
+
+        <div class="col working">
+            <div class="working-details">Add Working Hours</div>
+            <hr id="tot"/>
+            <div id="hours-on-the-left" class="col working">
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">09:00 am to 05:00 pm</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">12:00 am to 09:00 pm</label></div>
+                     <button type="button" id="submit-btn" name="submit" class="btn">Submit Working Hours</button>
+        </div>
+    </div>
+       
+    </div>
+    <div class="row">
+        <div class="totals">
+            <div class="working-details">Total Working Days</div>
+            <hr id="tot"/>
+            <div class="total-hours">75 Hours</div>
+        </div>
+        <div class="totals">
+            <div class="working-details">Total Working Hours</div>
+            <hr id="tot"/>
+            <div class="total-days">54 Days</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="admin-notes">Admin Notes</div>
+            <div class="notes">Hey, come early tomorrow</div>
+            <div class="notes">Make sure to submit the working days</div>
+            <div class="notes">Important !!! Monday is Holiday</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="total-earnings">Total Earnings</div>
+            <div class="charts"> On this section we should apply the chart of earnings per month/day</div>
+        </div>
+    </div>
 </div>
 {% endblock middle %}
