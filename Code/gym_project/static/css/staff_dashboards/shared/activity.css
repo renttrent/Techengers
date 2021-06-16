@@ -9,15 +9,45 @@
   max-height: 92vh;
 }
 
+#myTab {
+  margin-top: 1em;
+}
+
+.nav-link {
+  color: rgb(212, 218, 235);
+}
+
+.nav-link:hover {
+  color: #5c8fcc;
+}
+
 .info {
   margin-top: 4em;
   width: 97%;
-    border-radius: 7px;
+  border-radius: 7px;
   align-self: middle;
   background-color: #313e4c;
 
+  min-height: 600px;
+  max-height: 600px;
+}
+
+.ex-info {
   min-height: 500px;
   max-height: 500px;
+}
+.ev-info {
+  min-height: 800px;
+  max-height: 800px;
+}
+.rt-info {
+  min-height: 500px;
+  max-height: 500px;
+}
+
+.dp-info {
+  min-height: 380px;
+  max-height: 380px;
 }
 
 .title {
@@ -25,7 +55,7 @@
   font-size: 2em;
   font-weight: bold;
   height: 100%;
-    text-align: center;
+  text-align: center;
 }
 
 .left-card {
@@ -76,20 +106,36 @@
 .child-card {
   width: 300px;
   min-width: 300px;
-
-  background-color: slategray;
+  padding: 1em;
   margin: 1em;
-  border-radius: 7px;
+  background-color: rgb(204, 112, 104);
+  border-radius: 4px;
+  transition: ease-in 0.2s;
+}
+.ev-card {
+  width: 400px;
+  min-width: 400px;
+}
+
+.child-card:hover {
+  background-color: rgb(197, 79, 68);
+}
+
+dl > div {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-    text-align: center;
-   
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px dotted black;
+  color: #dbe7f5;
+}
+
+dl > div > dt {
+  font-weight: 700;
+  color: #313e4c;
 }
 
 ::-webkit-scrollbar {
- width: 3px;
-    
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
   -webkit-border-radius: auto !important;
@@ -101,12 +147,10 @@
   border-radius: auto !important;
   background: auto !important;
   -webkit-box-shadow: auto !important;
-     width: 7px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
-    width: 7px;
+  width: 7px;
   background: auto;
 }
-
-
