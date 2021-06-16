@@ -191,11 +191,13 @@ width: 90%;
   #submit-wd{
     background-color: #ed6459;
    width: 90%;
+      margin-left: 2.5em;
       margin-bottom: 2em;
 
   }
   #submit-wh{
 width: 90%;
+      margin-left: 2.5em;
       margin-top: 1.6em;
     background-color: #ed6459;
     
