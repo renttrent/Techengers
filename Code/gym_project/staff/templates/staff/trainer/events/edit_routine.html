@@ -1,0 +1,105 @@
+{% extends 'staff/base.html' %}
+
+{% block styles %}
+<style>
+    .back{
+        width: 25%;
+        transform: translate(112%, 150%);
+    }
+    .create-routine {
+        width: 40%;
+        margin-top: 5%;
+    }
+
+    .create-routine-form{
+        overflow-y: auto;
+    }
+
+    input[type=submit] {
+        background-color: #6ED383;
+        border-radius: 4px;
+        outline: none !important;
+    }
+
+    .selections{
+        min-height: 130px;
+        max-height: 130px;
+        overflow: auto;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+    }
+</style>
+{% endblock styles %}
+
+
+
+{% block middle %}
+
+<div class="back">
+<a class="btn btn-primary" href="{% url 'staff-manage-routines' %}">Back</a>
+</div>
+
+<div class="create-routine card container"> 
+    <div class="create-routine-body form card-body container">
+        <form method="POST" action="{% url "staff-add-routine" %}" class="create-routine-form">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+                {% endif %}
+               
+                <div class="form-group mt-3">
+                    <label for="title">Routine Title</label>
+                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: " value="{{routine.title}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="desc">Description</label>
+                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: " value="{{routine.desc}}">
+                </div>
+            
+                <div class="form-group mt-3">
+                    <label for="thumbnail">Thumbnail</label>
+                    <input class="form-control {{thumbnailValid}}" type="file" id="thumbnail" name="thumbnail" value="{{routine.thumbnail}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label class="mb-2" for="days">Select Days:</label>
+                    <div class="selections">
+                    {% for day in days %}
+                        <div class="form-check {{daysValid}}">
+                            {% if day in routine.days.all %}
+                            <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days" checked="true">
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days">
+                            {% endif %}
+                            <label class="form-check-label" for="{{day}}">
+                                {{day}}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label class="mb-2" for="days">Select Exercises:</label>
+                    <div class="selections">
+                    {% for exercise in exercises %}
+                         <div class="form-check {{exercisesValid}}">
+                            {% if exercise in routine.exercises.all %}
+                            <input class="form-check-input" type="checkbox" value="{{exercise.id}}" id="{{exercise.id}}" name="exercises" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="{{exercise.id}}" id="{{exercise.id}}" name="exercises">
+                            {% endif %}
+                            <label class="form-check-label" for="{{exercise.id}}">
+                                {{exercise}}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+
+                <input class="btn btn-success p-2 mt-2" type="submit" value="Edit" />      
+        </form>
+    </div>
+</div> 
+{% endblock middle %}

@@ -5,6 +5,7 @@ from dashboards.models import *
 from django.contrib.admin.views.decorators import staff_member_required
 from .navigation import *
 from .models import *
+from django.shortcuts import get_object_or_404
 
 
 @login_required(login_url='login')
@@ -176,6 +177,13 @@ def manage_routines(request):
     routines = Routine.objects.all()
     context = {'options': navigation, 'routines': routines}
     context['notes'] = getNotes()
+
+    if request.POST:
+        delete = request.POST['delete']
+
+        if delete and Routine.objects.get(id=int(delete)):
+            d = Routine.objects.get(id=int(delete))
+            d.delete()
     return render(request, f'staff/trainer/routines.html', context)
 
 
@@ -191,31 +199,45 @@ def add_routine(request):
         else:
             return redirect('staff')
 
-    routines = Routine.objects.all()
-    context = {'options': navigation, 'routines': routines}
+    context = {'options': navigation, 'exercises': Exercise.objects.all()}
     context['days'] = ['Monday', 'Tuesday', 'Wednesday',
                        'Thursday', 'Friday', 'Saturday', 'Sunday']
     context['notes'] = getNotes()
+
     if request.POST:
         title = request.POST['title']
         desc = request.POST['desc']
         thumbnail = request.POST['thumbnail']
         days = request.POST.getlist('days')
+        exercises_list = request.POST.getlist('exercises')
 
-        if title and desc and thumbnail and days:
-            rt = Routine(title=title, desc=desc,
-                         thumbnail=f'routines/{thumbnail}')
+        if title and desc and days and exercises_list:
+            if thumbnail:
+                rt = Routine.objects.create(title=title, desc=desc,
+                                            thumbnail=f'routines/{thumbnail}', owner=request.user)
+            else:
+                rt = Routine.objects.create(
+                    title=title, desc=desc, owner=request.user)
             save_days = []
             for day in days:
                 save_days.append(day)
             rt.days = ' '.join(save_days)
+            rt.selected_by.add(request.user)
+
+            for ex in exercises_list:
+                exinstance = Exercise.objects.get(id=int(ex))
+                rt.exercises.add(Exercise.objects.get(id=int(ex)))
+                if request.user not in exinstance.selected_by.all():
+                    exinstance.selected_by.add(request.user)
+                exinstance.save()
             rt.save()
+            return redirect('staff-manage-routines')
         else:
             context['error'] = 'Please fill in all fields!'
             context['titleValid'] = 'is-valid' if title else 'is-invalid'
             context['descValid'] = 'is-valid' if desc else 'is-invalid'
-            context['thumbnailValid'] = 'is-valid' if thumbnail else 'is-invalid'
             context['daysValid'] = 'is-valid' if days else 'is-invalid'
+            context['exercisesValid'] = 'is-valid' if exercises_list else 'is-invalid'
 
             return render(request, 'staff/trainer/events/add_routine.html', context)
 
@@ -227,6 +249,7 @@ def add_routine(request):
 def edit_routine(request, rid):
 
     navigation = None
+    r = get_object_or_404(Routine, id=rid)
     if request.user.groups.first():
         role = request.user.groups.first().name
         if role == 'trainer':
@@ -234,37 +257,46 @@ def edit_routine(request, rid):
         else:
             return redirect('staff')
 
-    routines = Routine.objects.all()
-    context = {'options': navigation, 'routines': routines}
+    context = {'options': navigation, 'exercises': Exercise.objects.all(
+    ), 'routine': r}
+
     context['days'] = ['Monday', 'Tuesday', 'Wednesday',
                        'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     context['notes'] = getNotes()
 
     if request.POST:
+        r = Routine.objects.get(id=rid)
         title = request.POST['title']
         desc = request.POST['desc']
         thumbnail = request.POST['thumbnail']
         days = request.POST.getlist('days')
+        exercises_list = request.POST.getlist('exercises')
+        print(title, days)
+        if title and desc and days and exercises_list:
+            if thumbnail:
+                r.update(thumbnail=thumbnail)
+            else:
+                r.update(title=title)
+                r.update(desc=desc)
+                save_days = []
+                for day in days:
+                    save_days.append(day)
+                r.update(days=' '.join(save_days))
 
-        if title and desc and thumbnail and days:
-            rt = Routine(title=title, desc=desc,
-                         thumbnail=f'routines/{thumbnail}')
-            save_days = []
-            for day in days:
-                save_days.append(day)
-            rt.days = ' '.join(save_days)
-            rt.save()
+                for ex in exercises_list:
+                    r.exercises.add(Exercise.objects.get(id=int(ex)))
+            return redirect('staff-manage-routines')
         else:
             context['error'] = 'Please fill in all fields!'
             context['titleValid'] = 'is-valid' if title else 'is-invalid'
             context['descValid'] = 'is-valid' if desc else 'is-invalid'
-            context['thumbnailValid'] = 'is-valid' if thumbnail else 'is-invalid'
             context['daysValid'] = 'is-valid' if days else 'is-invalid'
+            context['exercisesValid'] = 'is-valid' if exercises_list else 'is-invalid'
 
-            return render(request, 'staff/trainer/events/add_routine.html', context)
+            return render(request, 'staff/trainer/events/edit_routine.html', context)
 
-    return render(request, 'staff/trainer/events/add_routine.html', context)
+    return render(request, 'staff/trainer/events/edit_routine.html', context)
 
 
 @login_required(login_url='login')

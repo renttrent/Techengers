@@ -63,16 +63,20 @@
                         </td>
                         <td>{{routine.days}}</td>
                         <td>
-                            <a class="btn btn-primary">Edit</a>
+                            <a class="btn btn-primary" href="{% url 'staff-edit-routine' routine.id %}">Edit</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger">Delete</a>
+                           <form action="{% url 'staff-manage-routines' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete" value="{{routine.id}}">
+                            <button class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <a class="btn add-instance">+ Add Instance</a>
+            <a class="btn add-instance" href="{% url 'staff-add-routine' %}">+ Add Instance</a>
         </div>
     </div>
     

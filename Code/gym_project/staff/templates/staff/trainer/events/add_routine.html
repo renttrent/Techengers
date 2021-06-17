@@ -2,9 +2,17 @@
 
 {% block styles %}
 <style>
+    .back{
+        width: 25%;
+        transform: translate(112%, 150%);
+    }
     .create-routine {
-        width: 50%;
-        margin-top: 10%;
+        width: 40%;
+        margin-top: 5%;
+    }
+
+    .create-routine-form{
+        overflow-y: auto;
     }
 
     input[type=submit] {
@@ -13,9 +21,15 @@
         outline: none !important;
     }
 
-    .back{
-        width: 10%;
-        transform: translate(100%, 150%);
+    .selections{
+        min-height: 130px;
+        max-height: 130px;
+        overflow: auto;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background-color: #f0f0f0;
+        border-radius: 10px;
     }
 </style>
 {% endblock styles %}
@@ -25,8 +39,9 @@
 {% block middle %}
 
 <div class="back">
-<a class="container btn btn-primary rounded-1" href="{% url 'staff-manage-routines' %}">Back</a>
+<a class="btn btn-primary" href="{% url 'staff-manage-routines' %}">Back</a>
 </div>
+
 <div class="create-routine card container"> 
     <div class="create-routine-body form card-body container">
         <form method="POST" action="{% url "staff-add-routine" %}" class="create-routine-form">
@@ -50,6 +65,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <label class="mb-2" for="days">Select Days:</label>
+                    <div class="selections">
                     {% for day in days %}
                         <div class="form-check {{daysValid}}">
                             <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days">
@@ -58,6 +74,20 @@
                             </label>
                         </div>
                     {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label class="mb-2" for="days">Select Exercises:</label>
+                    <div class="selections">
+                    {% for exercise in exercises %}
+                         <div class="form-check {{exercisesValid}}">
+                            <input class="form-check-input" type="checkbox" value="{{exercise.id}}" id="{{exercise.id}}" name="exercises">
+                            <label class="form-check-label" for="{{exercise.id}}">
+                                {{exercise}}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    </div>
                 </div>
 
                 <input class="btn btn-success p-2 mt-2" type="submit" />      
