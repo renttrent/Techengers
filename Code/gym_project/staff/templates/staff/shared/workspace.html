@@ -1,7 +1,64 @@
 {% extends 'staff/base.html' %}
+{% load static %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'css/staff_dashboards/shared/workspace.css' %}">
+
+{% endblock styles %}
+
 {% block middle %}
 
-<div class="col scrolling_func">
+<div class="workspace">
+    <div class="header">
+        <div class="pic"><img src="{{user.profile.profile_photo.url}}" alt=""></div>
+        <div class="name">
+        {% if user.get_full_name %}
+        {{user.get_full_name}}
+        {% else %}
+        {{user.username}}
+        {% endif %}
+        </div>
+        <a href="{% url 'staff-edit-workspace' %}" class="edit">Edit Workspace</a>
+    </div>
+    <div class="workspace-body">
+        <div class="workspace-row">
+            <div class="wcol-name">Salary</div>
+            <div class="wcol-data">{{user.workspace.salary}}€</div>
+        </div>
+        <div class="workspace-row">
+            <div class="wcol-name">Working Days</div>
+            <div class="wcol-data">
+            {% for day in days %}
+                <span>{{day}}</span>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="workspace-row">
+            <div class="wcol-name">Starts Work At</div>
+            <div class="wcol-data">
+            {{start}}
+            </div>
+        </div>
+        <div class="workspace-row">
+            <div class="wcol-name">Ends Work At</div>
+            <div class="wcol-data">
+            {{end}}
+            </div>
+        </div>
+
+        <div class="admin-notes">
+            <div class="title">Admin Notes:</div>
+            {% for note in admin_notes %}
+            <div class="admin-row">
+            {{note.todo}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% comment %} <div class="col scrolling_func">
     <div class="row">
         <div class="col">
             <div class="your-profile"> Your Profile </div>
@@ -17,19 +74,14 @@
                             <picture><img id="profil" src="{{user.profile.profile_photo.url}}" ></picture>
                         </div>
                     </div>
-                    <div class="Personal-Info" >
-                      Xhois Shaholli
+                    <div class="personal-info" >
+                      {% if user.get_full_name %}
+                      {{user.get_full_name}}
+                      {% else %}
+                      {{user.username}}
+                      {% endif %}
                     </div>
                     <hr class="pi"/>
-                    <div class="row">
-                      <button type="button" id="edit-profile" name="submit" class="btn">Edit Profile</button>
-            
-                    </div>
-                    <div class="row">
-            
-                      <button type="button" id="change-password" name="submit" class="btn">Change Password</button>
-                    </div>
-            
                 </div>
             </div>
         </div>
@@ -154,5 +206,5 @@
                 </script>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 {% endblock middle %}

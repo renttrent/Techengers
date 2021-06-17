@@ -24,9 +24,8 @@
                         <th>ID</th>
                         <th>Name</th>
                         
-                        <th>Duration</th>
-                        <th>Weight Loss</th>
                         <th>Description</th>
+                        <th>Weight Loss</th>
                         
                        
                         <th>Edit</th>
@@ -34,36 +33,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for routine in routines %}
+                    {% for diet in diets %}
                     <tr>
-                        <td>{{routine.id}}</td>
-                        <td>{{routine.owner}}</td>
+                        <td>{{diet.id}}</td>
+                        <td>{{diet.title}}</td>
                         <td>
-                        <table class="table table-responsive table-hover">
-                            <tbody> 
-                            {% for u in routine.selected_by.all%}
-                                <tr>
-                                <td>{{u.username}}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                            {{diet.desc}}
                         </td>
-                        <td>{{routine.title}}</td>
-                        <td>{{routine.desc}}</td>
-                        <td>
-                        <table class="table table-responsive table-hover">
-                            <tbody> 
-                            {% for e in routine.exercises.all%}
-                                <tr>
-                                <td><a href=""> {{e.title}}</a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                        <td>{{diet.thumbnail.url}}</td>
                         
-                        </td>
-                        <td>{{routine.days}}</td>
                         <td>
                             <a class="btn btn-primary">Edit</a>
                         </td>

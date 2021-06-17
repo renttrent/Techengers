@@ -4,9 +4,9 @@
 
 <div class="main">
     <div class="header">
-        <h1>Manage Staff</h1>
+        <h1>Manage Staff Salaries</h1>
         <hr>
-        <p>You can view, edit or remove.</p>
+        <p>You can view, edit or remove staff's salaries</p>
         
     </div>
     
@@ -17,11 +17,11 @@
                 <thead>
                     <tr id="first-row">
                         <th>ID</th>
-                        <th>Name</th>
-                        
-                        <th>Surname</th>
-                        <th>Salary</th>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Role</th>
+                        <th>Salary</th>
                         
                        
                         <th>Edit</th>
@@ -29,36 +29,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for routine in routines %}
+                    {% for u in staff %}
                     <tr>
-                        <td>{{routine.id}}</td>
-                        <td>{{routine.owner}}</td>
-                        <td>
-                        <table class="table table-responsive table-hover">
-                            <tbody> 
-                            {% for u in routine.selected_by.all%}
-                                <tr>
-                                <td>{{u.username}}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                        </td>
-                        <td>{{routine.title}}</td>
-                        <td>{{routine.desc}}</td>
-                        <td>
-                        <table class="table table-responsive table-hover">
-                            <tbody> 
-                            {% for e in routine.exercises.all%}
-                                <tr>
-                                <td><a href=""> {{e.title}}</a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                        <td>{{u.id}}</td>
+                        <td>{{u.username}}</td>
+                        <td>{{u.first_name}}</td>
+                        <td>{{u.last_name}}</td>
+                        <td>{{u.groups.first}}</td>
                         
-                        </td>
-                        <td>{{routine.days}}</td>
+                        <td>{{u.workspace.salary}}</td>
                         <td>
                             <a class="btn btn-primary">Edit</a>
                         </td>

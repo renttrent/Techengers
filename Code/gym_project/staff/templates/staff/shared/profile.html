@@ -1,0 +1,170 @@
+{% extends 'staff/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/dashboards/profile.css' %}">
+
+<style>
+.mid{
+    width: 90%;
+    margin: auto;
+}
+.profile_user {
+    width: 40%;
+    margin:auto;
+    margin-top: 2em;
+}
+picture{
+    margin-left: 11em;
+}
+</style>
+
+{% endblock styles %}
+
+{% block title %}
+<title>Profile: {{user.username}}</title>
+{% endblock title %}
+{% block middle %}
+
+{% if user.profile.profile_complete == 0 %}
+<div class="alert alert-warning" style="text-align: center; width: 50%; margin: auto;  margin-top: 2em;">
+Your profile is not complete! Complete it <a href="{% url 'complete-profile' %}">here.</a>
+</div>
+{% endif %}
+
+<div class="col mid">
+<div class="row profile_user">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <picture><img id="profil" src="{{user.profile.profile_photo.url}}" ></picture>
+            </div>
+        </div>
+        <div class="row">
+        <div class="Personal-Info" >
+          {% if user.get_full_name %}
+          {{user.get_full_name}}
+          {% else %}
+          {{user.username}}
+          {% endif %}
+        </div>
+        </div>
+        <hr class="pi"/>
+        <div class="row">
+          <a href="{% url 'edit-profile' %}" id="edit-profile" name="submit" class="btn">Edit Profile</a>
+
+        </div>
+        <div class="row">
+
+          <a href="{% url 'change-password' %}" id="change-password" name="submit" class="btn">Change Password</a>
+        </div>
+
+    </div>
+</div>
+<div class="col edit">
+
+            <div class="row gutters">
+                <div class="col-col">
+                    <h6 class="pd">Personal Details</h6>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                          {{user.first_name}} 
+                        </div>
+                        <!-- <input type="text" class="form-control"  placeholder="Enter Name"> -->
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Surname</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                        {{user.last_name}} 
+                        </div>
+                        <!-- <input type="email" class="form-control"  placeholder="Enter Surname"> -->
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Gender</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                          {% if user.profile.gender in "('M', 'Male')" %}
+                            Male
+                          {% else %}
+                            Female
+                          {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                          {{user.profile.age}} Years Old
+                        </div>
+                        <!-- <input type="url" class="form-control"  placeholder="Enter Your Age"> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters">
+
+                <div class="col">
+                    <div class="form-group">
+                        <label >Weight</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                          {{user.profile.weight}}  KG
+                        </div>
+                        <!-- <input type="name" class="form-control"  placeholder="Enter your weight in KG"> -->
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Height</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                          {{user.profile.height}} CM
+                        </div>
+                        <!-- <input type="name" class="form-control"  placeholder="Enter your height in CM "> -->
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label >Weight Goal</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                         {{user.profile.weight_goal}} KG
+                        </div>
+                        <!-- <input type="text" class="form-control"  placeholder="Enter you weight goal in KG"> -->
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Attendance Frequency</label>
+                        <hr/>
+                        <div class="Personal-Details" >
+                          {{user.profile.week_frequency}} Times a Week
+                        </div>
+                        <!-- <input type="text" class="form-control" placeholder="Times per Week"> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters">
+                <div class="col">
+                    <div class="text-right">
+                        <!-- <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button> -->
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    
+    
+</div>
+{% endblock middle %}

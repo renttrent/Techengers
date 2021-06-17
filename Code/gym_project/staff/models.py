@@ -20,7 +20,7 @@ class AdminNotes(models.Model):
     todo = models.CharField(max_length=200)
     date = models.DateTimeField(
         default=datetime.now(), blank=True)
-    
+
     def __str__(self):
         return f'Admin Note {self.id}'
 

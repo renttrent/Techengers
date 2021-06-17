@@ -20,50 +20,24 @@
                         <th>Equipment ID</th>
                         <th>Equipment Name</th>
                         
-                        <th>Description</th>
+                        <th>Price per unit</th>
                         <th>Quantity</th>
-                        <th>Price</th>
-                        
-                       
-                      
+  
                     </tr>
                 </thead>
                 <tbody>
-                    {% for routine in routines %}
+                    {% for item in inventory %}
                     <tr>
-                        <td>{{routine.id}}</td>
-                        <td>{{routine.owner}}</td>
-                        <td>
-                        <table class="table table-responsive table-hover">
-                            <tbody> 
-                            {% for u in routine.selected_by.all%}
-                                <tr>
-                                <td>{{u.username}}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                        </td>
-                        <td>{{routine.title}}</td>
-                        <td>{{routine.desc}}</td>
-                        <td>
-                        <table class="table table-responsive table-hover">
-                            <tbody> 
-                            {% for e in routine.exercises.all%}
-                                <tr>
-                                <td><a href=""> {{e.title}}</a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                        
-                        </td>
-                        <td>{{routine.days}}</td>
-                       
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.unit_price}}€</td>
+                        <td>{{item.quantity}}</td>
+                
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            <a class="btn add-instance">Print Raport</a>
         </div>
     </div>
     

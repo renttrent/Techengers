@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name="staff"),
     path('activity/', views.latest_activity, name="staff-latest-activity"),
+    path('profile/', views.profile, name="staff-profile"),
 
     path('exercises/', views.manage_exercises, name="staff-manage-exercises"),
     path('exercises/add', views.add_exercise, name="staff-add-exercise"),
@@ -20,6 +21,7 @@ urlpatterns = [
          views.edit_routine, name="staff-edit-routine"),
 
     path('workspace/', views.workspace, name="staff-workspace"),
+    path('workspace/edit', views.edit_workspace, name="staff-edit-workspace"),
 
     path('manage-staff/', views.manage_staff, name="staff-manage-staff"),
     path('manage-staff/add', views.add_staff, name="staff-add-staff"),
@@ -28,6 +30,8 @@ urlpatterns = [
          name="staff-manage-inventory"),
     path('inventory/add/', views.add_inventory,
          name="staff-add-inventory"),
+    path('inventory/edit/<int:id>', views.edit_inventory,
+         name="staff-edit-inventory"),
 
     path('diets/', views.manage_diets,
          name="staff-manage-diets"),

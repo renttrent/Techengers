@@ -16,6 +16,23 @@ def home(request):
 
 @login_required(login_url='login')
 @staff_member_required
+def profile(request):
+    navigation = None
+    if request.user.groups.first():
+        role = request.user.groups.first().name
+        if role == 'trainer':
+            navigation = TRAINER_ACTIVITY_NAV
+        elif role == 'manager':
+            navigation = MANAGER_ACTIVITY_NAV
+        elif role == 'economist':
+            navigation = ECONOMIST_ACTIVITY_NAV
+    context = {'options': navigation, 'notes': getNotes()}
+
+    return render(request, 'staff/shared/profile.html', context)
+
+
+@login_required(login_url='login')
+@staff_member_required
 def latest_activity(request):
 
     navigation = None
@@ -56,9 +73,64 @@ def workspace(request):
         elif role == 'economist':
             navigation = ECONOMIST_WORK_NAV
 
-    context = {'options': navigation}
+    start, end = request.user.workspace.starts_work_at.strftime(
+        '%H:%M'), request.user.workspace.starts_work_at.strftime('%H:%M')
+
+    context = {'options': navigation, 'working_days': [
+        day for day in request.user.workspace.working_days.split(' ')], 'start': start, 'end': end}
+
+    context['admin_notes'] = AdminNotes.objects.all()[:10]
+
     context['notes'] = getNotes()
     return render(request, 'staff/shared/workspace.html', context)
+
+
+@login_required(login_url='login')
+@staff_member_required
+def edit_workspace(request):
+
+    navigation = None
+    if request.user.groups.first():
+        role = request.user.groups.first().name
+        if role == 'trainer':
+            navigation = TRAINER_WORK_NAV
+        elif role == 'manager':
+            navigation = MANAGER_WORK_NAV
+        elif role == 'economist':
+            navigation = ECONOMIST_WORK_NAV
+
+    start, end = request.user.workspace.starts_work_at.strftime(
+        '%H:%M'), request.user.workspace.starts_work_at.strftime('%H:%M')
+    if request.user.workspace.working_days.split(' ') is not []:
+
+        working_days = [
+            day for day in request.user.workspace.working_days.split(' ')]
+    else:
+        working_days = request.user.workspace.working_days
+    context = {'options': navigation,
+               'working_days': working_days, 'start': start, 'end': end}
+
+    context['admin_notes'] = AdminNotes.objects.all()[:10]
+
+    context['notes'] = getNotes()
+    context['days'] = ['Monday', 'Tuesday', 'Wednesday',
+                       'Thursday', 'Friday', 'Saturday', 'Sunday']
+    if request.POST:
+        days = request.POST['days']
+        startsH, startsM = list(map(int, request.POST['starts'].split(':')))
+        endsH, endsM = list(map(int, request.POST['starts'].split(':')))
+        if days and startsH and endsH:
+            instance = User.objects.get(id=request.user.id)
+            today = datetime.now()
+            instance.workspace.working_days = days
+            starts = today.replace(hour=startsH, minute=startsM)
+            instance.workspace.starts_work_at = starts
+            ends = today.replace(hour=endsH, minute=endsM)
+            instance.workspace.ends_work_at = ends
+            instance.save()
+            return redirect('staff-workspace')
+
+    return render(request, 'staff/shared/edit_workspace.html', context)
 
 
 @login_required(login_url='login')
@@ -147,8 +219,6 @@ def edit_exercise(request, eid):
 
         if title and reps and desc and link:
             ex = Exercise(title=title, reps=reps, desc=desc, link=link)
-            ex.save()
-            ex.selected_by.add(request.user)
             ex.save()
             return redirect('staff-manage-exercises')
         else:
@@ -312,8 +382,13 @@ def manage_staff(request):
         else:
             return redirect('staff')
 
-    allusers = User.objects.all()
-    context = {'options': navigation, 'allusers': allusers}
+    staff = []
+    for u in User.objects.all():
+        if u.groups.first():
+            if u.groups.first().name in 'economist trainer manager':
+                staff.append(u)
+
+    context = {'options': navigation, 'staff': staff}
     context['notes'] = getNotes()
     return render(request, f'staff/economist/manage_staff.html', context)
 
@@ -397,6 +472,11 @@ def manage_inventory(request):
     context = {'options': navigation, 'inventory': inventory}
     context['notes'] = getNotes()
 
+    if request.POST:
+        delete = request.POST['delete']
+        item = InventoryItem.objects.get(id=int(delete))
+        item.delete()
+
     return render(request, f'staff/manager/manage_inventory.html', context)
 
 
@@ -427,6 +507,7 @@ def add_inventory(request):
             it = InventoryItem(name=name, desc=desc,
                                unit_price=unit_price, quantity=quantity)
             it.save()
+            return redirect('staff-manage-inventory')
         else:
             context['error'] = 'Please fill in all fields!'
             context['nameValid'] = 'is-valid' if name else 'is-invalid'
@@ -437,6 +518,47 @@ def add_inventory(request):
             return render(request, 'staff/manager/events/add_inventory.html', context)
 
     return render(request, f'staff/manager/events/add_inventory.html', context)
+
+
+@login_required(login_url='login')
+@staff_member_required
+def edit_inventory(request, id):
+
+    navigation = None
+
+    if request.user.groups.first():
+        role = request.user.groups.first().name
+        if role == 'manager':
+            navigation = MANAGER_INVENTORY_NAV
+        else:
+            return redirect('staff')
+
+    item = InventoryItem.objects.get(id=id)
+    context = {'options': navigation, 'item': item}
+    context['notes'] = getNotes()
+
+    if request.POST:
+        name = request.POST['name']
+        desc = request.POST['desc']
+        unit_price = request.POST['price']
+        quantity = request.POST['quantity']
+
+        if name and desc and unit_price and quantity:
+            it = InventoryItem.objects.get(id=id)
+            it.update(name=name)
+            it.update(desc=desc)
+            it.update(unit_price=unit_price)
+            it.update(quantity=quantity)
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['nameValid'] = 'is-valid' if name else 'is-invalid'
+            context['descValid'] = 'is-valid' if desc else 'is-invalid'
+            context['priceValid'] = 'is-valid' if unit_price else 'is-invalid'
+            context['quantityValid'] = 'is-valid' if quantity else 'is-invalid'
+
+            return render(request, 'staff/manager/events/edit_inventory.html', context)
+
+    return render(request, f'staff/manager/events/edit_inventory.html', context)
 
 
 @login_required(login_url='login')

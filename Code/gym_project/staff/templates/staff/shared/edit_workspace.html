@@ -1,0 +1,66 @@
+{% extends 'staff/base.html' %}
+{% load static %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'css/staff_dashboards/shared/workspace.css' %}">
+
+{% endblock styles %}
+
+{% block middle %}
+
+<form action="{% url 'staff-edit-workspace' %}" method="POST">
+{% csrf_token %}
+<div class="workspace">
+    <div class="header">
+        <div class="pic"><img src="{{user.profile.profile_photo.url}}" alt=""></div>
+        <div class="name">
+        {% if user.get_full_name %}
+        {{user.get_full_name}}
+        {% else %}
+        {{user.username}}
+        {% endif %}
+        </div>
+        <button class="edit finish">Finish Editing</button>
+    </div>
+    <div class="workspace-body">
+        <div class="workspace-row">
+            <div class="wcol-name">Salary</div>
+            <div class="wcol-data">{{user.workspace.salary}}€</div>
+        </div>
+        <div class="workspace-row">
+            <div class="wcol-name">Working Days</div>
+            <div class="wcol-data">
+            <div class="selections">
+            {% for day in days %}
+                <div class="form-check {{daysValid}}">
+                    {% if day in working_days %}
+                    <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days" checked>
+                    {% else %}
+                    <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days">
+                    {% endif %}
+                    
+                    <label class="form-check-label" for="{{day}}">
+                        {{day}}
+                    </label>
+                </div>
+            {% endfor %}
+            </div>
+            </div>
+        </div>
+        <div class="workspace-row">
+            <div class="wcol-name">Starts Work At</div>
+            <div class="wcol-data">
+            <input type="time" name="starts" value="{{start}}">
+            </div>
+        </div>
+        <div class="workspace-row">
+            <div class="wcol-name">Ends Work At</div>
+            <div class="wcol-data">
+            <input type="time" name="ends" value="{{end}}">
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock middle %}
