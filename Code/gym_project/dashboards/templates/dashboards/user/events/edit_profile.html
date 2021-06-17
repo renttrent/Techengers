@@ -1,0 +1,85 @@
+{% extends 'dashboards/user/dashboard.html' %}
+
+{% block styles %}
+<style>
+    .edit-profile {
+        width: 80%;
+        margin-top: 10%;
+        background: rgb(210,225,237);
+        background: linear-gradient(249deg, rgba(210,225,237,1) 0%, rgba(250,255,254,1) 100%);   
+    }
+
+    input[type=submit] {
+        background-color: #6ED383;
+        border-radius: 4px;
+    }
+
+    .back{
+        width: 10%;
+        transform: translate(100%, 150%);
+    }
+
+    .title{
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .subtitle{
+        font-weight: 500;
+    }
+</style>
+{% endblock styles %}
+
+{% block middle %}
+
+<div class="back">
+<a class="container btn btn-primary rounded-1" href="{% url 'profile' %}">Back</a>
+</div>
+
+<div class="edit-profile card container"> 
+    <div class="edit-profile-body form card-body container">
+        <form method="POST" action="{% url "edit-profile" %}" class="edit-profile-form">
+                <div class="title">
+                Edit Profile
+                </div>
+                <div class="subtitle">
+                You can not change your password here. To change password click <a href="{% url 'change-password' %}">here</a>.
+                </div>
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+                {% endif %}
+               
+                <div class="form-group mt-3">
+                    <label for="title">Username</label>
+                    <input type="text" class="form-control {{usernameValid}}" id="username" name="username" placeholder="Username: " value="{{user.username}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="reps">Age</label>
+                    <input type="number" class="form-control {{ageValid}}" id="age" name="age" placeholder="Age: " value="{{user.profile.age}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="desc">Weight (kg)</label>
+                    <input type="float" class="form-control {{weightValid}}" id="weight" name="weight" placeholder="Weight: " value="{{user.profile.weight}}">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="link">Height (cm)</label>
+                    <input type="float" class="form-control {{heightValid}}" id="height" name="height" placeholder="Height: " value="{{user.profile.height}}">
+                </div>   
+                <div class="form-group mt-3">
+                    <label for="link">Weight Goal (kg)</label>
+                    <input type="float" class="form-control {{weightGoalValid}}" id="weight_goal" name="weight_goal" placeholder="Weight Goal: " value="{{user.profile.weight_goal}}">
+                </div>   
+
+                <div class="form-group mt-3">
+                    <label for="link">Week Frequency (times per week)</label>
+                    <input type="number" class="form-control {{weekFrequencyValid}}" id="week_frequency" name="week_frequency" placeholder="Gym Week Frequency: " value="{{user.profile.week_frequency}}">
+                </div>    
+                
+
+                <input class="btn btn-success p-2 mt-2" type="submit" value="Edit"/>      
+        </form>
+    </div>
+</div> 
+
+{% endblock middle %}

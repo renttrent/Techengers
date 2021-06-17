@@ -18,17 +18,23 @@
                 <picture><img id="profil" src="{{user.profile.profile_photo.url}}" ></picture>
             </div>
         </div>
+        <div class="row">
         <div class="Personal-Info" >
-          Xhois Shaholli
+          {% if user.get_full_name %}
+          {{user.get_full_name}}
+          {% else %}
+          {{user.username}}
+          {% endif %}
+        </div>
         </div>
         <hr class="pi"/>
         <div class="row">
-          <button type="button" id="edit-profile" name="submit" class="btn">Edit Profile</button>
+          <a href="{% url 'edit-profile' %}" id="edit-profile" name="submit" class="btn">Edit Profile</a>
 
         </div>
         <div class="row">
 
-          <button type="button" id="change-password" name="submit" class="btn">Change Password</button>
+          <a href="{% url 'change-password' %}" id="change-password" name="submit" class="btn">Change Password</a>
         </div>
 
     </div>
@@ -41,10 +47,10 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label >Name</label>
+                        <label>Name</label>
                         <hr/>
                         <div class="Personal-Details" >
-                          Xhois 
+                          {{user.first_name}} 
                         </div>
                         <!-- <input type="text" class="form-control"  placeholder="Enter Name"> -->
                     </div>
@@ -54,7 +60,7 @@
                         <label >Surname</label>
                         <hr/>
                         <div class="Personal-Details" >
-                        Shaholli
+                        {{user.last_name}} 
                         </div>
                         <!-- <input type="email" class="form-control"  placeholder="Enter Surname"> -->
                     </div>
@@ -64,17 +70,20 @@
                         <label >Gender</label>
                         <hr/>
                         <div class="Personal-Details" >
-                          Male
+                          {% if user.profile.gender == "('M', 'Male')" %}
+                            Male
+                          {% else %}
+                            Female
+                          {% endif %}
                         </div>
-                        <!-- <input type="text" class="form-control" placeholder=" M for Male andd F for Female "> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label >Age</label>
+                        <label>Age</label>
                         <hr/>
                         <div class="Personal-Details" >
-                          21 Years Old
+                          {{user.profile.age}} Years Old
                         </div>
                         <!-- <input type="url" class="form-control"  placeholder="Enter Your Age"> -->
                     </div>
@@ -87,7 +96,7 @@
                         <label >Weight</label>
                         <hr/>
                         <div class="Personal-Details" >
-                          95 KG
+                          {{user.profile.weight}}  KG
                         </div>
                         <!-- <input type="name" class="form-control"  placeholder="Enter your weight in KG"> -->
                     </div>
@@ -97,7 +106,7 @@
                         <label >Height</label>
                         <hr/>
                         <div class="Personal-Details" >
-                         180 CM
+                          {{user.profile.height}} CM
                         </div>
                         <!-- <input type="name" class="form-control"  placeholder="Enter your height in CM "> -->
                     </div>
@@ -107,17 +116,17 @@
                         <label >Weight Goal</label>
                         <hr/>
                         <div class="Personal-Details" >
-                         80 KG
+                         {{user.profile.weight_goal}} KG
                         </div>
                         <!-- <input type="text" class="form-control"  placeholder="Enter you weight goal in KG"> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label  >Attendance Frequency</label>
+                        <label>Attendance Frequency</label>
                         <hr/>
                         <div class="Personal-Details" >
-                         4 Times a Week
+                          {{user.profile.week_frequency}} Times a Week
                         </div>
                         <!-- <input type="text" class="form-control" placeholder="Times per Week"> -->
                     </div>
@@ -133,7 +142,7 @@
             </div>
 
     </div>
-    <div class="about">Xhois's Selected Diets</div>
+    {% comment %} <div class="about">Xhois's Selected Diets</div>
     
     <hr />
     <div class="row">
@@ -240,10 +249,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-
-
-
+      </div> {% endcomment %}
+    
+    
+</div>
 {% endblock middle %}

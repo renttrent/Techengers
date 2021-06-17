@@ -8,6 +8,9 @@ urlpatterns = [
     path('', user_views.home, name="userdashboard"),
 
     path('profile/', user_views.profile, name='profile'),
+    path('profile/edit/', user_views.edit_profile, name='edit-profile'),
+    path('profile/changepassword/',
+         user_views.change_password, name='change-password'),
 
     path('schedule/', user_views.schedule, name='userdashboard-schedule'),
 

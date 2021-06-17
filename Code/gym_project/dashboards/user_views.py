@@ -179,6 +179,111 @@ def profile(request):
 
 
 @login_required(login_url='login')
+def edit_profile(request):
+
+    events = Event.objects.all()[:4]
+
+    context = {'options': SCHEDULE_NAV,
+               'events': events}
+
+    if request.POST:
+        username = request.POST['username']
+        age = request.POST['age']
+        weight = request.POST['weight']
+        height = request.POST['height']
+        weight_goal = request.POST['weight_goal']
+        week_frequency = request.POST['week_frequency']
+
+        if username and age and weight and height and weight_goal and week_frequency:
+            userinstance = request.user
+            userinstance.username = username
+            userinstance.profile.age = age
+            userinstance.profile.weight = weight
+            userinstance.profile.height = height
+            userinstance.profile.weight_goal = weight_goal
+            userinstance.profile.week_frequency = week_frequency
+            userinstance.save()
+            return redirect('profile')
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['usernameValid'] = 'is-valid' if username else 'is-invalid'
+            context['ageValid'] = 'is-valid' if age else 'is-invalid'
+            context['weightValid'] = 'is-valid' if weight else 'is-invalid'
+            context['heightValid'] = 'is-valid' if height else 'is-invalid'
+            context['weightGoalValid'] = 'is-valid' if weight_goal else 'is-invalid'
+            context['weekFrequencyValid'] = 'is-valid' if week_frequency else 'is-invalid'
+            return render(request, 'dashboards/user/events/edit_profile.html', context)
+
+    return render(request, 'dashboards/user/events/edit_profile.html', context)
+
+
+@login_required(login_url='login')
+def change_password(request):
+
+    events = Event.objects.all()[:4]
+
+    context = {'options': SCHEDULE_NAV,
+               'events': events}
+
+    if request.POST:
+        userinstance = request.user
+        old = request.POST['old']
+        old2 = request.POST['old2']
+        new = request.POST['new']
+        new2 = request.POST['new2']
+
+        if old != old2:
+            context['error'] = 'Your old passwords do not match!'
+            context['oldValid'] = 'is-valid' if userinstance.check_password(
+                old) else 'is-invalid'
+            context['old2Valid'] = 'is-valid' if userinstance.check_password(
+                old2) else 'is-invalid'
+            return render(request, 'dashboards/user/events/change_password.html', context)
+
+        if userinstance.check_password(old) and userinstance.check_password(old2):
+            if new == new2:
+                userinstance.set_password(new)
+                userinstance.save()
+                return redirect('profile')
+            else:
+                context['error'] = 'Your new passwords do not match!'
+                context['newValid'] = 'is-valid' if userinstance.check_password(
+                    new) else 'is-invalid'
+                context['new2Valid'] = 'is-valid' if userinstance.check_password(
+                    new2) else 'is-invalid'
+                return render(request, 'dashboards/user/events/change_password.html', context)
+
+        else:
+            context['error'] = 'Your old passwords are wrong!'
+            context['oldValid'] = 'is-valid' if userinstance.check_password(
+                old) else 'is-invalid'
+            context['old2Valid'] = 'is-valid' if userinstance.check_password(
+                old2) else 'is-invalid'
+            return render(request, 'dashboards/user/events/change_password.html', context)
+        # if username and age and weight and height and weight_goal and week_frequency:
+        #     userinstance = request.user
+        #     userinstance.username = username
+        #     userinstance.profile.age = age
+        #     userinstance.profile.weight = weight
+        #     userinstance.profile.height = height
+        #     userinstance.profile.weight_goal = weight_goal
+        #     userinstance.profile.week_frequency = week_frequency
+        #     userinstance.save()
+        #     return redirect('profile')
+        # else:
+        #     context['error'] = 'Please fill in all fields!'
+        #     context['usernameValid'] = 'is-valid' if username else 'is-invalid'
+        #     context['ageValid'] = 'is-valid' if age else 'is-invalid'
+        #     context['weightValid'] = 'is-valid' if weight else 'is-invalid'
+        #     context['heightValid'] = 'is-valid' if height else 'is-invalid'
+        #     context['weightGoalValid'] = 'is-valid' if weight_goal else 'is-invalid'
+        #     context['weekFrequencyValid'] = 'is-valid' if week_frequency else 'is-invalid'
+        #     return render(request, 'dashboards/user/events/change_password.html', context)
+
+    return render(request, 'dashboards/user/events/change_password.html', context)
+
+
+@login_required(login_url='login')
 def create_exercise(request):
     events = Event.objects.all()[:4]
     context = {'options': EXERCISES_NAV,
