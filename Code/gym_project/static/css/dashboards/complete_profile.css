@@ -1,0 +1,59 @@
+.complete-profile {
+  width: 90%;
+  margin: auto;
+  margin-top: 2em;
+  min-height: 90vh;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #f3f3f3;
+  padding: 2em;
+  background-color: #1f2f42;
+  border-radius: 5px;
+}
+
+.welcome-title {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+.welcome-title > span {
+  color: #d35d56;
+}
+.welcome-sub {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.comp-title {
+  background-color: #5c8fcc;
+  padding: 1em;
+  margin: auto;
+  width: 60%;
+  margin-top: 2em;
+  border-radius: 4px;
+  margin-bottom: 2em;
+}
+
+.comp-title > a {
+  color: #eceea0;
+}
+
+.comp-title > a:hover {
+  font-weight: 700;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.back {
+  position: absolute;
+  transform: translate(160%, 200%);
+  color: #eceea0;
+}
+
+.back:hover {
+  color: #5c8fcc;
+}

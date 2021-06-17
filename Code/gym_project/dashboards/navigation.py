@@ -1,3 +1,30 @@
+BLANK_NAV = navigation = {
+    'schedule': {
+        'name': 'Schedule',
+        'isActive': False,
+        'url': 'schedule'
+    },
+    'exercises': {
+        'name': 'Exercises',
+        'isActive': False,
+        'url': 'exercises'
+    },
+    'routines': {
+        'name': 'Routines',
+        'isActive': False,
+        'url': 'routines'
+    },
+    'diets': {
+        'name': 'Selected Diets',
+        'isActive': False,
+        'url': 'diets'
+    },
+    'trainers': {
+        'name': 'Trainers',
+        'isActive': False,
+        'url': 'trainers'
+    },
+}
 SCHEDULE_NAV = navigation = {
     'schedule': {
         'name': 'Schedule',

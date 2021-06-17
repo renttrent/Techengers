@@ -10,6 +10,12 @@
 {% endblock title %}
 {% block middle %}
 
+{% if user.profile.profile_complete == 0 %}
+<div class="alert alert-warning" style="text-align: center; width: 50%; margin: auto;  margin-top: 2em;">
+Your profile is not complete! Complete it <a href="{% url 'complete-profile' %}">here.</a>
+</div>
+{% endif %}
+
 <div class="col mid">
 <div class="row profile_user">
     <div class="col">
@@ -70,7 +76,7 @@
                         <label >Gender</label>
                         <hr/>
                         <div class="Personal-Details" >
-                          {% if user.profile.gender == "('M', 'Male')" %}
+                          {% if user.profile.gender in "('M', 'Male')" %}
                             Male
                           {% else %}
                             Female

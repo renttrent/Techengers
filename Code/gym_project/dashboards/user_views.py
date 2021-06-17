@@ -1,4 +1,4 @@
-from dashboards.navigation import DIETS_NAV, EXERCISES_NAV, ROUTINES_NAV, SCHEDULE_NAV, TRAINERS_NAV
+from dashboards.navigation import BLANK_NAV, DIETS_NAV, EXERCISES_NAV, ROUTINES_NAV, SCHEDULE_NAV, TRAINERS_NAV
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import DietPlan, Event, Exercise, Routine
@@ -13,13 +13,14 @@ def home(request):
         return redirect('/admin')
     if request.user.is_staff:
         return redirect('staff')
+    if request.user.profile.profile_complete == 0:
+        return redirect('complete-profile')
     return redirect('userdashboard-schedule')
 
 
 @login_required(login_url='login')
 def schedule(request):
-    if request.user.profile.profile_complete:
-        return redirect('complete-profile')
+
     events = Event.objects.all()[:4]
     WEEK_DAYS = ["Monday", "Tuesday", "Wednesday",
                  "Thursday", "Friday", "Saturday", "Sunday"]
@@ -34,7 +35,6 @@ def schedule(request):
                'events': events, 'routines': routines}
 
     day_dict = None
-    compare = Routine()
     if routines:
         day_dict = {}
         for day in WEEK_DAYS:
@@ -197,8 +197,37 @@ def complete_profile(request):
 
     events = Event.objects.all()[:4]
 
-    context = {'options': SCHEDULE_NAV,
+    context = {'options': BLANK_NAV,
                'events': events}
+
+    if request.POST:
+        age = request.POST['age']
+        gender = request.POST['gender']
+        weight = request.POST['weight']
+        weight_goal = request.POST['weight_goal']
+        height = request.POST['height']
+        frequency = request.POST['frequency']
+
+        if age and gender and weight and weight_goal and height and frequency:
+            userinstance = request.user
+            userinstance.profile.age = age
+            userinstance.profile.gender = gender
+            userinstance.profile.weight = weight
+            userinstance.profile.height = height
+            userinstance.profile.weight_goal = weight_goal
+            userinstance.profile.weekly_frequency = frequency
+            userinstance.profile.profile_complete = 1
+            userinstance.save()
+            return redirect('profile')
+        else:
+            context['error'] = 'Your profile is not complete!'
+            context['ageValid'] = 'is-valid' if age else 'is-invalid'
+            context['weightValid'] = 'is-valid' if weight else 'is-invalid'
+            context['weightGoalValid'] = 'is-valid' if weight_goal else 'is-invalid'
+            context['heightValid'] = 'is-valid' if height else 'is-invalid'
+            context['frequencyValid'] = 'is-valid' if frequency else 'is-invalid'
+        print(age, gender, weight, weight_goal, height, frequency)
+
     return render(request, 'dashboards/user/complete_profile.html', context)
 
 

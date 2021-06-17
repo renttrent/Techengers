@@ -1,0 +1,70 @@
+{% extends 'dashboards/user/dashboard.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/dashboards/complete_profile.css' %}">
+{% endblock styles %}
+
+{% block title %}
+<title>Profile: {{user.username}}</title>
+{% endblock title %}
+{% block middle %}
+
+<a class="back" href="{% url 'profile' %}">🠔 Back</a>
+
+<div class="complete-profile">
+    <div class="welcome">
+        <div class="welcome-title">Hello! Welcome to <span>Sweat</span></div>
+        <div class="welcome-sub">It is great to have you here.</div>
+    </div>
+
+    <div class="complete">
+        <div class="comp-title">Please complete your profile for a better experience, but if you can't no worries! You can skip by cicking <a href="{% url 'userdashboard-schedule' %}">here</a>.</div>
+    </div>
+
+    <div class="complete-form form"> 
+        <form method="POST" action="{% url "complete-profile" %}" class="form">
+                <div class="title">
+                Let's start!
+                </div>
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+                {% endif %}
+               
+                <div class="form-group mt-4">
+                    <label for="age">How old are you?</label>
+                    <input type="number" class="form-control {{ageValid}}" id="age" name="age" placeholder="Your Age: ">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="gender">What is your gender?</label>
+                    <select class="form-select" name="gender">
+                        <option value="M" selected>Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Other</option>
+                    </select>
+                </div>
+                <div class="form-group mt-4">
+                    <label for="weight">What is your weight?</label>
+                    <input type="float" class="form-control {{weightValid}}" id="weight" name="weight" placeholder="Weight in KG: ">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="weight_goal">What is your weight goal?</label>
+                    <input type="float" class="form-control {{weightGoalValid}}" id="weight_goal" name="weight_goal" placeholder="Weight goal in KG: ">
+                </div> 
+                <div class="form-group mt-4">
+                    <label for="height">What is your height?</label>
+                    <input type="float" class="form-control {{heightValid}}" id="height" name="height" placeholder="Height in M: ">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="frequency">How many times will you frequent our gym?</label>
+                    <input type="number" class="form-control {{frequencyValid}}" id="frequency" name="frequency" placeholder="Weekly Fequency: ">
+                </div>   
+                
+
+                <input class="btn btn-warning p-2 mt-4" type="submit" value="Finish"/>      
+        </form>
+    </div>
+</div>
+
+{% endblock middle %}
