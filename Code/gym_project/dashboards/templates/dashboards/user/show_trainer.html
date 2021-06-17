@@ -16,16 +16,20 @@
     <div class="col">
       <div class="row">
         <div class="col profile-pic">
-          <picture
-            ><img id="profil" src="{% static 'images/xhoi.jpg' %}"
-          /></picture>
+          <picture><img id="profil" src="{{trainer.profile.profile_photo.url}}"/></picture>
         </div>
         <div class="col">
-          <div class="user">Xhois Shaholli</div>
+          <div class="user">
+          {% if trainer.get_full_name %}
+          {{trainer.get_full_name}}
+          {% else %}
+          {{trainer.username}}
+          {% endif %}
+          </div>
         </div>
       </div>
       <div class="about">About</div>
-      <hr />
+      <hr/>
       <div class="row">
         <div class="col about_trainer">
           <div class="row">
@@ -33,7 +37,7 @@
               <div class="name">Height</div>
             </div>
             <div class="col">
-              <div>180cm</div>
+              <div>{{trainer.profile.height}} CM</div>
             </div>
           </div>
           <div class="row">
@@ -41,7 +45,7 @@
               <div class="name">Weight</div>
             </div>
             <div class="col">
-              <div>95 KG</div>
+              <div>{{trainer.profile.weight}} KG</div>
             </div>
           </div>
           <div class="row">
@@ -49,7 +53,7 @@
               <div class="name">Weight Goal</div>
             </div>
             <div class="col">
-              <div>80 KG</div>
+              <div>{{trainer.profile.weight_goal}} KG</div>
             </div>
           </div>
           <div class="row">
@@ -57,7 +61,13 @@
               <div class="name">Gender</div>
             </div>
             <div class="col">
-              <div>Male</div>
+              <div>
+              {% if user.profile.gender == "('M', 'Male')" %}
+                Male
+              {% else %}
+                Female
+              {% endif %}
+              </div>
             </div>
           </div>
 
@@ -66,7 +76,7 @@
               <div class="name">Weekly Frequency</div>
             </div>
             <div class="col">
-              <div>6 Times a Week</div>
+              <div>{{trainer.profile.week_frequency}} Times a Week</div>
             </div>
           </div>
         </div>
@@ -76,122 +86,25 @@
       <hr />
       <div class="row">
         <div class="col">
-          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
-          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
-          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
-          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
-          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
-          <div class="row days">Wednesday - 09:00 am to 04:00 pm</div>
+          {% for day in working_days %}
+          <div class="row days">{{day}}</div>
+          {% endfor %}
         </div>
       </div>
-
-      <div class="about">Xhois's Diets</div>
+      {{routines_number}}
+      <div class="about">{{trainer.username}}'s Routines
+        {% if routines_number %}
+        - Total {{routines_number}} routines
+       {% endif %}
+       </div>
       <hr />
-
-      <div class="row">
-        <div class="col">
-          <div class="row diet_box">
-            <div class="diet-card">
-              <div class="diet-card-left">
-                <div class="diet-title">Protien diet</div>
-                <div class="thumbnail">
-                  <img src="{% static 'images/JumpRope.jpg' %}" alt="" />
-                </div>
-              </div>
-              <div class="diet-card-right">
-                <div class="diet-title">Benefits:</div>
-                <div class="diet-desc">
-                  Food allergies affect 5% to 10% of people. Peanuts (which are
-                  legumes, like beans and peas), and tree nuts, like pecans and
-                  almonds, are common triggers. If you have a severe allergy,
-                  even something that has touched nuts can cause swelling,
-                  vomiting, and diarrhea. It could even inflame your throat and
-                  make it hard to breathe or talk. This is a potentially deadly
-                  condition called anaphylactic shock. Call 911 if you see these
-                  symptoms.
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="routines">
+      {% for routine in routines %}
+        <div class="routine">
+          <div class="routine-title">{{routine}}</div>
+          <div class="action"><a href="{% url 'userdashboard-routine-details' routine.id %}">View</a></div>
         </div>
-        <div class="col">
-          <div class="row diet_box">
-            <div class="diet-card">
-              <div class="diet-card-left">
-                <div class="diet-title">Protien diet</div>
-                <div class="thumbnail">
-                  <img src="{% static 'images/JumpRope.jpg' %}" alt="" />
-                </div>
-              </div>
-              <div class="diet-card-right">
-                <div class="diet-title">Benefits:</div>
-                <div class="diet-desc">
-                  Food allergies affect 5% to 10% of people. Peanuts (which are
-                  legumes, like beans and peas), and tree nuts, like pecans and
-                  almonds, are common triggers. If you have a severe allergy,
-                  even something that has touched nuts can cause swelling,
-                  vomiting, and diarrhea. It could even inflame your throat and
-                  make it hard to breathe or talk. This is a potentially deadly
-                  condition called anaphylactic shock. Call 911 if you see these
-                  symptoms.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="about">Xhois's Routines</div>
-      <hr />
-      <div class="row">
-        <div class="col">
-          <div class="routine-card">
-            <div class="header">
-              <h4>Routine Abs</h4>
-              <a id="btn-edit" class="btn">Edit</a>
-            </div>
-            <hr />
-
-            <div class="routine-body">
-              <div class="routine-thumbnail">
-                <div class="thumbnail">
-                  <img src="/media/routines/default.jpg" alt="" />
-                </div>
-              </div>
-              <div class="exercise-grid">
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="routine-card">
-            <div class="header">
-              <h4>Routine Abs</h4>
-              <a id="btn-edit" class="btn">Edit</a>
-            </div>
-            <hr />
-
-            <div class="routine-body">
-              <div class="routine-thumbnail">
-                <div class="thumbnail">
-                  <img src="/media/routines/default.jpg" alt="" />
-                </div>
-              </div>
-              <div class="exercise-grid">
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-                <a href="" class="btn btn-light exlink">Exercise</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      {% endfor %}
       </div>
     </div>
   </div>

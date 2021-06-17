@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/dashboards/exercises.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboards/show_routine.css' %}">
 {% endblock styles %}
 
 {% block title %}
@@ -14,279 +14,66 @@
 <div class="row show-routine">
     <div class="col">
         <div class="row">
-            <div class="col ">
-                <div class="routine-title">Chest</div>
+            <div class="col">
+                <div class="routine-title">{{routine}}</div>
             </div>
+            
         </div>
         <div class="row">
+                <div class="actions">
+                    {% if routine.owner == user %}
+                    <a id="edit" href="{% url 'edit-routine' routine.id %}" class="btn btn-primary">Edit</a>
+                    <form action="{% url 'userdashboard-routine-details' routine.id %}" method="POST">
+                        {% csrf_token %}
+                        <button id="remove" href="" class="btn btn-danger">Remove</button>
+                    </form>
+                    {% endif %}
+                </div>
+             </div>
+        <div class="row">
             <div class="col">
-                <div class="routine-owner">Routine Owner: Xhois Shaholli</div>
+                <div class="routine-owner">Routine Owner: 
+                {% if routine.owner.get_full_name %}
+                {{routine.owner.get_full_name}}
+                {% else %}
+                {{routine.owner.username}}
+                {% endif %}
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="routine-desc-title"> Routine Description</div>
-                <div class="routine-description"> Text messaging, or texting, is the act of composing and sending electronic messages, typically consisting of alphabetic and numeric characters, between two or more users of mobile devices, desktops/laptops, or other type of compatible computer. </div>
+                <div class="desc-container">
+                    <div class="thumbnai"><img src="{{routine.thumbnail.url}}" alt=""></div>
+                    <div class="routine-description">{{routine.desc}}</div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="routine-exercise">Routine Exercises</div>
                 <div class="exercises">
-                    
-                        <div class="exercise-card">
+                        {% for ex in exercises  %}
+                        <div class="exercise-card routine-ex">
                             <div class="left-exercise-card">
                                 <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
+                                    <div class="exercise-title">{{ex.title}}</div>
                                 </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
+                                <div class="exercise-owner">Owner: 
+                                {% if ex.owner.get_full_name %}
+                                {{ex.owner.get_full_name}}
+                                {% else %}
+                                {{ex.owner.username}}
+                                {% endif %}
                                 </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
+                                <div class="exercise-reps">Number Of Reps: {{ex.reps}}</div>
+                                <div class="exercise-link"><a href="{{ex.link}}" class="">Video Link</a></div>
                             </div>
-                            <a href="">View Exercise</a>
+                            <a href="{% url 'userdashboard-exercise-details' ex.id %}" class="link-light">View Exercise</a>
                         </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                        <div class="exercise-card">
-                            <div class="left-exercise-card">
-                                <div class="ex-header">
-                                    <div class="exercise-title">Plank</div>
-                                   
-                                   
-                                   
-                                </div>
-                               
-                                <div class="exercise-owner">Owner : Xhois Shaholli</div>
-                              
-                                <div class="exercise-owner"></div>
-                            
-                                <div class="exercise-reps"> Number Of Reps : 3</div>
-                                <div class="exercise-link"><a href="">Video Link</a></div>
-                            </div>
-                            <a href="">View Exercise</a>
-                        </div>
-                   
+                        {% endfor %}
+                                           
                     </div>
                 </div>
         </div>

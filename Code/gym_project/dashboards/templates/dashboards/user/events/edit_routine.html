@@ -35,7 +35,7 @@
 {% block middle %}
 
 <div class="back">
-<a class="container btn btn-primary rounded-1" href="{% url 'userdashboard-routines' %}">Back</a>
+<a class="container btn btn-primary rounded-1" href="{% url 'userdashboard-routine-details' routine.id %}">Back</a>
 </div>
 <div class="create-routine card container"> 
     <div class="create-routine-body form card-body container">
@@ -47,23 +47,27 @@
                
                 <div class="form-group mt-3">
                     <label for="title">Routine Title</label>
-                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: ">
+                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: " value="{{routine.title}}">
                 </div>
                 <div class="form-group mt-3">
                     <label for="desc">Description</label>
-                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: ">
+                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: " value="{{routine.desc}}">
                 </div>
             
                 <div class="form-group mt-3">
                     <label for="thumbnail">Thumbnail</label>
-                    <input class="form-control {{thumbnailValid}}" type="file" id="thumbnail" name="thumbnail">
+                    <input class="form-control {{thumbnailValid}}" type="file" id="thumbnail" name="thumbnail" value="{{routine.thumbnail}}">
                 </div>
                 <div class="form-group mt-3">
-                    <label class="mb-2" for="days">Select Days:</label>
+                    <label class="mb-2" for="days">Select Days: {{routine.days.all}}</label>
                     <div class="selections">
                     {% for day in days %}
                         <div class="form-check {{daysValid}}">
+                            {% if day in routine.days.all %}
+                            <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days" checked="true">
+                            {% else %}
                             <input class="form-check-input" type="checkbox" value="{{day}}" id="{{day}}" name="days">
+                            {% endif %}
                             <label class="form-check-label" for="{{day}}">
                                 {{day}}
                             </label>
@@ -76,7 +80,11 @@
                     <div class="selections">
                     {% for exercise in exercises %}
                          <div class="form-check {{exercisesValid}}">
+                            {% if exercise in routine.exercises.all %}
+                            <input class="form-check-input" type="checkbox" value="{{exercise.id}}" id="{{exercise.id}}" name="exercises" checked>
+                            {% else %}
                             <input class="form-check-input" type="checkbox" value="{{exercise.id}}" id="{{exercise.id}}" name="exercises">
+                            {% endif %}
                             <label class="form-check-label" for="{{exercise.id}}">
                                 {{exercise}}
                             </label>
