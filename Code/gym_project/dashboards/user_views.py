@@ -18,7 +18,8 @@ def home(request):
 
 @login_required(login_url='login')
 def schedule(request):
-
+    if request.user.profile.profile_complete:
+        return redirect('complete-profile')
     events = Event.objects.all()[:4]
     WEEK_DAYS = ["Monday", "Tuesday", "Wednesday",
                  "Thursday", "Friday", "Saturday", "Sunday"]
@@ -189,6 +190,16 @@ def profile(request):
     context = {'options': SCHEDULE_NAV,
                'events': events}
     return render(request, 'dashboards/user/profile.html', context)
+
+
+@login_required(login_url='login')
+def complete_profile(request):
+
+    events = Event.objects.all()[:4]
+
+    context = {'options': SCHEDULE_NAV,
+               'events': events}
+    return render(request, 'dashboards/user/complete_profile.html', context)
 
 
 @login_required(login_url='login')
