@@ -248,3 +248,11 @@ a {
   background: #aebac8;
   border-radius: 10px;
 }
+
+.showing-where-you-are {
+  font-size: 2em;
+  font-weight: 600;
+  padding: 0.5em 1em 0.5em 1.7em;
+  color: rgba(255, 255, 255, 0.56);
+  background-color: #0a1522;
+}
