@@ -106,8 +106,14 @@ def routine_details(request, rid):
     events = Event.objects.all()[:4]
     r = get_object_or_404(Routine, id=rid)
     if r:
+        ex = r.exercises.all()
+        context = {'options': ROUTINES_NAV,
+                   'events': events, 'routine': r, 'exercises': ex}
 
-        context = {'options': ROUTINES_NAV, 'events': events, 'routine': r}
+        if request.POST:
+            r.delete()
+            return redirect('userdashboard-routines')
+
         return render(request, 'dashboards/user/show_routine.html', context)
 
 
@@ -158,11 +164,18 @@ def trainer_details(request, tid):
     routines = Routine.objects.all()
     t = get_object_or_404(User, id=tid)
     if t:
-        routines_owned = sum([1 for ru in routines if ru.owner == t])
+        routines = [ru for ru in routines if ru.owner == t]
+        routines_owned = len(routines)
 
         if t.is_staff and t.groups.first().name == 'trainer':
             context = {'options': TRAINERS_NAV, 'events': events,
-                       'trainer': t, 'routines_owned': routines_owned}
+                       'trainer': t, 'routines_owned': routines_owned, 'routines': routines}
+
+            worktime = t.workspace.starts_work_at.strftime(
+                '%H:%M'), t.workspace.starts_work_at.strftime('%H:%M')
+            context['working_days'] = [
+                f'{day} - {worktime[0]} until {worktime[1]}' for day in t.workspace.working_days.split(' ')]
+
             return render(request, 'dashboards/user/show_trainer.html', context)
         else:
             return redirect('userdashboard-trainers')
@@ -260,26 +273,6 @@ def change_password(request):
             context['old2Valid'] = 'is-valid' if userinstance.check_password(
                 old2) else 'is-invalid'
             return render(request, 'dashboards/user/events/change_password.html', context)
-        # if username and age and weight and height and weight_goal and week_frequency:
-        #     userinstance = request.user
-        #     userinstance.username = username
-        #     userinstance.profile.age = age
-        #     userinstance.profile.weight = weight
-        #     userinstance.profile.height = height
-        #     userinstance.profile.weight_goal = weight_goal
-        #     userinstance.profile.week_frequency = week_frequency
-        #     userinstance.save()
-        #     return redirect('profile')
-        # else:
-        #     context['error'] = 'Please fill in all fields!'
-        #     context['usernameValid'] = 'is-valid' if username else 'is-invalid'
-        #     context['ageValid'] = 'is-valid' if age else 'is-invalid'
-        #     context['weightValid'] = 'is-valid' if weight else 'is-invalid'
-        #     context['heightValid'] = 'is-valid' if height else 'is-invalid'
-        #     context['weightGoalValid'] = 'is-valid' if weight_goal else 'is-invalid'
-        #     context['weekFrequencyValid'] = 'is-valid' if week_frequency else 'is-invalid'
-        #     return render(request, 'dashboards/user/events/change_password.html', context)
-
     return render(request, 'dashboards/user/events/change_password.html', context)
 
 
@@ -300,6 +293,8 @@ def create_exercise(request):
                           reps=reps, desc=desc, link=link)
             ex.save()
             ex.selected_by.add(request.user)
+            ex.save()
+            return redirect('userdashboard-exercises')
         else:
             context['error'] = 'Please fill in all fields!'
             context['titleValid'] = 'is-valid' if title else 'is-invalid'
@@ -338,17 +333,68 @@ def edit_exercise(request, eid):
             context['repsValid'] = 'is-valid' if reps else 'is-invalid'
             context['descValid'] = 'is-valid' if desc else 'is-invalid'
             context['linkValid'] = 'is-valid' if link else 'is-invalid'
-            return render(request, 'dashboards/user/edit_exercise.html', context)
+            return render(request, 'dashboards/user/events/edit_exercise.html', context)
 
     return render(request, 'dashboards/user/events/edit_exercise.html', context)
 
 
 @login_required(login_url='login')
+def edit_routine(request, rid):
+    events = Event.objects.all()[:4]
+
+    r = get_object_or_404(Routine, id=rid)
+    ex = Exercise.objects.all()
+    context = {'options': ROUTINES_NAV,
+               'events': events, 'routine': r, 'exercises': ex}
+    context['days'] = ['Monday', 'Tuesday', 'Wednesday',
+                       'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+    if request.POST:
+        title = request.POST['title']
+        desc = request.POST['desc']
+        thumbnail = request.POST['thumbnail']
+        days = request.POST.getlist('days')
+        exercises_list = request.POST.getlist('exercises')
+
+        if title and desc and days and exercises_list:
+            if thumbnail:
+                rt = Routine.objects.create(title=title, desc=desc,
+                                            thumbnail=f'routines/{thumbnail}', owner=request.user)
+            else:
+                rt = Routine.objects.create(
+                    title=title, desc=desc, owner=request.user)
+            save_days = []
+            for day in days:
+                save_days.append(day)
+            rt.days = ' '.join(save_days)
+            rt.selected_by.add(request.user)
+
+            for ex in exercises_list:
+                exinstance = Exercise.objects.get(id=int(ex))
+                rt.exercises.add(Exercise.objects.get(id=int(ex)))
+                if request.user not in exinstance.selected_by.all():
+                    exinstance.selected_by.add(request.user)
+                exinstance.save()
+            rt.save()
+            return redirect('userdashboard-routine-details', rid=rid)
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['titleValid'] = 'is-valid' if title else 'is-invalid'
+            context['descValid'] = 'is-valid' if desc else 'is-invalid'
+            context['daysValid'] = 'is-valid' if days else 'is-invalid'
+            context['exercisesValid'] = 'is-valid' if exercises_list else 'is-invalid'
+
+            return render(request, 'dashboards/user/events/edit_routine.html', context)
+
+    return render(request, 'dashboards/user/events/edit_routine.html', context)
+
+
+@login_required(login_url='login')
 def create_routine(request):
     events = Event.objects.all()[:4]
-    exercises = Exercise.objects.all()
+
     context = {'options': ROUTINES_NAV,
-               'events': events, 'exercises': exercises}
+               'events': events, 'exercises': Exercise.objects.all()}
     context['days'] = ['Monday', 'Tuesday', 'Wednesday',
                        'Thursday', 'Friday', 'Saturday', 'Sunday']
     if request.POST:
@@ -356,23 +402,33 @@ def create_routine(request):
         desc = request.POST['desc']
         thumbnail = request.POST['thumbnail']
         days = request.POST.getlist('days')
-        exercises_list = request.POST.getlist('days')
+        exercises_list = request.POST.getlist('exercises')
 
-        if title and desc and thumbnail and days and exercises_list:
-            rt = Routine(title=title, desc=desc,
-                         thumbnail=f'routines/{thumbnail}')
+        if title and desc and days and exercises_list:
+            if thumbnail:
+                rt = Routine.objects.create(title=title, desc=desc,
+                                            thumbnail=f'routines/{thumbnail}', owner=request.user)
+            else:
+                rt = Routine.objects.create(
+                    title=title, desc=desc, owner=request.user)
             save_days = []
             for day in days:
                 save_days.append(day)
             rt.days = ' '.join(save_days)
             rt.selected_by.add(request.user)
-            rt.exercises.add()
+
+            for ex in exercises_list:
+                exinstance = Exercise.objects.get(id=int(ex))
+                rt.exercises.add(Exercise.objects.get(id=int(ex)))
+                if request.user not in exinstance.selected_by.all():
+                    exinstance.selected_by.add(request.user)
+                exinstance.save()
             rt.save()
+            return redirect('userdashboard-routines')
         else:
             context['error'] = 'Please fill in all fields!'
             context['titleValid'] = 'is-valid' if title else 'is-invalid'
             context['descValid'] = 'is-valid' if desc else 'is-invalid'
-            context['thumbnailValid'] = 'is-valid' if thumbnail else 'is-invalid'
             context['daysValid'] = 'is-valid' if days else 'is-invalid'
             context['exercisesValid'] = 'is-valid' if exercises_list else 'is-invalid'
 

@@ -26,6 +26,7 @@ urlpatterns = [
     path('routine/<int:rid>', user_views.routine_details,
          name='userdashboard-routine-details'),
     path('routine/create', user_views.create_routine, name='create-routine'),
+    path('routine/<int:rid>/edit', user_views.edit_routine, name='edit-routine'),
 
     path('diets/', user_views.diets, name='userdashboard-diets'),
 

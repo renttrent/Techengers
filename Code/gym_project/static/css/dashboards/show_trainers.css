@@ -1,39 +1,8 @@
-.routines {
-  display: flex;
-  flex-direction: column;
-  height: 85vh;
-  overflow-y: auto;
-  margin-top: 2em;
-}
-
-.btn {
-  color: white;
-}
-.routine-card {
-  background-color: #1f2f42;
-  margin-left: 2em;
-  margin-right: 2em;
-  margin-bottom: 4em;
-  border-radius: 7px;
-  color: white;
-  min-height: 350px;
-  height: 350px;
-}
-
 h2,
 h4 {
   margin-top: 1em;
   margin-left: 1em;
   margin-bottom: 1em;
-}
-
-#btn-edit {
-  background-color: #6ed383;
-  outline: none !important;
-  padding: 1em;
-  font-size: 1em;
-  text-align: center;
-  margin-right: 1em;
 }
 
 hr {
@@ -159,7 +128,10 @@ hr {
 
 .about {
   color: white;
+  font-size: 1.5em;
+  font-weight: 400;
   margin-left: 2em;
+  margin-top: 1em;
 }
 
 .name {
@@ -188,14 +160,42 @@ hr {
 
   border-radius: 7px;
 }
-.mid{
+.mid {
   overflow-y: scroll;
   height: 100%;
   position: absolute;
 
   width: 55.5%;
- 
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
+}
+
+.routines {
+  margin: auto;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+
+.routine {
+  background-color: #ed6459;
+  align-items: center;
+  width: 250px;
+  height: 100px;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 4px;
+}
+
+.routine > div > a {
+  color: #1f2f42;
+  font-weight: 700;
+}
+.routine > div > a:hover {
+  color: #6ed383;
+  font-weight: 700;
 }
