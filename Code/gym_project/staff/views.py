@@ -72,6 +72,12 @@ def manage_exercises(request):
         else:
             return redirect('staff')
 
+    if request.POST:
+        eid = request.POST['delete']
+        if eid and Exercise.objects.get(id=eid):
+            einstance = Exercise.objects.get(id=eid)
+            einstance.delete()
+
     exercises = Exercise.objects.all()
     context = {'options': navigation, 'exercises': exercises}
     context['notes'] = getNotes()
@@ -90,33 +96,69 @@ def add_exercise(request):
         else:
             return redirect('staff')
 
-    exercises = Exercise.objects.all()
-    routines = Routine.objects.all()
-    context = {'options': navigation,
-               'exercises': exercises, 'routines': routines}
+    context = {'options': navigation}
     context['notes'] = getNotes()
+
     if request.POST:
         title = request.POST['title']
         reps = request.POST['reps']
         desc = request.POST['desc']
         link = request.POST['link']
-        routine = request.POST['routines']
 
-        if title and reps and desc and link and routine:
+        if title and reps and desc and link:
             ex = Exercise(title=title, reps=reps, desc=desc, link=link)
             ex.save()
-            ex.routine.add(Routine.objects.get(id=routine))
             ex.selected_by.add(request.user)
+            ex.save()
+            return redirect('staff-manage-exercises')
         else:
             context['error'] = 'Please fill in all fields!'
             context['titleValid'] = 'is-valid' if title else 'is-invalid'
             context['repsValid'] = 'is-valid' if reps else 'is-invalid'
             context['descValid'] = 'is-valid' if desc else 'is-invalid'
             context['linkValid'] = 'is-valid' if link else 'is-invalid'
-            context['routineValid'] = 'is-valid' if routine else 'is-invalid'
             return render(request, 'staff/trainer/events/add_exercise.html', context)
 
     return render(request, 'staff/trainer/events/add_exercise.html', context)
+
+
+@login_required(login_url='login')
+@staff_member_required
+def edit_exercise(request, eid):
+    navigation = None
+    if request.user.groups.first():
+        role = request.user.groups.first().name
+        if role == 'trainer':
+            navigation = TRAINER_EXERCISES_NAV
+        else:
+            return redirect('staff')
+
+    exercise = Exercise.objects.get(id=eid)
+    context = {'options': navigation,
+               'exercise': exercise}
+    context['notes'] = getNotes()
+
+    if request.POST:
+        title = request.POST['title']
+        reps = request.POST['reps']
+        desc = request.POST['desc']
+        link = request.POST['link']
+
+        if title and reps and desc and link:
+            ex = Exercise(title=title, reps=reps, desc=desc, link=link)
+            ex.save()
+            ex.selected_by.add(request.user)
+            ex.save()
+            return redirect('staff-manage-exercises')
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['titleValid'] = 'is-valid' if title else 'is-invalid'
+            context['repsValid'] = 'is-valid' if reps else 'is-invalid'
+            context['descValid'] = 'is-valid' if desc else 'is-invalid'
+            context['linkValid'] = 'is-valid' if link else 'is-invalid'
+            return render(request, 'staff/trainer/events/add_exercise.html', context)
+
+    return render(request, 'staff/trainer/events/edit_exercise.html', context)
 
 
 @login_required(login_url='login')
@@ -154,6 +196,51 @@ def add_routine(request):
     context['days'] = ['Monday', 'Tuesday', 'Wednesday',
                        'Thursday', 'Friday', 'Saturday', 'Sunday']
     context['notes'] = getNotes()
+    if request.POST:
+        title = request.POST['title']
+        desc = request.POST['desc']
+        thumbnail = request.POST['thumbnail']
+        days = request.POST.getlist('days')
+
+        if title and desc and thumbnail and days:
+            rt = Routine(title=title, desc=desc,
+                         thumbnail=f'routines/{thumbnail}')
+            save_days = []
+            for day in days:
+                save_days.append(day)
+            rt.days = ' '.join(save_days)
+            rt.save()
+        else:
+            context['error'] = 'Please fill in all fields!'
+            context['titleValid'] = 'is-valid' if title else 'is-invalid'
+            context['descValid'] = 'is-valid' if desc else 'is-invalid'
+            context['thumbnailValid'] = 'is-valid' if thumbnail else 'is-invalid'
+            context['daysValid'] = 'is-valid' if days else 'is-invalid'
+
+            return render(request, 'staff/trainer/events/add_routine.html', context)
+
+    return render(request, 'staff/trainer/events/add_routine.html', context)
+
+
+@login_required(login_url='login')
+@staff_member_required
+def edit_routine(request, rid):
+
+    navigation = None
+    if request.user.groups.first():
+        role = request.user.groups.first().name
+        if role == 'trainer':
+            navigation = TRAINER_ROUTINES_NAV
+        else:
+            return redirect('staff')
+
+    routines = Routine.objects.all()
+    context = {'options': navigation, 'routines': routines}
+    context['days'] = ['Monday', 'Tuesday', 'Wednesday',
+                       'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+    context['notes'] = getNotes()
+
     if request.POST:
         title = request.POST['title']
         desc = request.POST['desc']

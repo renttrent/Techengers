@@ -17,26 +17,24 @@
                 <thead>
                     <tr id="first-row">
                         <th>ID</th>
+                        <th>Owner</th>
+                        <th>Selected By</th>
                         <th>Title</th>
-                        
-                        <th>Reps</th>
-                        <th>Video URL</th>
                         <th>Description</th>
-                        
-                       
+                        <th>Video URL</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for routine in routines %}
+                    {% for exercise in exercises %}
                     <tr>
-                        <td>{{routine.id}}</td>
-                        <td>{{routine.owner}}</td>
+                        <td>{{exercise.id}}</td>
+                        <td>{{exercise.owner}}</td>
                         <td>
                         <table class="table table-responsive table-hover">
                             <tbody> 
-                            {% for u in routine.selected_by.all%}
+                            {% for u in exercise.selected_by.all%}
                                 <tr>
                                 <td>{{u.username}}</td>
                                 </tr>
@@ -44,32 +42,25 @@
                             </tbody>
                         </table>
                         </td>
-                        <td>{{routine.title}}</td>
-                        <td>{{routine.desc}}</td>
-                        <td>
-                        <table class="table table-responsive table-hover">
-                            <tbody> 
-                            {% for e in routine.exercises.all%}
-                                <tr>
-                                <td><a href=""> {{e.title}}</a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                        <td>{{exercise.title}}</td>
+                        <td>{{exercise.desc}}</td>
                         
-                        </td>
-                        <td>{{routine.days}}</td>
+                        <td>{{exercise.link}}</td>
                         <td>
-                            <a class="btn btn-primary">Edit</a>
+                            <a class="btn btn-primary" href="{% url 'staff-edit-exercise' exercise.id %}">Edit</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger">Delete</a>
+                            <form action="{% url 'staff-manage-exercises' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete" value="{{exercise.id}}">
+                            <button class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <a class="btn add-instance">+ Add Instance</a>
+            <a class="btn add-instance" href="{% url 'staff-add-exercise' %}">+ Add Instance</a>
         </div>
     </div>
     

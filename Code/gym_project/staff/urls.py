@@ -10,9 +10,14 @@ urlpatterns = [
 
     path('exercises/', views.manage_exercises, name="staff-manage-exercises"),
     path('exercises/add', views.add_exercise, name="staff-add-exercise"),
+    path('exercises/edit/<int:eid>',
+         views.edit_exercise, name="staff-edit-exercise"),
+
 
     path('routines/', views.manage_routines, name="staff-manage-routines"),
     path('routines/add', views.add_routine, name="staff-add-routine"),
+    path('routines/edit/<int:rid>',
+         views.edit_routine, name="staff-edit-routine"),
 
     path('workspace/', views.workspace, name="staff-workspace"),
 

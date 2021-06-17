@@ -1,0 +1,105 @@
+{% extends 'login/base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+{% endblock style %}
+
+{% block title %}
+<title>Welcome</title>
+{% endblock title %}
+
+{% block content %}
+
+<script>
+alert('You have been logged out!');
+</script>
+
+<nav class="navbar mr-5 ml-5">
+  <a class="navbar-brand p-3" href="#" style="color: black;"><img src="{% static 'svg/logo.svg' %}" class="logo"></a>
+    <ul class="nav">
+        <li class="nav-item p-4">
+            <a class="nav-link contact" href="#contact" onclick="scrollTo()">Contact</a>
+        </li>
+        <li class="nav-item p-3">
+            <a class="nav-link btn-login" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item p-3">
+            <a class="nav-link btn-signup" href="{% url 'register' %}">Signup</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="welcome-body">
+
+    <div class="mycard-container">
+        <div class="mycard">
+            <img class="mycard-img" src="{% static 'images/welcome/carousel-1.jpg' %}">
+        </div>
+        <div class="mycard-text">
+            <div class="card-title">High end equipements</div>
+            <div class="card-text">Come train with our high tech equipements, chosen only for you.</div>
+        </div>
+    </div>
+
+    <div class="mycard-container">
+
+        <div class="mycard-text">
+            <div class="card-title">Great staff and fun events!</div>
+            <div class="card-text">Our staff is here for you. We also organize events each week!</div>
+        </div>
+        <div class="mycard" style="margin-left: 10em;">
+            <img class="mycard-img" src="{% static 'images/welcome/carousel-2.jpg' %}">
+        </div>
+    </div>
+
+    <div class="mycard-container">
+        <div class="mycard">
+            <img class="mycard-img" src="{% static 'images/welcome/carousel-3.jpg' %}">
+        </div>
+        <div class="mycard-text">
+            <div class="card-title">Pick your meals</div>
+            <div class="card-text">We also have a nutritionist that prepares meals for you!</div>
+        </div>
+    </div>
+</div>
+
+<div id="contact" class="contact-footer">
+    <div class="contact-header">
+        Contact Us
+    </div>
+
+    <div class="contact-footer-body">
+        <div class="contact-text">
+            <span style="font-size: 20px; font-weight: 600; ">Contact us at: </span>
+            <ul class="contact-list">
+                <li>Phone - 925-361-0689</li>
+                <li>Email - <a href="">contact@sweat.com</a></li>
+                <li style="margin-top: 1em;">
+                <span class="iconify" data-inline="false" data-icon="ant-design:facebook-filled" style="font-size: 24px;"></span>
+                <span class="iconify" data-inline="false" data-icon="ant-design:instagram-filled" style="font-size: 24px;"></span>
+                <span class="iconify" data-inline="false" data-icon="akar-icons:twitter-fill" style="font-size: 24px;"></span>
+                </li>
+            </ul>
+            
+        </div>
+
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3632.461720500733!2d54.45345911537094!3d24.434761168203593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e42675a763ec9%3A0x66b4de0dd9128cb!2sSweat%20Gym!5e0!3m2!1sen!2s!4v1622829024887!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascript %}
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+<script>
+var element_to_scroll_to = document.getElementById('contact');
+function scrollTo() {
+    element_to_scroll_to.scrollIntoView();
+}
+
+</script>
+{% endblock javascript %}
+

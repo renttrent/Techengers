@@ -23,38 +23,36 @@
 
 {% block middle %}
 
-
 <div class="back">
 <a class="btn btn-primary" href="{% url 'staff-manage-exercises' %}">Back</a>
 </div>
 
 <div class="create-exercise card container"> 
-    
     <div class="create-exercise-body form card-body container">
-        <form method="POST" action="{% url "staff-add-exercise" %}" class="create-exercise-form">
+        <form method="POST" action="{% url "staff-edit-exercise" exercise.id %}" class="create-exercise-form">
                 {% csrf_token %}
                 {% if error %}
                 <div class="alert alert-danger" role="alert">{{error}}</div>
                 {% endif %}
                
-                <div class="form-group mt-4">
+                <div class="form-group mt-3">
                     <label for="title">Exercise Title</label>
-                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: ">
+                    <input type="text" class="form-control {{titleValid}}" id="title" name="title" placeholder="Title: " value="{{exercise.title}}">
                 </div>
-                <div class="form-group mt-4">
+                <div class="form-group mt-3">
                     <label for="reps">Number of Repetitions</label>
-                    <input type="number" class="form-control {{repsValid}}" id="reps" name="reps" placeholder="Reps: ">
+                    <input type="number" class="form-control {{repsValid}}" id="reps" name="reps" placeholder="Reps: " value="{{exercise.reps}}">
                 </div>
-                <div class="form-group mt-4">
+                <div class="form-group mt-3">
                     <label for="desc">Description</label>
-                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: ">
+                    <input type="text" class="form-control {{descValid}}" id="desc" name="desc" placeholder="Some description: " value="{{exercise.desc}}">
                 </div>
-                <div class="form-group mt-4">
+                <div class="form-group mt-3">
                     <label for="link">Video URL</label>
-                    <input type="text" class="form-control {{linkValid}}" id="link" name="link" placeholder="Add video link: ">
+                    <input type="text" class="form-control {{linkValid}}" id="link" name="link" placeholder="Add video link: " value="{{exercise.link}}">
                 </div>    
 
-                <input class="btn btn-success p-2 mt-4" type="submit" />          
+                <input class="btn btn-success p-2 mt-2" type="submit" value="Edit"/>      
         </form>
     </div>
 </div> 

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/staff_dashboards/table.css' %}">
     <link rel="stylesheet" href="{% static 'css/staff_dashboards/shared/workspace.css' %}">
     
+
     {% block styles %}
     {% endblock styles %}
 
@@ -75,18 +76,6 @@
     <div class="middle">
       <div class="middle-nav">
         <marquee behavior="" direction="">Notes from admin: {{ notes.todo }}
-          <div class="row">
-            <div class="col admin-notes-rectangle">
-                <div class="admin-notes">Admin Notes</div>
-                <hr id="tot"/>
-                <div class="notes">Hey, come early tomorrow</div>
-                <hr id="tot"/>
-                <div class="notes">Make sure to submit the working days</div>
-                <hr id="tot"/>
-                <div class="notes">Important !!! Monday is Holiday</div>
-                <marquee behavior="" direction="">Notes from admin: {{ notes.todo }}</marquee>
-            </div>
-        </div>
         </marquee>
       </div>
     {% block middle %}
