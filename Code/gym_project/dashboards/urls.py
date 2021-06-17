@@ -8,6 +8,7 @@ urlpatterns = [
     path('', user_views.home, name="userdashboard"),
 
     path('profile/', user_views.profile, name='profile'),
+    path('profile/complete/', user_views.complete_profile, name='complete-profile'),
     path('profile/edit/', user_views.edit_profile, name='edit-profile'),
     path('profile/changepassword/',
          user_views.change_password, name='change-password'),
