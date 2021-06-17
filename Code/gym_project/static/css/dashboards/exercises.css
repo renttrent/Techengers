@@ -1,12 +1,11 @@
 .exercises {
   margin-top: 2em;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1em;
   width: 100%;
   padding: 0 2em 0 2em;
-  height: 85vh;
-  overflow-y: auto;
+ 
 }
 
 .exercise-card {
@@ -20,6 +19,8 @@
   max-height: 200px;
   border-radius: 5px;
   background-color: #1f2f42;
+  margin-bottom: 3em;
+   
 }
 
 .left-exercise-card {
@@ -112,4 +113,65 @@
   background-color: #4784bc;
   margin-left: 2em;
   margin-bottom: 2em;
+}
+
+.routine-title{
+  background-color: #ed6459;
+  color: white;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 2em;
+  width: 20%;
+  text-align: center;
+    margin-left: 12.8em;
+        border-radius: 7px;
+}
+.routine-owner{
+  background-color: #1f2f42;
+  color: white;
+
+  margin-bottom: 1em;
+  font-size: 1em;
+    padding: 1em;
+  width: 30%;
+  text-align: center;
+  margin-left: 22.5em;
+  border-radius: 7px;
+}
+.routine-desc-title{
+  background-color: #1f2f42;
+  color: white;
+margin-top: 1em;
+ padding: 0.4em;
+  font-size: 1.5em;
+  width: 30%;
+  text-align: center;
+  margin-left: 15em;
+  border-radius: 7px;
+}
+.routine-description{
+    height: 170px;
+   
+    padding: 2em;
+  margin:  0.5em 2em 2em 2em;
+  background-color: #1f2f42;
+  color: white;
+  font-size: 1em;
+  border-radius: 7px;
+}
+.routine-exercise{
+  background-color: #1f2f42;
+  color: white;
+margin-top: 1em;
+ padding: 0.4em;
+  font-size: 1.5em;
+  width: 30%;
+  text-align: center;
+  margin-left: 15em;
+  border-radius: 7px;
+}
+
+.show-routine{
+  height: 95vh;
+  overflow-y: auto;
 }
