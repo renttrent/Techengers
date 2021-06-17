@@ -166,3 +166,12 @@ body {
   background: #aebac8;
   border-radius: 10px;
 }
+.showing-where-you-are{
+  padding: 1em 1em 1em 1.7em;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 2em;
+  background-color: #0A1522;
+  font-weight: 600;
+  
+  
+}
