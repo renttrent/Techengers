@@ -15,7 +15,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 80%;
-  min-height: 400px;
+ min-height: fit-content;
   background-color: #1f2f42;
   color: white;
   border-radius: 5px;
@@ -43,6 +43,7 @@
   width: 50%;
   display: flex;
   flex-direction: column;
+
 }
 
 .diet-title {
